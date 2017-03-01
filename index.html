@@ -64,70 +64,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-用hexo在github上搭建自己的博客" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/01/用hexo在github上搭建自己的博客/" class="article-date">
-  <time datetime="2017-03-01T03:39:03.000Z" itemprop="datePublished">2017-03-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/01/用hexo在github上搭建自己的博客/">用hexo在github上搭建自己的博客</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>###说在前面<br>最近开始学习一些东西，正好在学习这些东西的过程中产生了一些疑问与体会需要整理，便想着应该有一个自己的博客了，而正好github对个人自己搭建博客提供了免费的支持，所以今天便用了一些时间搭建了一个自己的博客，将过程和其中产生的一些问题放在这里，希望能对大家产生帮助</p>
-<ul>
-<li>搭建平台：Mac OS X</li>
-<li>Windows的可以参看这篇文章：<a href="https://zhuanlan.zhihu.com/p/25471760?utm_source=qq&amp;utm_medium=social" target="_blank" rel="external">教你免费搭建个人博客，Hexo&amp;Github</a>（不过实际上两个平台相差不大）</li>
-<li>使用工具：Hexo <a href="https://hexo.io" target="_blank" rel="external">这里是官方文档</a></li>
-</ul>
-<p>###一、注册github<br><a href="https://github.com" target="_blank" rel="external">这里</a>是github的官网，注册。<br>然后再个人页面创建一个新的repository，名字命名为<code>yourname.github.io</code>，yourname是自己的用户名。<br><img src="http://upload-images.jianshu.io/upload_images/291600-7cec7b9f28359ea5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="创建"><br>这里创不创建README没有什么影响。</p>
-<p>###二、环境配置<br>要使用Hexo需要先安装好<br><a href="https://nodejs.org/en/" target="_blank" rel="external">Node.js</a><br><a href="https://github.com/waylau/git-for-win" target="_blank" rel="external">Git(这里是一个国外的镜像，方便下载)</a><br>由于我个人在创建之前已经安装好了git，所以跳过初始配置部分，第一次使用的可以参看<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/" target="_blank" rel="external">廖雪峰的教程</a></p>
-<p>然后就可以输入命令安装Hexo了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g hexo-cli</div></pre></td></tr></table></figure></p>
-<p>输入命令后会产生如下信息，可能需要等待一会</p>
-<p><img src="https://raw.githubusercontent.com/penguin858/temp_picture/master/Screen%20Shot%202017-03-01%20at%2010.32.44%20AM.png" style="zoom:40%"></p>
-<p>到这里我们的环境就已经安装完毕了。</p>
-<p>###三、生成ssh密钥<br>在终端处输入以下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh-keygen -t rsa -C &quot;Github的注册邮箱地址&quot;</div></pre></td></tr></table></figure></p>
-<p>可以直接不停的敲回车，直到：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Your public key has been saved in &lt;path&gt;.</div></pre></td></tr></table></figure></p>
-<p>输入之后就会在本机的某个（我这里是～目录）目录下创建一个隐藏文件夹<code>.ssh</code>，将它打开，其中存有三个文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ ls</div><div class="line">id_rsa		id_rsa.pub	known_hosts</div></pre></td></tr></table></figure></p>
-<p>打开其中的id_rsa.pub(我机器上的vim是不能解析这个文件的，如果没有打开工具可以使用<a href="https://www.sublimetext.com/3" target="_blank" rel="external">Sublime Text</a>)，将所有内容复制，然后打开<a href="https://github.com/settings/keys" target="_blank" rel="external">Settings</a><br>然后：<br>New SSH key ——Title：随便起 —— Key：输入刚才复制的内容—— Add SSH key</p>
-<p>###四、本地配置<br>输入以下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">hexo init &lt;folder&gt;</div><div class="line">cd &lt;folder&gt;</div></pre></td></tr></table></figure></p>
-<p>便会在指定的文件夹创建存放博客的文件。<br>这样初始化好的文件夹自带一个helloworld文件，所以可以直接输入以下命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo generate #这里可简写为g</div><div class="line">$ hexo server #启动本地服务器，之后在浏览器处输入http://localhost:4000/ 就可以看到网页的样子了。</div></pre></td></tr></table></figure>
-<p>###五、将博客部署到github上<br>用Sublime打开文件夹中的<code>_config.yml</code>文件，进行修改：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div></pre></td><td class="code"><pre><div class="line"># Hexo Configuration</div><div class="line">## Docs: https://hexo.io/docs/configuration.html</div><div class="line">## Source: https://github.com/hexojs/hexo/</div><div class="line"></div><div class="line"># Site</div><div class="line">title:  #标题</div><div class="line">subtitle:  #副标题</div><div class="line">description:   #站点描述，给搜索引擎看的</div><div class="line">author:  #作者</div><div class="line">language:  #语言</div><div class="line">timezone: </div><div class="line"></div><div class="line"># URL</div><div class="line">## If your site is put in a subdirectory, set url as &apos;http://yoursite.com/child&apos; and root as &apos;/child/&apos;</div><div class="line">url:  #网址</div><div class="line">root: / #根目录</div><div class="line">permalink: :year/:month/:day/:title/ #文章的链接格式</div><div class="line">permalink_defaults:</div><div class="line"></div><div class="line"># Directory</div><div class="line">source_dir: source #源文件目录</div><div class="line">public_dir: public #生成的网页文件目录</div><div class="line">tag_dir: tags #标签目录</div><div class="line">archive_dir: archives #存档目录</div><div class="line">category_dir: categories #分类目录</div><div class="line">code_dir: downloads/code</div><div class="line">i18n_dir: :lang</div><div class="line">skip_render:</div><div class="line"></div><div class="line"># Writing</div><div class="line">new_post_name: :title.md # File name of new posts</div><div class="line">default_layout: post</div><div class="line">titlecase: false # Transform title into titlecase</div><div class="line">external_link: true # Open external links in new tab</div><div class="line">filename_case: 0</div><div class="line">render_drafts: false</div><div class="line">post_asset_folder: false</div><div class="line">relative_link: false</div><div class="line">future: true</div><div class="line">highlight: #语法高亮</div><div class="line">  enable: true</div><div class="line">  line_number: true</div><div class="line">  auto_detect: false</div><div class="line">  tab_replace:</div><div class="line"></div><div class="line"># Category &amp; Tag</div><div class="line">default_category: uncategorized</div><div class="line">category_map:</div><div class="line">tag_map:</div><div class="line"></div><div class="line"></div><div class="line"># Server #本地服务器</div><div class="line">port: 4000 #端口号</div><div class="line">server_ip: localhost #IP 地址</div><div class="line">logger: false</div><div class="line">logger_format: dev</div><div class="line"></div><div class="line"># Date / Time format</div><div class="line">## Hexo uses Moment.js to parse and display date</div><div class="line">## You can customize the date format as defined in</div><div class="line">## http://momentjs.com/docs/#/displaying/format/</div><div class="line">date_format: YYYY-MM-DD</div><div class="line">time_format: HH:mm:ss</div><div class="line"></div><div class="line"># Pagination</div><div class="line">## Set per_page to 0 to disable pagination</div><div class="line">per_page: 10 #每页文章数，设置成 0 禁用分页</div><div class="line">pagination_dir: page</div><div class="line"></div><div class="line"># Extensions #拓展插件</div><div class="line">theme: landscape</div><div class="line"></div><div class="line"># Deployment </div><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repo: #repo的URL</div><div class="line">  branch: master</div></pre></td></tr></table></figure></p>
-<p>其中，repo的地址可以在这里找到：<br><img src="https://raw.githubusercontent.com/penguin858/temp_picture/master/Screen%20Shot%202017-03-01%20at%201.42.51%20PM.png" alt=""></p>
-<p>我自己的参数是这么设置的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">title: *** </div><div class="line">subtitle:  </div><div class="line">description:  Try </div><div class="line">author: *** </div><div class="line">language: zh-CN </div><div class="line">timezone: Asia/Shanghai</div><div class="line"></div><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repo: https://github.com/***/***.github.io.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure></p>
-<p>然后可以输入以下命令来将网站发布到github：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy #可简写为d</div></pre></td></tr></table></figure></p>
-<p>但是我在这一步碰到了问题，我在提交的时候出现了如下错误：<br><img src="https://raw.githubusercontent.com/penguin858/temp_picture/master/Screen%20Shot%202017-03-01%20at%2011.19.21%20AM.png" alt=""></p>
-<p>这时可以通过输入以下命令解决：(为什么？)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-deployer-git --save</div></pre></td></tr></table></figure></p>
-<p>然后提交还是出错：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">remote: Anonymous access to ***/***.github.io.git denied.</div></pre></td></tr></table></figure></p>
-<p>估计应该是ssh密钥没能匹配上，后来我重新设置了一下user.name和user.email就好了。</p>
-<p>###六、一些其他命令：<br>可以使用new创建新文章：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new &quot;新文章的名字&quot;</div></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://penguin858.com/2017/03/01/用hexo在github上搭建自己的博客/" data-id="cizqkpmyc00010wwvm5ipjq1w" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-Hello!" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/03/01/Hello!/" class="article-date">
@@ -155,7 +91,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://penguin858.com/2017/03/01/Hello!/" data-id="cizqkpmy700000wwvufqy4ozi" class="article-share-link">Share</a>
+      <a data-url="http://penguin858.com/2017/03/01/Hello!/" data-id="cizqlepnl00006nwv1pv10irc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -193,10 +129,6 @@
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
-        
-          <li>
-            <a href="/2017/03/01/用hexo在github上搭建自己的博客/">用hexo在github上搭建自己的博客</a>
-          </li>
         
           <li>
             <a href="/2017/03/01/Hello!/">Hello!</a>

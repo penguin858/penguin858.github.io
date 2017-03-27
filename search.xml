@@ -232,7 +232,9 @@
     <entry>
       <title><![CDATA[用hexo在github上搭建自己的博客]]></title>
       <url>http://penguin858.com/2017/03/01/%E7%94%A8hexo%E5%9C%A8github%E4%B8%8A%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
-      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>###零、说在前面<br>最近开始学习一些东西，正好在学习这些东西的过程中产生了一些疑问与体会需要整理，便想着应该有一个自己的博客了，而正好github对个人自己搭建博客提供了免费的支持，所以今天便用了一些时间搭建了一个自己的博客，将过程和其中产生的一些问题放在这里，希望能对大家产生帮助</p>
+      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>#</p>
+<p>## </p>
+<p>###零、说在前面<br>最近开始学习一些东西，正好在学习这些东西的过程中产生了一些疑问与体会需要整理，便想着应该有一个自己的博客了，而正好github对个人自己搭建博客提供了免费的支持，所以今天便用了一些时间搭建了一个自己的博客，将过程和其中产生的一些问题放在这里，希望能对大家产生帮助</p>
 <ul>
 <li>搭建平台：Mac OS X</li>
 <li>Windows的可以参看这篇文章：<a href="https://zhuanlan.zhihu.com/p/25471760?utm_source=qq&amp;utm_medium=social">教你免费搭建个人博客，Hexo&amp;Github</a>（不过实际上两个平台相差不大）</li>
@@ -299,12 +301,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[categories]]></title>
-      <url>http://penguin858.com/categories/index.html</url>
-      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script>]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[about]]></title>
       <url>http://penguin858.com/about/index.html</url>
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>北京某野鸡大学计算机专业大二学生，目前致力于数据库方面研究。</p>
@@ -316,6 +312,12 @@
     <entry>
       <title><![CDATA[tags]]></title>
       <url>http://penguin858.com/tags/index.html</url>
+      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script>]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[categories]]></title>
+      <url>http://penguin858.com/categories/index.html</url>
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script>]]></content>
     </entry>
     

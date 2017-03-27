@@ -6,7 +6,27 @@
     <entry>
       <title><![CDATA[MIPS汇编语言程序设计]]></title>
       <url>http://penguin858.com/2017/03/26/MIPS%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/</url>
-      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h2 id="零-写在前面"><a href="#零、写在前面" class="headerlink" title="零、写在前面"></a>零、写在前面</h2><p>作为RISC指令系统的代表之一，MIPS以其简洁、规整，极适合作为教学语言使用。我们以MARS集成开发环境作为工具，系统地学习汇编语言程序设计，并了解可执行文件的文件结构。<br><a href="http://courses.missouristate.edu/KenVollmar/Mars/index.htm">MARS开发环境下载地址</a>(只需要在操作系统上安装JDK即可使用)</p>
+      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><!-- toc -->
+<ul>
+<li><a href="#零-写在前面">零、写在前面</a></li>
+<li><a href="#一-用系统功能调用实现简单输入输出">一、用系统功能调用实现简单输入输出</a><ul>
+<li><a href="#题目">题目：</a></li>
+<li><a href="#预备知识">预备知识：</a><ul>
+<li><a href="#一系统调用">（一）系统调用</a></li>
+<li><a href="#二汇编指令">（二）汇编指令</a></li>
+<li><a href="#三问题代码">（三）问题代码</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#二-字符串查找比较">二、字符串查找比较</a><ul>
+<li><a href="#题目-1">题目：</a></li>
+<li><a href="#一问题代码">（一）问题代码</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+<h2 id="零-写在前面"><a href="#零、写在前面" class="headerlink" title="零、写在前面"></a>零、写在前面</h2><p>作为RISC指令系统的代表之一，MIPS以其简洁、规整，极适合作为教学语言使用。我们以MARS集成开发环境作为工具，系统地学习汇编语言程序设计，并了解可执行文件的文件结构。<br><a href="http://courses.missouristate.edu/KenVollmar/Mars/index.htm">MARS开发环境下载地址</a>(只需要在操作系统上安装JDK即可使用)</p>
 <a id="more"></a>
 <h2 id="一-用系统功能调用实现简单输入输出"><a href="#一、用系统功能调用实现简单输入输出" class="headerlink" title="一、用系统功能调用实现简单输入输出"></a>一、用系统功能调用实现简单输入输出</h2><h3 id="题目"><a href="#题目：" class="headerlink" title="题目："></a>题目：</h3><blockquote>
 <p>利用系统功能调用从键盘输入，转换后在屏幕上显示，具体要求如下：<br>(1) 如果输入的是字母（A~Z，区分大小写）或数字（0~9），则将其转换成对应的英文单词后在屏幕上显示，对应关系见下表<br>(2) 若输入的不是字母或数字，则在屏幕上输出字符“*”，<br>(3) 每输入一个字符，即时转换并在屏幕上显示，<br>(4) 支持反复输入，直到按“?”键结束程序。</p>
@@ -298,6 +318,14 @@
   
     
     <entry>
+      <title><![CDATA[contact]]></title>
+      <url>http://penguin858.com/contact/index.html</url>
+      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>Name: Xu Zeping<br><a href="https://github.com/penguin858">This is my github address</a></p>
+<p>Gmail: xuzeping858@gmail.com<br>QQ Email: 1363380773@qq.com</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[about]]></title>
       <url>http://penguin858.com/about/index.html</url>
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>北京某野鸡大学计算机专业大二学生，目前致力于数据库方面研究。</p>
@@ -316,14 +344,6 @@
       <title><![CDATA[categories]]></title>
       <url>http://penguin858.com/categories/index.html</url>
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script>]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[contact]]></title>
-      <url>http://penguin858.com/contact/index.html</url>
-      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>Name: Xu Zeping<br><a href="https://github.com/penguin858">This is my github address</a></p>
-<p>Gmail: xuzeping858@gmail.com<br>QQ Email: 1363380773@qq.com</p>
-]]></content>
     </entry>
     
   

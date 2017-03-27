@@ -6,7 +6,8 @@
     <entry>
       <title><![CDATA[MIPS汇编语言程序设计]]></title>
       <url>http://penguin858.com/2017/03/26/MIPS%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/</url>
-      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h2 id="零、写在前面"><a href="#零、写在前面" class="headerlink" title="零、写在前面"></a>零、写在前面</h2><p>作为RISC指令系统的代表之一，MIPS以其简洁、规整，极适合作为教学语言使用。我们以MARS集成开发环境作为工具，系统地学习汇编语言程序设计，并了解可执行文件的文件结构。<br><a href="http://courses.missouristate.edu/KenVollmar/Mars/index.htm">MARS开发环境下载地址</a>(只需要在操作系统上安装JDK即可使用)</p>
+      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>#正文</p>
+<h2 id="零、写在前面"><a href="#零、写在前面" class="headerlink" title="零、写在前面"></a>零、写在前面</h2><p>作为RISC指令系统的代表之一，MIPS以其简洁、规整，极适合作为教学语言使用。我们以MARS集成开发环境作为工具，系统地学习汇编语言程序设计，并了解可执行文件的文件结构。<br><a href="http://courses.missouristate.edu/KenVollmar/Mars/index.htm">MARS开发环境下载地址</a>(只需要在操作系统上安装JDK即可使用)</p>
 <a id="more"></a>
 <h2 id="一、用系统功能调用实现简单输入输出"><a href="#一、用系统功能调用实现简单输入输出" class="headerlink" title="一、用系统功能调用实现简单输入输出"></a>一、用系统功能调用实现简单输入输出</h2><p>###题目：</p>
 <blockquote>
@@ -310,14 +311,14 @@
     </entry>
     
     <entry>
-      <title><![CDATA[tags]]></title>
-      <url>http://penguin858.com/tags/index.html</url>
+      <title><![CDATA[categories]]></title>
+      <url>http://penguin858.com/categories/index.html</url>
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script>]]></content>
     </entry>
     
     <entry>
-      <title><![CDATA[categories]]></title>
-      <url>http://penguin858.com/categories/index.html</url>
+      <title><![CDATA[tags]]></title>
+      <url>http://penguin858.com/tags/index.html</url>
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script>]]></content>
     </entry>
     

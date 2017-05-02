@@ -35,12 +35,15 @@
 </ul>
 </li>
 <li><a href="#四属性">(四)属性</a><ul>
+<li><a href="#0通用">0.通用</a></li>
 <li><a href="#1style">1.style:</a></li>
 </ul>
 </li>
 <li><a href="#五文本格式化httpwwww3schoolcomcnhtmlhtml_formattingasp">(五)<a href="http://www.w3school.com.cn/html/html_formatting.asp">文本格式化</a></a><ul>
 <li><a href="#1文本格式">1.文本格式</a></li>
 <li><a href="#2预格式文本">2.预格式文本</a></li>
+<li><a href="#3计算机输出">3.计算机输出</a></li>
+<li><a href="#4文字格式标签">4.文字格式标签</a></li>
 </ul>
 </li>
 </ul>
@@ -67,6 +70,7 @@
 <li><strong>&lt;body&gt;</strong> 元素包含了可见的页面内容</li>
 <li><strong>&lt;h1&gt;</strong> 元素定义一个大标题</li>
 <li><strong>&lt;p&gt;</strong> 元素定义一个段落</li>
+<li>有些网站不支持中文显示，所以我们使用<strong>&lt;meta charset=”type_name”&gt;</strong>来声明使用的字符集</li>
 </ul>
 <p><strong>Web 浏览器</strong>的作用是读取 HTML 文档，并以网页的形式显示出它们。浏览器不会显示 HTML 标签，而是使用标签来解释页面的内容</p>
 <h3 id="4html中的大小写"><a href="#4-html中的大小写" class="headerlink" title="4.html中的大小写"></a>4.html中的大小写</h3><p>html中的标签、属性字母不区分大小写，建议使用小写</p>
@@ -100,7 +104,13 @@
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>This is my first paragraph.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>上述例子中就包含了嵌套的三个html元素</p>
 <h3 id="4空元素"><a href="#4-空元素" class="headerlink" title="4.空元素"></a>4.空元素</h3><p>没有内容的 HTML 元素被称为空元素。空元素是在开始标签中关闭的。<br>例如<strong>&lt;br&gt;</strong>，表示换行，就是没有关闭标签的空元素。<br>在未来以及其他的一些标记语言中，空元素也需要被关闭，此时可以采用在开始标签中添加斜杠的方法，如<strong>&lt;br/&gt;</strong></p>
-<h2 id="四属性"><a href="#四-属性" class="headerlink" title="(四)属性"></a>(四)属性</h2><h3 id="1style"><a href="#1-style" class="headerlink" title="1.style:"></a>1.style:</h3><p>style属性提供了一种改变所有 HTML 元素的样式的通用方法。通过 HTML 样式，能够通过使用 style 属性直接将样式添加到 HTML 元素，或者间接地在独立的样式表中（CSS 文件）进行定义。</p>
+<h2 id="四属性"><a href="#四-属性" class="headerlink" title="(四)属性"></a>(四)属性</h2><h3 id="0通用"><a href="#0-通用" class="headerlink" title="0.通用"></a>0.通用</h3><ul>
+<li>HTML 元素可以设置属性,属性可以在元素中添加附加信息</li>
+<li>属性一般描述于<strong>开始标签</strong></li>
+<li>属性总是以名称/值对的形式出现，比如：name=”value”。</li>
+<li><strong>html属性多为引用属性值，应该始终被包括在引号内</strong></li>
+</ul>
+<h3 id="1style"><a href="#1-style" class="headerlink" title="1.style:"></a>1.style:</h3><p>style属性提供了一种改变所有 HTML 元素的样式的通用方法。通过 HTML 样式，能够通过使用 style 属性直接将样式添加到 HTML 元素，或者间接地在独立的样式表中（CSS 文件）进行定义。</p>
 <ul>
 <li><strong>background-color</strong> 属性为元素定义了背景颜色</li>
 </ul>
@@ -114,13 +124,124 @@
 </ul>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">style</span>=<span class="string">"text-align:center"</span>&gt;</span>This is a heading<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>The heading above is aligned to the center of this page.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
 <h2 id="五文本格式化"><a href="#五-文本格式化" class="headerlink" title="(五)文本格式化"></a>(五)<a href="http://www.w3school.com.cn/html/html_formatting.asp">文本格式化</a></h2><h3 id="1文本格式"><a href="#1-文本格式" class="headerlink" title="1.文本格式"></a>1.文本格式</h3><ul>
-<li><strong>&lt;b&gt;或&lt;strong&gt;</strong>:加粗</li>
+<li><strong>&lt;b&gt;</strong>:加粗</li>
+<li><strong>&lt;strong&gt;</strong>:加重语气</li>
 <li><strong>&lt;big&gt;或&lt;small&gt;</strong>:加大或缩小</li>
 <li><strong>&lt;em&gt;</strong>:强调(emphasize)</li>
 <li><strong>&lt;i&gt;</strong>:斜体(italic)</li>
 <li><strong>&lt;sub&gt;或&lt;sup&gt;</strong>:上标（superscript）或下标（subscript）</li>
+<li><strong>&lt;ins&gt;</strong>：插入字</li>
+<li><strong>&lt;del&gt;</strong>：删除字</li>
 </ul>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>&lt;b&gt;</strong></td>
+<td>加粗</td>
+</tr>
+<tr>
+<td><strong>&lt;strong&gt;</strong></td>
+<td>加重语气</td>
+</tr>
+<tr>
+<td><strong>&lt;big&gt;或=&lt;small&gt;</strong></td>
+<td>加大或缩小</td>
+</tr>
+<tr>
+<td> <strong>&lt;em&gt;</strong></td>
+<td>强调（emphasize）</td>
+</tr>
+<tr>
+<td> <strong>&lt;i&gt;</strong></td>
+<td>斜体(italic)</td>
+</tr>
+<tr>
+<td><strong>&lt;sub&gt;或&lt;sup&gt;</strong></td>
+<td>上标（superscript）或下标（subscript）</td>
+</tr>
+<tr>
+<td><strong>&lt;ins&gt;</strong></td>
+<td>插入字</td>
+</tr>
+<tr>
+<td><strong>&lt;del&gt;</strong></td>
+<td>删除字</td>
+</tr>
+</tbody>
+</table>
 <h3 id="2预格式文本"><a href="#2-预格式文本" class="headerlink" title="2.预格式文本"></a>2.预格式文本</h3><p>可以使用<strong>&lt;pre&gt;</strong>标签来表示提前处理好格式的文本，保留换行和空格</p>
+<h3 id="3计算机输出"><a href="#3-计算机输出" class="headerlink" title="3.计算机输出"></a>3.计算机输出</h3><table>
+<thead>
+<tr>
+<th>标签</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>&lt;code&gt;</strong></td>
+<td>定义计算机代码</td>
+</tr>
+<tr>
+<td><strong>&lt;kbd&gt;</strong></td>
+<td>定义键盘码</td>
+</tr>
+<tr>
+<td><strong>&lt;samp&gt;</strong></td>
+<td>定义计算机代码样本</td>
+</tr>
+<tr>
+<td><strong>&lt;var&gt;</strong></td>
+<td>定义变量</td>
+</tr>
+<tr>
+<td><strong>&lt;pre&gt;</strong></td>
+<td>定义预格式文本</td>
+</tr>
+</tbody>
+</table>
+<p>例程：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">code</span>&gt;</span>Computer code<span class="tag">&lt;/<span class="name">code</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">br</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kbd</span>&gt;</span>Keyboard input<span class="tag">&lt;/<span class="name">kbd</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">br</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">tt</span>&gt;</span>Teletype text<span class="tag">&lt;/<span class="name">tt</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">br</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">samp</span>&gt;</span>Sample text<span class="tag">&lt;/<span class="name">samp</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">br</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">var</span>&gt;</span>Computer variable<span class="tag">&lt;/<span class="name">var</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">br</span> /&gt;</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>注释：<span class="tag">&lt;/<span class="name">p</span>&gt;</span>这些标签常用于显示计算机/编程代码。</div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h3 id="4文字格式标签"><a href="#4-文字格式标签" class="headerlink" title="4.文字格式标签"></a>4.文字格式标签</h3><table>
+<thead>
+<tr>
+<th>标签</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>&lt;abbr&gt;</strong></td>
+<td>定义缩写（有些浏览器在将光标移到缩写上时会显示完整拼写</td>
+</tr>
+<tr>
+<td><strong>&lt;address&gt;</strong></td>
+<td>定义地址</td>
+</tr>
+<tr>
+<td><strong>&lt;bdo&gt;</strong></td>
+<td>定义文字方向（把参数dir设置为“rlt”可从右到左输出）</td>
+</tr>
+<tr>
+<td><strong>&lt;blockquote&gt;</strong></td>
+<td>定义长的引用</td>
+</tr>
+<tr>
+<td><strong>&lt;q&gt;</strong></td>
+<td>定义短的引用语（浏览器常为其包围引号）</td>
+</tr>
+<tr>
+<td><strong>&lt;dfn&gt;</strong></td>
+<td>定义一个定义项目。</td>
+</tr>
+</tbody>
+</table>
+<p>例程：<br><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="section">1.&lt;abbr&gt;:</span></div><div class="line">------</div><div class="line"><span class="section">&lt;abbr title="etcetera"&gt;etc.&lt;/abbr&gt;</span></div><div class="line">------</div><div class="line"></div><div class="line"><span class="section">2.&lt;address&gt;:</span></div><div class="line">------</div><div class="line">&lt;address&gt;</div><div class="line">Written by &lt;a href="https://penguin858.github.io"&gt;Xu Zeping&lt;/a&gt;.&lt;br&gt; </div><div class="line">Visit me at:&lt;br&gt;</div><div class="line">xuzeping858@gmail.com&lt;br&gt;</div><div class="line">Peking University&lt;br&gt;</div><div class="line"><span class="section">&lt;/address&gt;</span></div><div class="line">------</div><div class="line"></div><div class="line"><span class="section">3.&lt;bdo&gt;</span></div><div class="line">------</div><div class="line">&lt;bdo dir="rtl"&gt;</div><div class="line">test</div><div class="line"><span class="section">&lt;/bdo&gt;</span></div><div class="line">------</div><div class="line"></div><div class="line"><span class="section">4.&lt;blockquote&gt; / &lt;q&gt;</span></div><div class="line">------</div><div class="line">&lt;blockquote&gt;</div><div class="line">This is long quote.</div><div class="line">&lt;/blockquote&gt;</div><div class="line"></div><div class="line">&lt;q&gt;</div><div class="line">This is short quote.</div><div class="line"><span class="section">&lt;/q&gt;</span></div><div class="line">------</div><div class="line"></div><div class="line"><span class="section">5.&lt;bdo&gt;</span></div><div class="line">------</div><div class="line">&lt;bdo dir="rtl"&gt;</div><div class="line">Here is some test text.</div><div class="line"><span class="section">&lt;/bdo&gt;</span></div><div class="line">------</div></pre></td></tr></table></figure></p>
 ]]></content>
       
         
@@ -450,11 +571,10 @@
     </entry>
     
     <entry>
-      <title><![CDATA[about]]></title>
-      <url>http://penguin858.com/about/index.html</url>
-      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>北京某野鸡大学计算机专业大二学生，目前致力于数据库方面研究。</p>
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=836330&auto=1&height=66"></iframe>
-
+      <title><![CDATA[contact]]></title>
+      <url>http://penguin858.com/contact/index.html</url>
+      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>Name: Xu Zeping<br><a href="https://github.com/penguin858">This is my github address</a></p>
+<p>Gmail: xuzeping858@gmail.com<br>QQ Email: 1363380773@qq.com</p>
 ]]></content>
     </entry>
     
@@ -465,10 +585,11 @@
     </entry>
     
     <entry>
-      <title><![CDATA[contact]]></title>
-      <url>http://penguin858.com/contact/index.html</url>
-      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>Name: Xu Zeping<br><a href="https://github.com/penguin858">This is my github address</a></p>
-<p>Gmail: xuzeping858@gmail.com<br>QQ Email: 1363380773@qq.com</p>
+      <title><![CDATA[about]]></title>
+      <url>http://penguin858.com/about/index.html</url>
+      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>北京某野鸡大学计算机专业大二学生，目前致力于数据库方面研究。</p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=836330&auto=1&height=66"></iframe>
+
 ]]></content>
     </entry>
     

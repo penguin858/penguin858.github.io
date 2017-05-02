@@ -39,12 +39,12 @@
 <p>其中：</p>
 <ul>
 <li><strong>\&lt;!DOCTYPE html&gt;</strong> 声明为 HTML5 文档，声明不区分大小写</li>
-<li><strong>\<html></html></strong> 元素是 HTML 页面的根元素</li>
-<li><strong>\<head></head></strong> 元素包含了文档的元（meta）数据</li>
-<li><strong>\<title></title></strong> 元素描述了文档的标题</li>
-<li><strong>\<body></body></strong> 元素包含了可见的页面内容</li>
-<li><strong>\<h1 id=""></h1></strong> 元素定义一个大标题</li>
-<li><strong>\<p></p></strong> 元素定义一个段落</li>
+<li><strong>&lt;html&gt;</strong> 元素是 HTML 页面的根元素</li>
+<li><strong>&lt;head&gt;</strong> 元素包含了文档的元（meta）数据</li>
+<li><strong>&lt;title&gt;</strong> 元素描述了文档的标题</li>
+<li><strong>&lt;body&gt;</strong> 元素包含了可见的页面内容</li>
+<li><strong>&lt;h1&gt;</strong> 元素定义一个大标题</li>
+<li><strong>&lt;p&gt;</strong> 元素定义一个段落</li>
 </ul>
 <p><strong>Web 浏览器</strong>的作用是读取 HTML 文档，并以网页的形式显示出它们。浏览器不会显示 HTML 标签，而是使用标签来解释页面的内容</p>
 <h3 id="4html中的大小写"><a href="#4-html中的大小写" class="headerlink" title="4.html中的大小写"></a>4.html中的大小写</h3><p>html中的标签、属性字母不区分大小写，建议使用小写</p>
@@ -424,6 +424,12 @@
     </entry>
     
     <entry>
+      <title><![CDATA[categories]]></title>
+      <url>http://penguin858.com/categories/index.html</url>
+      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script>]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[contact]]></title>
       <url>http://penguin858.com/contact/index.html</url>
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>Name: Xu Zeping<br><a href="https://github.com/penguin858">This is my github address</a></p>
@@ -434,12 +440,6 @@
     <entry>
       <title><![CDATA[tags]]></title>
       <url>http://penguin858.com/tags/index.html</url>
-      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script>]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[categories]]></title>
-      <url>http://penguin858.com/categories/index.html</url>
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script>]]></content>
     </entry>
     

@@ -25,7 +25,6 @@
 <li><a href="#4html图片">4.html图片</a></li>
 <li><a href="#5水平线">5.水平线</a></li>
 <li><a href="#6注释">6.注释</a></li>
-<li><a href="#7样式">7.样式</a></li>
 </ul>
 </li>
 <li><a href="#三html元素">(三).html元素</a><ul>
@@ -48,6 +47,7 @@
 </li>
 </ul>
 <!-- tocstop -->
+<a id="more"></a>
 <h1 id="一-html概述"><a href="#一、html概述" class="headerlink" title="一、html概述"></a>一、html概述</h1><h2 id="一基本概念"><a href="#（一）基本概念" class="headerlink" title="（一）基本概念"></a>（一）基本概念</h2><h3 id="1什么是html"><a href="#1-什么是html" class="headerlink" title="1.什么是html"></a>1.什么是html</h3><p>html全称<strong>超文本标记语言</strong>(Hyper Text Markup language)，它不能算是一种编程语言而只是一种<strong>标记语言</strong>(Markup Language)</p>
 <p>标记语言对应着一套<strong>标记标签</strong>(Markup tag)，html使用这一套标记标签来描述网页</p>
 <h3 id="2html标签html-tag"><a href="#2-html标签-html-tag" class="headerlink" title="2.html标签(html tag)"></a>2.html标签(html tag)</h3><p>指的是用一对尖括号括起来的关键词，比如’\<html>‘。<br>通常成对出现，例如’\<b>‘和’\</b>‘<br>第一个称为<strong>开始标签（开放标签）</strong>，而第二个称为<strong>结束标签（闭合标签）</strong></html></p>
@@ -87,7 +87,7 @@
 <p>src属性指定图片文件的地址，width和height属性指定图片的大小</p>
 <h3 id="5水平线"><a href="#5-水平线" class="headerlink" title="5.水平线"></a>5.水平线</h3><p>html使用 <strong>&lt;hr&gt;</strong> 标签创建水平线，可以用于分隔内容（注意使用时应写成<strong>&lt;hr \&gt;</strong>）</p>
 <h3 id="6注释"><a href="#6-注释" class="headerlink" title="6.注释"></a>6.注释</h3><p>html使用标签 <strong>&lt;!–…–&gt;</strong>来表示注释<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 在这里写注释 --&gt;</span></div></pre></td></tr></table></figure></p>
-<h3 id="7样式"><a href="#7-样式" class="headerlink" title="7.样式"></a>7.样式</h3><h2 id="三html元素"><a href="#三-html元素" class="headerlink" title="(三).html元素"></a>(三).html元素</h2><h3 id="1概念"><a href="#1-概念" class="headerlink" title="1.概念"></a>1.概念</h3><p>html元素的意义和html标签很接近，不过<strong>一个html元素包含了从开始标签到结束标签的所有内容</strong></p>
+<h2 id="三html元素"><a href="#三-html元素" class="headerlink" title="(三).html元素"></a>(三).html元素</h2><h3 id="1概念"><a href="#1-概念" class="headerlink" title="1.概念"></a>1.概念</h3><p>html元素的意义和html标签很接近，不过<strong>一个html元素包含了从开始标签到结束标签的所有内容</strong></p>
 <h3 id="2基本语法"><a href="#2-基本语法" class="headerlink" title="2.基本语法"></a>2.基本语法</h3><ul>
 <li>HTML 元素<strong>以开始标签起始</strong></li>
 <li>HTML 元素<strong>以结束标签终止</strong></li>

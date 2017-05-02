@@ -4,6 +4,94 @@
   
     
     <entry>
+      <title><![CDATA[html记录]]></title>
+      <url>http://penguin858.com/2017/05/02/html%E8%AE%B0%E5%BD%95/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><!-- toc -->
+<ul>
+<li><a href="#一-html概述">一、html概述</a><ul>
+<li><a href="#一基本概念">（一）基本概念</a><ul>
+<li><a href="#1什么是html">1.什么是html</a></li>
+<li><a href="#2html标签html-tag">2.html标签(html tag)</a></li>
+<li><a href="#3html文档">3.html文档</a></li>
+<li><a href="#4html中的大小写">4.html中的大小写</a></li>
+<li><a href="#5html网页结构">5.html网页结构</a></li>
+</ul>
+</li>
+<li><a href="#二基本的html标签">(二)基本的html标签</a><ul>
+<li><a href="#0html文本与正文">0.html文本与正文</a></li>
+<li><a href="#1html标题">1.html标题</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+<h1 id="一-html概述"><a href="#一、html概述" class="headerlink" title="一、html概述"></a>一、html概述</h1><h2 id="一基本概念"><a href="#（一）基本概念" class="headerlink" title="（一）基本概念"></a>（一）基本概念</h2><h3 id="1什么是html"><a href="#1-什么是html" class="headerlink" title="1.什么是html"></a>1.什么是html</h3><p>html全称<strong>超文本标记语言</strong>(Hyper Text Markup language)，它不能算是一种编程语言而只是一种<strong>标记语言</strong>(Markup Language)</p>
+<p>标记语言对应着一套<strong>标记标签</strong>(Markup tag)，html使用这一套标记标签来描述网页</p>
+<h3 id="2html标签html-tag"><a href="#2-html标签-html-tag" class="headerlink" title="2.html标签(html tag)"></a>2.html标签(html tag)</h3><p>指的是用一对尖括号括起来的关键词，比如’\<html>‘。<br>通常成对出现，例如’\<b>‘和’\</b>‘<br>第一个称为<strong>开始标签（开放标签）</strong>，而第二个称为<strong>结束标签（闭合标签）</strong></html></p>
+<h3 id="3html文档"><a href="#3-html文档" class="headerlink" title="3.html文档"></a>3.html文档</h3><p>html文档用来<strong>描述网页</strong>，并且也常被称为<strong>网页(web界面)</strong></p>
+<p>html文档的后缀可以使用<strong>.html</strong>或<strong>.htm</strong>都可。</p>
+<blockquote>
+<p>html 与 htm的区别<br>前者是超文本标记(Hypertext Markup)<br>后者是超文本标记语言(Hypertext Markup Language)<br>可以说 htm = html<br>同时，这两种都是静态网页文件的扩展名，扩展名可以互相更换而不会引起错误（这是指打开而言，但是对于一个链接来说，如果它指向的是一个htm文件，而那个htm文件被更改为html文件，那么是找不到这个连接的）<br>那为什么出现两种文件格式呢？<br>htm 是来源于老的 8.3 文件格式，DOS 操作系统只能支持长度为三位的后缀名，所以是 htm,但在 windows 下无所谓 HTM 与 HTML，html 是为长文件名的格式命名的。所以 htm 是为了兼容过去的DOS命名格式存在的，在效果上没有区别的。以前 htm 和 html 作为不同的服务器上的超文本文件，但现在通用。<br>什么是8.3文件格式？ 这是一种在老的16位Win95或Win98文件系统的短文件名文件格式，扩展名只限于3位，文件名只限于8位。 如果要与16位系统交互，比如说，要把一个路径传给一个16位的程序，你就不能用长文件名，而必须对它进行转换。例如把”C ： /MyLongestPath/MyLongerPath/MyFilename.txt”转换成”C ： /Mylong~1/MyLong~2/Myfile~1.txt”<br>了解这个有什么用？ 在FAT磁盘格式下的DOS中只支持8.3文件格式，如果你要在这个环境下做应用，应该要注意这个文件格式问题。在NTFS下，默认可以兼容这种文件格式，同时也支持长文件名，你也可以通过调整注册表来取消对8.3文件格式也支持</p>
+</blockquote>
+<p>文档包含了<strong>html标签</strong>和<strong>文本</strong></p>
+<p>例如下面就是一个html文档：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>This is a title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"> </div><div class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>first title<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line"> </div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>first paragraph<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"> </div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>其中：</p>
+<ul>
+<li><strong>\&lt;!DOCTYPE html&gt;</strong> 声明为 HTML5 文档，声明不区分大小写</li>
+<li><strong>\<html></html></strong> 元素是 HTML 页面的根元素</li>
+<li><strong>\<head></head></strong> 元素包含了文档的元（meta）数据</li>
+<li><strong>\<title></title></strong> 元素描述了文档的标题</li>
+<li><strong>\<body></body></strong> 元素包含了可见的页面内容</li>
+<li><strong>\<h1 id=""></h1></strong> 元素定义一个大标题</li>
+<li><strong>\<p></p></strong> 元素定义一个段落</li>
+</ul>
+<p><strong>Web 浏览器</strong>的作用是读取 HTML 文档，并以网页的形式显示出它们。浏览器不会显示 HTML 标签，而是使用标签来解释页面的内容</p>
+<h3 id="4html中的大小写"><a href="#4-html中的大小写" class="headerlink" title="4.html中的大小写"></a>4.html中的大小写</h3><p>html中的标签、属性字母不区分大小写，建议使用小写</p>
+<h3 id="5html网页结构"><a href="#5-html网页结构" class="headerlink" title="5.html网页结构"></a>5.html网页结构</h3><p>下面是一个可视化的网页结构。<br><img src="/2017/05/02/html记录/html结构.png" alt="html网页结构"></p>
+<h2 id="二基本的html标签"><a href="#二-基本的html标签" class="headerlink" title="(二)基本的html标签"></a>(二)基本的html标签</h2><h3 id="0html文本与正文"><a href="#0-html文本与正文" class="headerlink" title="0.html文本与正文"></a>0.html文本与正文</h3><p><strong>\<html></html></strong>用来声明html文档<br><strong>\<body></body></strong>之间的内容是文档的可见内容</p>
+<h3 id="1html标题"><a href="#1-html标题" class="headerlink" title="1.html标题"></a>1.html标题</h3><p>html使用 <strong>\<h1 id=""></h1></strong>  ~  <strong>\<h6 id=""></h6></strong>来描述标题</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="params">&lt;h1&gt;</span>This is a heading<span class="params">&lt;/h1&gt;</span></div><div class="line"><span class="params">&lt;h2&gt;</span>This is a heading<span class="params">&lt;/h2&gt;</span></div><div class="line"><span class="params">&lt;h3&gt;</span>This is a heading<span class="params">&lt;/h3&gt;</span></div><div class="line">``` </div><div class="line"></div><div class="line">**注**：</div><div class="line">- 不要仅仅为了加粗或大号文字使用标题标签，搜索引擎会使用标题来为网页结构编排索引</div><div class="line"></div><div class="line"></div><div class="line"><span class="meta">### 2.html段落</span></div><div class="line">html使用 **\<span class="params">&lt;p&gt;</span>** 来描述段落</div></pre></td></tr></table></figure>
+<p></p><p>This is a paragraph.</p><p></p>
+<p></p><p>This is another paragraph.</p><br><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">*<span class="strong">*注*</span><span class="strong">*：不能通过在html代码中添加额外的空格或换行来改变输出的效果，当显示页面时，浏览器会移除源代码中多余的空格和空行。所有连续的空格或空行都会被算作一个空格。需要注意的是，HTML 代码中的所有连续的空行（换行）也被显示为一个空格。</span></div><div class="line"></div><div class="line">### 3.html链接</div><div class="line">html使用 *<span class="strong">*\&lt;a&gt;*</span>* 来定义一个链接，其中，href属性指定链接的地址</div></pre></td></tr></table></figure><p></p>
+<p><a href="https://penguin858.github.io">This is my blog</a><br><figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### <span class="number">4.</span>html图片</div><div class="line">html使用 **\&lt;img&gt;** 标签来定义图片</div></pre></td></tr></table></figure></p>
+<p><img src="/2017/05/02/html记录/文件路径" width="104" height="142"><br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">src属性指定图片文件的地址，width和height属性指定图片的大小</div><div class="line"></div><div class="line">### 5.水平线</div><div class="line">html使用 **\<span class="tag">&lt;<span class="name">hr</span>&gt;</span>** 标签创建水平线，可以用于分隔内容（注意使用时应写成**\<span class="tag">&lt;<span class="name">hr</span> /&gt;</span>**）</div><div class="line"></div><div class="line">### 6.注释</div><div class="line">html使用标签 **\<span class="comment">&lt;!--…--&gt;</span>**来表示注释</div></pre></td></tr></table></figure></p>
+<!-- 在这里写注释 -->
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="section">### 7.样式</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="section">## (三).html元素</span></div><div class="line"><span class="section">### 1.概念</span></div><div class="line">html元素的意义和html标签很接近，不过<span class="strong">**一个html元素包含了从开始标签到结束标签的所有内容**</span></div><div class="line"></div><div class="line"><span class="section">### 2.基本语法</span></div><div class="line"></div><div class="line"><span class="bullet">- </span>HTML 元素<span class="strong">**以开始标签起始**</span></div><div class="line"><span class="bullet">- </span>HTML 元素<span class="strong">**以结束标签终止**</span></div><div class="line"><span class="bullet">- </span>元素的内容是开始标签与结束标签之间的内容</div><div class="line"><span class="bullet">- </span>某些 HTML 元素具有<span class="strong">**空内容（empty content）**</span></div><div class="line"><span class="bullet">- </span><span class="strong">**空元素在开始标签中进行关闭（以开始标签的结束而结束）**</span></div><div class="line"><span class="bullet">- </span>大多数 HTML 元素可拥有<span class="strong">**属性**</span></div><div class="line"></div><div class="line"><span class="section">### 3.嵌套的html元素</span></div><div class="line">大多数html元素可以嵌套(包含其他的html元素)</div></pre></td></tr></table></figure>
+<html>
+
+<body><br><p>This is my first paragraph.</p><br></body>
+
+<p></p></html><br><figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">上述例子中就包含了嵌套的三个html元素</div><div class="line"></div><div class="line">### <span class="number">4.</span>空元素</div><div class="line">没有内容的 HTML 元素被称为空元素。空元素是在开始标签中关闭的。</div><div class="line">例如**\&lt;br&gt;**，表示换行，就是没有关闭标签的空元素。</div><div class="line">在未来以及其他的一些标记语言中，空元素也需要被关闭，此时可以采用在开始标签中添加斜杠的方法，如**\&lt;br/&gt;**</div><div class="line"></div><div class="line"></div><div class="line">## (四)属性</div><div class="line"></div><div class="line">### <span class="number">1.</span>style:</div><div class="line"></div><div class="line">style属性提供了一种改变所有 HTML 元素的样式的通用方法。通过 HTML 样式，能够通过使用 style 属性直接将样式添加到 HTML 元素，或者间接地在独立的样式表中（CSS 文件）进行定义。</div><div class="line"></div><div class="line">- **background-color** 属性为元素定义了背景颜色</div></pre></td></tr></table></figure><p></p>
+<html>
+
+<body style="background-color:yellow"><br><h2 style="background-color:red" id="this-is-a-heading">This is a heading</h2><br><p style="background-color:green">This is a paragraph.</p><br></body>
+
+<p></p></html><br><figure class="highlight qml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- **<span class="built_in">font</span>-family、<span class="built_in">color</span>** 以及 **<span class="built_in">font</span>-<span class="built_in">size</span>** 属性分别定义元素中文本的字体系列、颜色和字体尺寸：</div></pre></td></tr></table></figure><p></p>
+<html>
+
+<body><br><h1 style="font-family:verdana" id="a-heading">A heading</h1><br><p style="font-family:arial;color:red;font-size:20px;">A paragraph.</p><br></body>
+
+<p></p></html><br><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="bullet">- </span>*<span class="strong">*text-align*</span>* 属性规定了元素中文本的水平对齐方式：</div></pre></td></tr></table></figure><p></p>
+<html>
+
+<body><br><h1 style="text-align:center" id="this-is-a-heading">This is a heading</h1><br><p>The heading above is aligned to the center of this page.</p><br></body>
+
+<p></p></html><br>```<p></p>
+<h2 id="五文本格式化"><a href="#五-文本格式化" class="headerlink" title="(五)文本格式化"></a>(五)<a href="http://www.w3school.com.cn/html/html_formatting.asp">文本格式化</a></h2><h3 id="1文本格式"><a href="#1-文本格式" class="headerlink" title="1.文本格式"></a>1.文本格式</h3><ul>
+<li><strong>\<b>或\<strong></strong>:加粗</b></strong></li>
+<li><strong>\<big>或\<small></small></big></strong>:加大或缩小</li>
+<li><strong>\<em></em></strong>:强调(emphasize)</li>
+<li><strong>\<i></i></strong>:斜体(italic)</li>
+<li><strong>\<sub>或\<sup></sup></sub></strong>:上标（superscript）或下标（subscript）</li>
+</ul>
+<h3 id="2预格式文本"><a href="#2-预格式文本" class="headerlink" title="2.预格式文本"></a>2.预格式文本</h3><p>可以使用<strong>\<pre></pre></strong>标签来表示提前处理好格式的文本，保留换行和空格</p>
+]]></content>
+      
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[MIPS汇编语言程序设计]]></title>
       <url>http://penguin858.com/2017/03/26/MIPS%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/</url>
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><!-- toc -->
@@ -318,10 +406,11 @@
   
     
     <entry>
-      <title><![CDATA[contact]]></title>
-      <url>http://penguin858.com/contact/index.html</url>
-      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>Name: Xu Zeping<br><a href="https://github.com/penguin858">This is my github address</a></p>
-<p>Gmail: xuzeping858@gmail.com<br>QQ Email: 1363380773@qq.com</p>
+      <title><![CDATA[Hello!]]></title>
+      <url>http://penguin858.com/Hello!%20copy.html</url>
+      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><html><br><body><br><br><h1 id="my-first-heading">My First Heading</h1><br><br><p>My first paragraph.</p><br><br></body><br></html>
+
+
 ]]></content>
     </entry>
     
@@ -331,6 +420,14 @@
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>北京某野鸡大学计算机专业大二学生，目前致力于数据库方面研究。</p>
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=836330&auto=1&height=66"></iframe>
 
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[contact]]></title>
+      <url>http://penguin858.com/contact/index.html</url>
+      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>Name: Xu Zeping<br><a href="https://github.com/penguin858">This is my github address</a></p>
+<p>Gmail: xuzeping858@gmail.com<br>QQ Email: 1363380773@qq.com</p>
 ]]></content>
     </entry>
     

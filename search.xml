@@ -22,30 +22,14 @@
 <li><a href="#1html标题">1.html标题</a></li>
 <li><a href="#2html段落">2.html段落</a></li>
 <li><a href="#3html链接">3.html链接</a></li>
-<li><a href="#4html图片">4.html图片</a></li>
-<li><a href="#5水平线">5.水平线</a></li>
-<li><a href="#6注释">6.注释</a></li>
 </ul>
 </li>
-<li><a href="#三html元素">(三).html元素</a><ul>
-<li><a href="#1概念">1.概念</a></li>
-<li><a href="#2基本语法">2.基本语法</a></li>
-<li><a href="#3嵌套的html元素">3.嵌套的html元素</a></li>
-<li><a href="#4空元素">4.空元素</a></li>
-</ul>
-</li>
-<li><a href="#四属性">(四)属性</a><ul>
-<li><a href="#0通用">0.通用</a></li>
-<li><a href="#1style">1.style:</a></li>
-</ul>
-</li>
-<li><a href="#五文本格式化httpwwww3schoolcomcnhtmlhtml_formattingasp">(五)<a href="http://www.w3school.com.cn/html/html_formatting.asp">文本格式化</a></a><ul>
-<li><a href="#1文本格式">1.文本格式</a></li>
-<li><a href="#2预格式文本">2.预格式文本</a></li>
-<li><a href="#3计算机输出">3.计算机输出</a></li>
-<li><a href="#4文字格式标签">4.文字格式标签</a></li>
-</ul>
-</li>
+<li><a href="#1abbr">1.<abbr>:</abbr></a></li>
+<li><a href="#abbr-titleetceteraetcabbr"><abbr title="etcetera">etc.</abbr></a></li>
+<li><a href="#2address">2.<address>:</address></a></li>
+<li><a href="#3bdo">3.<bdo></bdo></a></li>
+<li><a href="#4blockquote-q">4.<blockquote> / <q></q></blockquote></a></li>
+<li><a href="#5bdo">5.<bdo></bdo></a></li>
 </ul>
 </li>
 </ul>
@@ -84,164 +68,69 @@
 <h3 id="2html段落"><a href="#2-html段落" class="headerlink" title="2.html段落"></a>2.html段落</h3><p>html使用 <strong>&lt;p&gt;</strong> 来描述段落</p>
 <figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;p&gt;This <span class="keyword">is</span> a <span class="built_in">paragraph</span>.&lt;/p&gt;</div><div class="line">&lt;p&gt;This <span class="keyword">is</span> another <span class="built_in">paragraph</span>.&lt;/p&gt;</div></pre></td></tr></table></figure>
 <p><strong>注</strong>：不能通过在html代码中添加额外的空格或换行来改变输出的效果，当显示页面时，浏览器会移除源代码中多余的空格和空行。所有连续的空格或空行都会被算作一个空格。需要注意的是，HTML 代码中的所有连续的空行（换行）也被显示为一个空格。</p>
-<h3 id="3html链接"><a href="#3-html链接" class="headerlink" title="3.html链接"></a>3.html链接</h3><p>html使用 <strong>&lt;a&gt;</strong> 来定义一个链接，其中，href属性指定链接的地址</p>
+<h3 id="3html链接"><a href="#3-html链接" class="headerlink" title="3.html链接"></a>3.html链接</h3><p>html使用 <strong>&lt;a&gt;</strong> 来定义一个链接，其中，href属性指定链接的地址（url）</p>
 <figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;a href=<span class="string">"https://penguin858.github.io"</span>&gt;This <span class="keyword">is</span> <span class="keyword">my</span> blog&lt;/a&gt;</div></pre></td></tr></table></figure>
-<h3 id="4html图片"><a href="#4-html图片" class="headerlink" title="4.html图片"></a>4.html图片</h3><p>html使用 <strong>&lt;img&gt;</strong> 标签来定义图片</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="selector-tag">img</span> src=<span class="string">"文件路径"</span> <span class="attribute">width</span>=<span class="string">"104"</span> height=<span class="string">"142"</span> /&gt;</div></pre></td></tr></table></figure>
-<p>src属性指定图片文件的地址，width和height属性指定图片的大小</p>
-<h3 id="5水平线"><a href="#5-水平线" class="headerlink" title="5.水平线"></a>5.水平线</h3><p>html使用 <strong>&lt;hr&gt;</strong> 标签创建水平线，可以用于分隔内容（注意使用时应写成<strong>&lt;hr \&gt;</strong>）</p>
-<h3 id="6注释"><a href="#6-注释" class="headerlink" title="6.注释"></a>6.注释</h3><p>html使用标签 <strong>&lt;!–…–&gt;</strong>来表示注释<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 在这里写注释 --&gt;</span></div></pre></td></tr></table></figure></p>
-<h2 id="三html元素"><a href="#三-html元素" class="headerlink" title="(三).html元素"></a>(三).html元素</h2><h3 id="1概念"><a href="#1-概念" class="headerlink" title="1.概念"></a>1.概念</h3><p>html元素的意义和html标签很接近，不过<strong>一个html元素包含了从开始标签到结束标签的所有内容</strong></p>
-<h3 id="2基本语法"><a href="#2-基本语法" class="headerlink" title="2.基本语法"></a>2.基本语法</h3><ul>
-<li>HTML 元素<strong>以开始标签起始</strong></li>
-<li>HTML 元素<strong>以结束标签终止</strong></li>
-<li>元素的内容是开始标签与结束标签之间的内容</li>
-<li>某些 HTML 元素具有<strong>空内容（empty content）</strong></li>
-<li><strong>空元素在开始标签中进行关闭（以开始标签的结束而结束）</strong></li>
-<li>大多数 HTML 元素可拥有<strong>属性</strong></li>
-</ul>
-<h3 id="3嵌套的html元素"><a href="#3-嵌套的html元素" class="headerlink" title="3.嵌套的html元素"></a>3.嵌套的html元素</h3><p>大多数html元素可以嵌套(包含其他的html元素)</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>This is my first paragraph.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>上述例子中就包含了嵌套的三个html元素</p>
-<h3 id="4空元素"><a href="#4-空元素" class="headerlink" title="4.空元素"></a>4.空元素</h3><p>没有内容的 HTML 元素被称为空元素。空元素是在开始标签中关闭的。<br>例如<strong>&lt;br&gt;</strong>，表示换行，就是没有关闭标签的空元素。<br>在未来以及其他的一些标记语言中，空元素也需要被关闭，此时可以采用在开始标签中添加斜杠的方法，如<strong>&lt;br/&gt;</strong></p>
-<h2 id="四属性"><a href="#四-属性" class="headerlink" title="(四)属性"></a>(四)属性</h2><h3 id="0通用"><a href="#0-通用" class="headerlink" title="0.通用"></a>0.通用</h3><ul>
-<li>HTML 元素可以设置属性,属性可以在元素中添加附加信息</li>
-<li>属性一般描述于<strong>开始标签</strong></li>
-<li>属性总是以名称/值对的形式出现，比如：name=”value”。</li>
-<li><strong>html属性多为引用属性值，应该始终被包括在引号内</strong></li>
-</ul>
-<h3 id="1style"><a href="#1-style" class="headerlink" title="1.style:"></a>1.style:</h3><p>style属性提供了一种改变所有 HTML 元素的样式的通用方法。通过 HTML 样式，能够通过使用 style 属性直接将样式添加到 HTML 元素，或者间接地在独立的样式表中（CSS 文件）进行定义。</p>
+<p>默认情况下，链接将以以下形式出现在浏览器中：</p>
 <ul>
-<li><strong>background-color</strong> 属性为元素定义了背景颜色</li>
+<li>一个未访问过的链接显示为蓝色字体并带有下划线。</li>
+<li>访问过的链接显示为紫色并带有下划线。</li>
+<li>点击链接时，链接显示为红色并带有下划线。</li>
 </ul>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line"></div><div class="line">&lt;<span class="selector-tag">body</span> style=<span class="string">"background-color:yellow"</span>&gt;</div><div class="line">&lt;<span class="selector-tag">h2</span> style=<span class="string">"background-color:red"</span>&gt;This is <span class="selector-tag">a</span> heading&lt;/h2&gt;</div><div class="line">&lt;<span class="selector-tag">p</span> style=<span class="string">"background-color:green"</span>&gt;This is <span class="selector-tag">a</span> paragraph.&lt;/p&gt;</div><div class="line">&lt;/body&gt;</div><div class="line"></div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p>如果为这些超链接设置了CSS样式，则展示的样式根据CSS的设定显示。</p>
+<p><strong>注：请始终将正斜杠添加到子文件夹。假如这样书写链接：href=”<a href="https://penguin858.github.io/archives">https://penguin858.github.io/archives</a>“ ，就会向服务器产生两次 HTTP 请求。这是因为服务器会添加正斜杠到这个地址，然后创建一个新的请求，就像这样：href=”<a href="https://penguin858.github.io/archives/">https://penguin858.github.io/archives/</a>“ 。</strong></p>
+<p><strong>“链接文本” 不必一定是文本。图片或其他 HTML 元素都可以成为链接。如果把中间的文本内容用&lt;img&gt;替代的话就可以将图片作为链接使用。</strong></p>
+<p><strong>属性</strong>:</p>
 <ul>
-<li><strong>font-family、color</strong> 以及 <strong>font-size</strong> 属性分别定义元素中文本的字体系列、颜色和字体尺寸：</li>
+<li><em>href</em>：创建指向另一个文档的链接</li>
+<li><p><em>target(或id)</em>：可以定义文档显示的位置</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">定义文档在新窗口中显示：</div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"https://penguin858.github.io/"</span> <span class="attr">target</span>=<span class="string">"_blank"</span>&gt;</span></div><div class="line">my blog.</div><div class="line"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p><em>name</em>：可以定义一个指向该位置的锚（anchor），可以看成是html页面中的书签，书签不会以任何特殊的方式显示。在之后我们可以建立直接跳转到这个位置的链接。</p>
+</li>
 </ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">style</span>=<span class="string">"font-family:verdana"</span>&gt;</span>A heading<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">"font-family:arial;color:red;font-size:20px;"</span>&gt;</span>A paragraph.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
-<ul>
-<li><strong>text-align</strong> 属性规定了元素中文本的水平对齐方式：</li>
-</ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">style</span>=<span class="string">"text-align:center"</span>&gt;</span>This is a heading<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>The heading above is aligned to the center of this page.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="五文本格式化"><a href="#五-文本格式化" class="headerlink" title="(五)文本格式化"></a>(五)<a href="http://www.w3school.com.cn/html/html_formatting.asp">文本格式化</a></h2><h3 id="1文本格式"><a href="#1-文本格式" class="headerlink" title="1.文本格式"></a>1.文本格式</h3><ul>
-<li><strong>&lt;b&gt;</strong>:加粗</li>
-<li><strong>&lt;strong&gt;</strong>:加重语气</li>
-<li><strong>&lt;big&gt;或&lt;small&gt;</strong>:加大或缩小</li>
-<li><strong>&lt;em&gt;</strong>:强调(emphasize)</li>
-<li><strong>&lt;i&gt;</strong>:斜体(italic)</li>
-<li><strong>&lt;sub&gt;或&lt;sup&gt;</strong>:上标（superscript）或下标（subscript）</li>
-<li><strong>&lt;ins&gt;</strong>：插入字</li>
-<li><strong>&lt;del&gt;</strong>：删除字</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>符号</th>
-<th>效果</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>&lt;b&gt;</strong></td>
-<td>加粗</td>
-</tr>
-<tr>
-<td><strong>&lt;strong&gt;</strong></td>
-<td>加重语气</td>
-</tr>
-<tr>
-<td><strong>&lt;big&gt;或=&lt;small&gt;</strong></td>
-<td>加大或缩小</td>
-</tr>
-<tr>
-<td> <strong>&lt;em&gt;</strong></td>
-<td>强调（emphasize）</td>
-</tr>
-<tr>
-<td> <strong>&lt;i&gt;</strong></td>
-<td>斜体(italic)</td>
-</tr>
-<tr>
-<td><strong>&lt;sub&gt;或&lt;sup&gt;</strong></td>
-<td>上标（superscript）或下标（subscript）</td>
-</tr>
-<tr>
-<td><strong>&lt;ins&gt;</strong></td>
-<td>插入字</td>
-</tr>
-<tr>
-<td><strong>&lt;del&gt;</strong></td>
-<td>删除字</td>
-</tr>
-</tbody>
-</table>
-<h3 id="2预格式文本"><a href="#2-预格式文本" class="headerlink" title="2.预格式文本"></a>2.预格式文本</h3><p>可以使用<strong>&lt;pre&gt;</strong>标签来表示提前处理好格式的文本，保留换行和空格</p>
-<h3 id="3计算机输出"><a href="#3-计算机输出" class="headerlink" title="3.计算机输出"></a>3.计算机输出</h3><table>
-<thead>
-<tr>
-<th>标签</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>&lt;code&gt;</strong></td>
-<td>定义计算机代码</td>
-</tr>
-<tr>
-<td><strong>&lt;kbd&gt;</strong></td>
-<td>定义键盘码</td>
-</tr>
-<tr>
-<td><strong>&lt;samp&gt;</strong></td>
-<td>定义计算机代码样本</td>
-</tr>
-<tr>
-<td><strong>&lt;var&gt;</strong></td>
-<td>定义变量</td>
-</tr>
-<tr>
-<td><strong>&lt;pre&gt;</strong></td>
-<td>定义预格式文本</td>
-</tr>
-</tbody>
-</table>
-<p>例程：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">code</span>&gt;</span>Computer code<span class="tag">&lt;/<span class="name">code</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">br</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kbd</span>&gt;</span>Keyboard input<span class="tag">&lt;/<span class="name">kbd</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">br</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">tt</span>&gt;</span>Teletype text<span class="tag">&lt;/<span class="name">tt</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">br</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">samp</span>&gt;</span>Sample text<span class="tag">&lt;/<span class="name">samp</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">br</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">var</span>&gt;</span>Computer variable<span class="tag">&lt;/<span class="name">var</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">br</span> /&gt;</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>注释：<span class="tag">&lt;/<span class="name">p</span>&gt;</span>这些标签常用于显示计算机/编程代码。</div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<h3 id="4文字格式标签"><a href="#4-文字格式标签" class="headerlink" title="4.文字格式标签"></a>4.文字格式标签</h3><table>
-<thead>
-<tr>
-<th>标签</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>&lt;abbr&gt;</strong></td>
-<td>定义缩写（有些浏览器在将光标移到缩写上时会显示完整拼写</td>
-</tr>
-<tr>
-<td><strong>&lt;address&gt;</strong></td>
-<td>定义地址</td>
-</tr>
-<tr>
-<td><strong>&lt;bdo&gt;</strong></td>
-<td>定义文字方向（把参数dir设置为“rlt”可从右到左输出）</td>
-</tr>
-<tr>
-<td><strong>&lt;blockquote&gt;</strong></td>
-<td>定义长的引用</td>
-</tr>
-<tr>
-<td><strong>&lt;q&gt;</strong></td>
-<td>定义短的引用语（浏览器常为其包围引号）</td>
-</tr>
-<tr>
-<td><strong>&lt;dfn&gt;</strong></td>
-<td>定义一个定义项目。</td>
-</tr>
-</tbody>
-</table>
-<p>例程：<br><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="section">1.&lt;abbr&gt;:</span></div><div class="line">------</div><div class="line"><span class="section">&lt;abbr title="etcetera"&gt;etc.&lt;/abbr&gt;</span></div><div class="line">------</div><div class="line"></div><div class="line"><span class="section">2.&lt;address&gt;:</span></div><div class="line">------</div><div class="line">&lt;address&gt;</div><div class="line">Written by &lt;a href="https://penguin858.github.io"&gt;Xu Zeping&lt;/a&gt;.&lt;br&gt; </div><div class="line">Visit me at:&lt;br&gt;</div><div class="line">xuzeping858@gmail.com&lt;br&gt;</div><div class="line">Peking University&lt;br&gt;</div><div class="line"><span class="section">&lt;/address&gt;</span></div><div class="line">------</div><div class="line"></div><div class="line"><span class="section">3.&lt;bdo&gt;</span></div><div class="line">------</div><div class="line">&lt;bdo dir="rtl"&gt;</div><div class="line">test</div><div class="line"><span class="section">&lt;/bdo&gt;</span></div><div class="line">------</div><div class="line"></div><div class="line"><span class="section">4.&lt;blockquote&gt; / &lt;q&gt;</span></div><div class="line">------</div><div class="line">&lt;blockquote&gt;</div><div class="line">This is long quote.</div><div class="line">&lt;/blockquote&gt;</div><div class="line"></div><div class="line">&lt;q&gt;</div><div class="line">This is short quote.</div><div class="line"><span class="section">&lt;/q&gt;</span></div><div class="line">------</div><div class="line"></div><div class="line"><span class="section">5.&lt;bdo&gt;</span></div><div class="line">------</div><div class="line">&lt;bdo dir="rtl"&gt;</div><div class="line">Here is some test text.</div><div class="line"><span class="section">&lt;/bdo&gt;</span></div><div class="line">------</div></pre></td></tr></table></figure></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">命名锚的语法：</div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">name</span> = <span class="string">"label_name"</span>&gt;</span>锚（显示在页面上的文本）<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"></div><div class="line">在同一个页面创建指向该锚的链接：</div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span> = <span class="string">"#label_name"</span>&gt;</span>跳转<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"></div><div class="line">在其他页面创建指向该锚的链接：</div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span> = <span class="string">"url#label_name"</span>&gt;</span>跳转<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">``` </div><div class="line"></div><div class="line">&gt;什么是超文本？</div><div class="line">&gt;标记语言的真正威力在于其收集能力，它可以将收集来的文档组合成一个完整的信息库，并且可以将文档库与世界上的其他文档集合链接起来。</div><div class="line">这样的话，读者不仅可以完全控制文档在屏幕上的显示，还可以通过超链接来控制浏览信息的顺序。这就是 HTML 和 XHTML 中的 “HT” - 超文本（hypertext），就是它将整个 Web 网络连接起来。</div><div class="line"></div><div class="line"> </div><div class="line">&gt;超文本的作用</div><div class="line">&gt;超文本的基本特征就是可以超链接文档；你可以指向其他位置，该位置可以在当前的文档中、局域网中的其他文档，也可以在因特网上的任何位置的文档中。这些文档组成了一个杂乱的信息网。目标文档通常与其来源有某些关联，并且丰富了来源；来源中的链接元素则将这种关系传递给浏览者。</div><div class="line">&gt;超链接（hyper text），或者按照标准叫法称为锚（anchor），是使用 &amp;lt;a&gt; 标签标记的，可以用两种方式表示。锚的一种类型是在文档中创建一个热点，当用户激活或选中（通常是使用鼠标）这个热点时，会导致浏览器进行链接。浏览器会自动加载并显示同一文档或其他文档中的某个部分，或触发某些与因特网服务相关的操作，例如发送电子邮件或下载特殊文件等。锚的另一种类型会在文档中创建一个标记，该标记可以被超链接引用。</div><div class="line">还有一些与超链接相关联的鼠标相关事件。这些事件与 JavaScript 结合使用可以产生一些令人激动的效果。</div><div class="line"></div><div class="line">### 4.html图像</div><div class="line">html使用 **&amp;lt;img&gt;** 标签来定义图片</div></pre></td></tr></table></figure>
+<p><img src="/2017/05/02/html记录/文件路径" width="104" height="142"><br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">src属性指定图片文件的地址，width和height属性指定图片的大小</div><div class="line"></div><div class="line">**注：</div><div class="line"><span class="bullet">- </span>慎用图片：假如某个html页面包含n个图像，则为了正确显示这个页面，需要加载n+1个文件，而这会影响响应时间。</div><div class="line"><span class="bullet">- </span>设置背景图片：待补充**</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"><span class="strong">**属性**</span>：</div><div class="line"><span class="bullet">- </span><span class="emphasis">_src_</span>：指定图像文件的url地址</div><div class="line"><span class="bullet">- </span><span class="emphasis">_alt_</span>：用来定义一串可预备替换的文本。当浏览器无法载入图像的时候，会显示这个替代性的文本（经测验，safari貌似不支持这一功能，能在chrome上显示）</div><div class="line"><span class="bullet">- </span><span class="emphasis">_width/height_</span>：用来指定图片的大小，默认单位是像素</div><div class="line"></div><div class="line"></div><div class="line"><span class="section">### 5.水平线</span></div><div class="line">html使用 <span class="strong">**&amp;lt;hr&gt;**</span> 标签创建水平线，可以用于分隔内容（注意使用时应写成<span class="strong">**&amp;lt;hr \\&amp;gt;**</span>）</div><div class="line"></div><div class="line"><span class="section">### 6.注释</span></div><div class="line">html使用标签 <span class="strong">**&amp;lt;!--…--&gt;**</span>来表示注释</div></pre></td></tr></table></figure></p>
+<!-- 在这里写注释 -->
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">*<span class="strong">*条件注释*</span><span class="strong">*：主要用于IE浏览器，内部包括只有IE浏览器能够执行的HTML标签</span></div></pre></td></tr></table></figure>
+<!--[if IE 8]>
+    .... some HTML here ....
+<![endif]-->
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">其他浏览器也可以生成类似的标签。</div><div class="line"></div><div class="line"></div><div class="line"><span class="section">## (三).html元素</span></div><div class="line"><span class="section">### 1.概念</span></div><div class="line">html元素的意义和html标签很接近，不过<span class="strong">**一个html元素包含了从开始标签到结束标签的所有内容**</span></div><div class="line"></div><div class="line"><span class="section">### 2.基本语法</span></div><div class="line"></div><div class="line"><span class="bullet">- </span>HTML 元素<span class="strong">**以开始标签起始**</span></div><div class="line"><span class="bullet">- </span>HTML 元素<span class="strong">**以结束标签终止**</span></div><div class="line"><span class="bullet">- </span>元素的内容是开始标签与结束标签之间的内容</div><div class="line"><span class="bullet">- </span>某些 HTML 元素具有<span class="strong">**空内容（empty content）**</span></div><div class="line"><span class="bullet">- </span><span class="strong">**空元素在开始标签中进行关闭（以开始标签的结束而结束）**</span></div><div class="line"><span class="bullet">- </span>大多数 HTML 元素可拥有<span class="strong">**属性**</span></div><div class="line"></div><div class="line"><span class="section">### 3.嵌套的html元素</span></div><div class="line">大多数html元素可以嵌套(包含其他的html元素)</div></pre></td></tr></table></figure>
+<html>
+
+<body><br><p>This is my first paragraph.</p><br></body>
+
+<p></p></html><br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">上述例子中就包含了嵌套的三个html元素</div><div class="line"></div><div class="line"><span class="section">### 4.空元素</span></div><div class="line">没有内容的 HTML 元素被称为空元素。空元素是在开始标签中关闭的。</div><div class="line">例如<span class="strong">**&amp;lt;br&gt;**</span>，表示换行，就是没有关闭标签的空元素。</div><div class="line">在未来以及其他的一些标记语言中，空元素也需要被关闭，此时可以采用在开始标签中添加斜杠的方法，如<span class="strong">**&amp;lt;br/&gt;**</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="section">## (四)属性</span></div><div class="line"></div><div class="line"><span class="section">### 0.通用</span></div><div class="line"></div><div class="line"><span class="bullet">- </span>HTML 元素可以设置属性,属性可以在元素中添加附加信息</div><div class="line"><span class="bullet">- </span>属性一般描述于<span class="strong">**开始标签**</span></div><div class="line"><span class="bullet">- </span>属性总是以名称/值对的形式出现，比如：name="value"。</div><div class="line"><span class="bullet">- </span><span class="strong">**html属性多为引用属性值，应该始终被包括在引号内**</span></div><div class="line"></div><div class="line"><span class="section">### 1.style:</span></div><div class="line"></div><div class="line">style属性提供了一种改变所有 HTML 元素的样式的通用方法。通过 HTML 样式，能够通过使用 style 属性直接将样式添加到 HTML 元素，或者间接地在独立的样式表中（CSS 文件）进行定义。</div><div class="line"></div><div class="line"><span class="bullet">- </span><span class="strong">**background-color**</span> 属性为元素定义了背景颜色</div></pre></td></tr></table></figure><p></p>
+<html>
+
+<body style="background-color:yellow"><br><h2 style="background-color:red" id="this-is-a-heading">This is a heading</h2><br><p style="background-color:green">This is a paragraph.</p><br></body>
+
+<p></p></html><br><figure class="highlight qml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- **<span class="built_in">font</span>-family、<span class="built_in">color</span>** 以及 **<span class="built_in">font</span>-<span class="built_in">size</span>** 属性分别定义元素中文本的字体系列、颜色和字体尺寸：</div></pre></td></tr></table></figure><p></p>
+<html>
+
+<body><br><h1 style="font-family:verdana" id="a-heading">A heading</h1><br><p style="font-family:arial;color:red;font-size:20px;">A paragraph.</p><br></body>
+
+<p></p></html><br><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="bullet">- </span>*<span class="strong">*text-align*</span>* 属性规定了元素中文本的水平对齐方式：</div></pre></td></tr></table></figure><p></p>
+<html>
+
+<body><br><h1 style="text-align:center" id="this-is-a-heading">This is a heading</h1><br><p>The heading above is aligned to the center of this page.</p><br></body>
+
+<p></p></html><br><figure class="highlight perl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">## (五)[文本格式化](http://www.w3school.com.cn/html/html_formatting.asp)</span></div><div class="line"></div><div class="line"><span class="comment">### 1.文本格式</span></div><div class="line">- **&amp;<span class="keyword">lt</span>;b&gt;**:加粗</div><div class="line">- **&amp;<span class="keyword">lt</span>;strong&gt;**:加重语气</div><div class="line">- **&amp;<span class="keyword">lt</span>;big&gt;或&amp;<span class="keyword">lt</span>;small&gt;**:加大或缩小</div><div class="line">- **&amp;<span class="keyword">lt</span>;em&gt;**:强调(emphasize)</div><div class="line">- **&amp;<span class="keyword">lt</span>;i&gt;**:斜体(italic)</div><div class="line">- **&amp;<span class="keyword">lt</span>;<span class="function"><span class="keyword">sub</span>&gt;或&amp;<span class="title">lt</span></span>;sup&gt;**:上标（superscript）或下标（subscript）</div><div class="line">- **&amp;<span class="keyword">lt</span>;ins&gt;**：插入字</div><div class="line">- **&amp;<span class="keyword">lt</span>;del&gt;**：删除字</div><div class="line"></div><div class="line">符号 | 效果</div><div class="line">------- | -------</div><div class="line">**&amp;<span class="keyword">lt</span>;b&gt;** | 加粗</div><div class="line">**&amp;<span class="keyword">lt</span>;strong&gt;** | 加重语气</div><div class="line">**&amp;<span class="keyword">lt</span>;big&gt;或=&amp;<span class="keyword">lt</span>;small&gt;** | 加大或缩小</div><div class="line"> **&amp;<span class="keyword">lt</span>;em&gt;** | 强调（emphasize）</div><div class="line"> **&amp;<span class="keyword">lt</span>;i&gt;** | 斜体(italic)</div><div class="line">**&amp;<span class="keyword">lt</span>;<span class="function"><span class="keyword">sub</span>&gt;或&amp;<span class="title">lt</span></span>;sup&gt;** | 上标（superscript）或下标（subscript）</div><div class="line">**&amp;<span class="keyword">lt</span>;ins&gt;** | 插入字</div><div class="line">**&amp;<span class="keyword">lt</span>;del&gt;** | 删除字</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">### 2.预格式文本</span></div><div class="line">可以使用**&amp;<span class="keyword">lt</span>;pre&gt;**标签来表示提前处理好格式的文本，保留换行和空格</div><div class="line"></div><div class="line"><span class="comment">### 3.计算机输出</span></div><div class="line"></div><div class="line">标签 | 作用</div><div class="line">------- | -------</div><div class="line">**&amp;<span class="keyword">lt</span>;code&gt;** | 定义计算机代码</div><div class="line">**&amp;<span class="keyword">lt</span>;kbd&gt;** | 表示键盘输入</div><div class="line">**&amp;<span class="keyword">lt</span>;samp&gt;** | 定义计算机代码样本</div><div class="line">**&amp;<span class="keyword">lt</span>;var&gt;** | 定义变量</div><div class="line">**&amp;<span class="keyword">lt</span>;pre&gt;** | 定义预格式文本</div><div class="line"></div><div class="line">例程：</div></pre></td></tr></table></figure><p></p>
+<html>
+
+<p><body></body></p>
+<p><meta charset="UTF-8"><br><code>Computer code</code><br><br><br><kbd>Keyboard input</kbd><br><br></p>
+<p><tt>Teletype text</tt><br><br><br><samp>Sample text</samp><br><br><br><var>Computer variable</var><br><br></p>
+<p></p><p>注释：</p>这些标签常用于显示计算机/编程代码。<p></p>
+<p><br></p></html><br><figure class="highlight 1c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">### 4.文字格式标签</span></div><div class="line"></div><div class="line">标签 <span class="string">| 作用</span></div><div class="line">------- <span class="string">| -------</span></div><div class="line">**&amp;lt;abbr&gt;** <span class="string">| 定义缩写（有些浏览器在将光标移到缩写上时会显示完整拼写&lt;br/&gt;，对缩写进行标记能够为浏览器、翻译系统和搜索引擎提供信息。</span></div><div class="line">**&amp;lt;address&gt;** <span class="string">| 定义地址（用于联系信息，常渲染为斜体）</span></div><div class="line">**&amp;lt;bdo&gt;** <span class="string">| 定义文字方向（把参数dir设置为“rlt”可从右到左输出）</span></div><div class="line">**&amp;lt;blockquote&gt;** <span class="string">| 定义长的引用（常进行缩进处理）</span></div><div class="line">**&amp;lt;q&gt;** <span class="string">| 定义短的引用语（浏览器常为其包围引号）</span></div><div class="line">**&amp;lt;cite&gt;** <span class="string">| 定义著作的标题（常显示为斜体）</span></div><div class="line">**&amp;lt;dfn&gt;** <span class="string">| 定义一个项目。</span></div><div class="line"></div><div class="line">例程：</div></pre></td></tr></table></figure><p></p>
+<h2 id="1"><a href="#1" class="headerlink" title="1.:"></a>1.<abbr>:</abbr></h2><h2 id="etc"><a href="#etc" class="headerlink" title="etc."></a><abbr title="etcetera">etc.</abbr></h2><h2 id="2"><a href="#2" class="headerlink" title="2.:"></a>2.<address>:</address></h2><p><address><br>Written by <a href="https://penguin858.github.io">Xu Zeping</a>.<br><br>Visit me at:<br><br>xuzeping858@gmail.com<br><br>Peking University<br></address></p>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="3"><a href="#3" class="headerlink" title="3."></a>3.<bdo></bdo></h2><p><bdo dir="rtl"><br>test</bdo></p>
+<h2 id=""><a href="#-1" class="headerlink" title=""></a></h2><h2 id="4"><a href="#4" class="headerlink" title="4. / "></a>4.<blockquote> / <q></q></blockquote></h2><blockquote><br>This is long quote.<br></blockquote>
+
+<p><q><br>This is short quote.</q></p>
+<h2 id=""><a href="#-2" class="headerlink" title=""></a></h2><h2 id="5"><a href="#5" class="headerlink" title="5."></a>5.<bdo></bdo></h2><p><bdo dir="rtl"><br>Here is some test text.</bdo></p>
+<h2 id=""><a href="#-3" class="headerlink" title=""></a></h2><p>```</p>
+<h2 id="六html-css"><a href="#六-HTML-CSS" class="headerlink" title="(六)HTML CSS"></a>(六)HTML CSS</h2><p>待补充。</p>
 ]]></content>
       
         
@@ -579,12 +468,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[categories]]></title>
-      <url>http://penguin858.com/categories/index.html</url>
-      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script>]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[about]]></title>
       <url>http://penguin858.com/about/index.html</url>
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>北京某野鸡大学计算机专业大二学生，目前致力于数据库方面研究。</p>
@@ -596,6 +479,12 @@
     <entry>
       <title><![CDATA[tags]]></title>
       <url>http://penguin858.com/tags/index.html</url>
+      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script>]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[categories]]></title>
+      <url>http://penguin858.com/categories/index.html</url>
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script>]]></content>
     </entry>
     

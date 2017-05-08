@@ -49,6 +49,7 @@
 <li><a href="#六html结构与布局">(六)HTML结构与布局</a><ul>
 <li><a href="#1表格">1.表格</a></li>
 <li><a href="#2列表">2.列表</a></li>
+<li><a href="#3块">3.块</a></li>
 </ul>
 </li>
 <li><a href="#七html-css">(七)HTML CSS</a></li>
@@ -316,10 +317,15 @@
 </ul>
 <p><a href="http://www.w3school.com.cn/html/html_tables.asp">更多实例</a></p>
 <h3 id="2列表"><a href="#2-列表" class="headerlink" title="2.列表"></a>2.列表</h3><p>列表分为<strong>无序列表、有序列表、定义列表</strong></p>
-<p>无序列表的项目使用一个小黑点进行标记。<br>无序列表使用<strong>&lt;ul&gt;</strong>标签声明，每个列表项采用<strong>&lt;li&gt;</strong>声明。（类似于markdown的<strong>‘-‘</strong>的效果）</p>
+<p>无序列表的项目使用一个小黑点进行标记。<br>无序列表使用<strong>&lt;ul&gt;</strong>(unordered list)标签声明，每个列表项采用<strong>&lt;li&gt;</strong>声明。（类似于markdown的<strong>‘-‘</strong>的效果）</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>penguin<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>elephant<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>有序列表</p>
-<h2 id="七html-css"><a href="#七-HTML-CSS" class="headerlink" title="(七)HTML CSS"></a>(七)HTML CSS</h2><p>待补充。</p>
+<p>有序列表的项目使用数字进行标记。<br>有序列表使用<strong>&lt;ol&gt;</strong>(ordered list)标签声明，每个列表项采用<strong>&lt;li&gt;</strong>（和无序列表一样）声明。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ol</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>penguin<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>elephant<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ol</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>定义列表是项目和注解的组合。<br>定义列表使用<strong>&lt;dl&gt;</strong>(definition list)标签声明，每个自定义列表项以<strong>&amp;dt&gt;</strong>声明，列表项的定义以<strong>&lt;dd&gt;</strong>声明</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="built_in">dl</span>&gt;</div><div class="line">&lt;<span class="built_in">dt</span>&gt;penguin&lt;/<span class="built_in">dt</span>&gt;</div><div class="line">&lt;<span class="built_in">dd</span>&gt;sea birds&lt;/<span class="built_in">dd</span>&gt;</div><div class="line">&lt;<span class="built_in">dt</span>&gt;elephant&lt;/<span class="built_in">dt</span>&gt;</div><div class="line">&lt;<span class="built_in">dd</span>&gt;long teeth <span class="keyword">and</span> nose&lt;/<span class="built_in">dd</span>&gt;</div><div class="line">&lt;/<span class="built_in">dl</span>&gt;</div></pre></td></tr></table></figure>
+<p><strong>具体效果：</strong><br><img src="/2017/05/02/html记录/列表效果图.png" alt="列表效果图"></p>
+<p>附上实现上图的html代码：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span> = <span class="string">"1"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">tr</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">th</span>&gt;</span> 无序列表 <span class="tag">&lt;/<span class="name">th</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">th</span>&gt;</span> 有序列表 <span class="tag">&lt;/<span class="name">th</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">th</span>&gt;</span> 定义列表 <span class="tag">&lt;/<span class="name">th</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">tr</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">td</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span> penguin <span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span> elephant <span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">td</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">ol</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span> penguin <span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span> elephant <span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">ol</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">td</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">dl</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">dt</span>&gt;</span> penguin <span class="tag">&lt;/<span class="name">dt</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">dd</span>&gt;</span> sea birds <span class="tag">&lt;/<span class="name">dd</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">dt</span>&gt;</span> elephant <span class="tag">&lt;/<span class="name">dt</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">dd</span>&gt;</span> long teeth and nose <span class="tag">&lt;/<span class="name">dd</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">dl</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h3 id="3块"><a href="#3-块" class="headerlink" title="3.块"></a>3.块</h3><h2 id="七html-css"><a href="#七-HTML-CSS" class="headerlink" title="(七)HTML CSS"></a>(七)HTML CSS</h2><p>待补充。</p>
 ]]></content>
       
         
@@ -649,6 +655,14 @@
     </entry>
     
     <entry>
+      <title><![CDATA[contact]]></title>
+      <url>http://penguin858.com/contact/index.html</url>
+      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>Name: Xu Zeping<br><a href="https://github.com/penguin858">This is my github address</a></p>
+<p>Gmail: xuzeping858@gmail.com<br>QQ Email: 1363380773@qq.com</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[about]]></title>
       <url>http://penguin858.com/about/index.html</url>
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>北京某野鸡大学计算机专业大二学生，目前致力于数据库方面研究。</p>
@@ -658,22 +672,14 @@
     </entry>
     
     <entry>
-      <title><![CDATA[categories]]></title>
-      <url>http://penguin858.com/categories/index.html</url>
+      <title><![CDATA[tags]]></title>
+      <url>http://penguin858.com/tags/index.html</url>
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script>]]></content>
     </entry>
     
     <entry>
-      <title><![CDATA[contact]]></title>
-      <url>http://penguin858.com/contact/index.html</url>
-      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>Name: Xu Zeping<br><a href="https://github.com/penguin858">This is my github address</a></p>
-<p>Gmail: xuzeping858@gmail.com<br>QQ Email: 1363380773@qq.com</p>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[tags]]></title>
-      <url>http://penguin858.com/tags/index.html</url>
+      <title><![CDATA[categories]]></title>
+      <url>http://penguin858.com/categories/index.html</url>
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script>]]></content>
     </entry>
     

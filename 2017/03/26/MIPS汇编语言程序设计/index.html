@@ -4,7 +4,7 @@
 <!-- Head tag -->
 <head>
 
-    <meta charset="utf-8">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -65,7 +65,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/style.css">
 
-    <!-- Google Analytics -->
+    <!-- Google Analytics --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
     
 
 
@@ -74,7 +74,7 @@
 
 <body>
 
-<div class="bg-gradient"></div>
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="bg-gradient"></div>
 <div class="bg-pattern"></div>
 
 <!-- Menu -->
@@ -183,6 +183,7 @@
 <a id="more"></a>
 <h2 id="一-用系统功能调用实现简单输入输出"><a href="#一、用系统功能调用实现简单输入输出" class="headerlink" title="一、用系统功能调用实现简单输入输出"></a>一、用系统功能调用实现简单输入输出</h2><h3 id="题目"><a href="#题目：" class="headerlink" title="题目："></a>题目：</h3><blockquote>
 <p>利用系统功能调用从键盘输入，转换后在屏幕上显示，具体要求如下：<br>(1) 如果输入的是字母（A~Z，区分大小写）或数字（0~9），则将其转换成对应的英文单词后在屏幕上显示，对应关系见下表<br>(2) 若输入的不是字母或数字，则在屏幕上输出字符“*”，<br>(3) 每输入一个字符，即时转换并在屏幕上显示，<br>(4) 支持反复输入，直到按“?”键结束程序。</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -370,6 +371,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 </blockquote>
 <h3 id="预备知识"><a href="#预备知识：" class="headerlink" title="预备知识："></a>预备知识：</h3><h4 id="一系统调用"><a href="#（一）系统调用" class="headerlink" title="（一）系统调用"></a>（一）系统调用</h4><p>系统调用是操作系统提供给程序员的一套服务。MARS集成开发环境中搭载了SPIM软件仿真器。<br>SPIM通过系统调用(syscall)指令提供了一小组类似操作系统的服务，其通用的模式是加载系统调用代码到寄存器$v0，然后调用syscall指令执行相应的系统调用。<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">li</span> <span class="variable">$v0</span>, 10 # system call code <span class="keyword">for</span> <span class="keyword">exit</span></div><div class="line">syscall</div></pre></td></tr></table></figure></p>
 <h4 id="二汇编指令"><a href="#（二）汇编指令" class="headerlink" title="（二）汇编指令"></a>（二）汇编指令</h4><p>SPIM中可以通过<code>.data</code>和<code>.text</code>分别声明数据段和代码段，还有一系列的声明指令，十分方便</p>
@@ -460,11 +462,11 @@
         </li>
         
         <li>
-            <a class="footer-post" href="/categories/Blog/">Blog</a>
+            <a class="footer-post" href="/categories/计算机视觉/">计算机视觉</a>
         </li>
         
         <li>
-            <a class="footer-post" href="/categories/计算机视觉/">计算机视觉</a>
+            <a class="footer-post" href="/categories/Blog/">Blog</a>
         </li>
         
     </ul>
@@ -539,7 +541,24 @@
         dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
+</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
 </script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 
 
 

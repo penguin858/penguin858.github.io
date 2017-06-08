@@ -4,7 +4,7 @@
 <!-- Head tag -->
 <head>
 
-    <meta charset="utf-8">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -65,7 +65,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/style.css">
 
-    <!-- Google Analytics -->
+    <!-- Google Analytics --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
     
 
 
@@ -74,7 +74,7 @@
 
 <body>
 
-<div class="bg-gradient"></div>
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="bg-gradient"></div>
 <div class="bg-pattern"></div>
 
 <!-- Menu -->
@@ -297,7 +297,7 @@
 </ul>
 <p>样例:<br><figure class="highlight nix"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;img <span class="attr">src="http://pic6.huitu.com/res/20130116/84481_20130116142820494200_1.jpg"</span>  <span class="attr">width="600px"</span> <span class="attr">height</span> = <span class="string">"474px"</span> <span class="attr">alt</span> = <span class="string">"wronganswer"</span> <span class="attr">usemap="#h"/&gt;</span></div><div class="line">&lt;<span class="built_in">map</span> <span class="attr">name="h",id</span> = <span class="string">"h"</span>&gt;</div><div class="line">    &lt;area <span class="attr">shape</span> = <span class="string">"rect"</span> <span class="attr">coords="538,242,581,287"</span> <span class="attr">href</span> = <span class="string">"http://penguin858.github.io"</span> <span class="attr">target="_blank"</span> <span class="attr">alt="down!"&gt;</span></div><div class="line">&lt;/<span class="built_in">map</span>&gt;</div></pre></td></tr></table></figure></p>
 <h3 id="5水平线"><a href="#5-水平线" class="headerlink" title="5.水平线"></a>5.水平线</h3><p>html使用 <strong>&lt;hr&gt;</strong> 标签创建水平线，可以用于分隔内容（注意使用时应写成<strong>&lt;hr \&gt;</strong>）</p>
-<h3 id="6注释"><a href="#6-注释" class="headerlink" title="6.注释"></a>6.注释</h3><p>html使用标签 <strong>&lt;!–…–&gt;</strong>来表示注释<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 在这里写注释 --&gt;</span></div></pre></td></tr></table></figure></p>
+<h3 id="6注释"><a href="#6-注释" class="headerlink" title="6.注释"></a>6.注释</h3><p>html使用标签 <strong>&lt;!—…—&gt;</strong>来表示注释<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 在这里写注释 --&gt;</span></div></pre></td></tr></table></figure></p>
 <p><strong>条件注释</strong>：主要用于IE浏览器，内部包括只有IE浏览器能够执行的HTML标签</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!--[if IE 8]&gt;</span></div><div class="line">    .... some HTML here ....</div><div class="line">&lt;![endif]--&gt;</div></pre></td></tr></table></figure>
 <p>其他浏览器也可以生成类似的标签。</p>
@@ -343,6 +343,7 @@
 <li><strong>&lt;ins&gt;</strong>：插入字</li>
 <li><strong>&lt;del&gt;</strong>：删除字</li>
 </ul>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -385,8 +386,10 @@
 </tr>
 </tbody>
 </table>
+</div>
 <h3 id="2预格式文本"><a href="#2-预格式文本" class="headerlink" title="2.预格式文本"></a>2.预格式文本</h3><p>可以使用<strong>&lt;pre&gt;</strong>标签来表示提前处理好格式的文本，保留换行和空格</p>
-<h3 id="3计算机输出"><a href="#3-计算机输出" class="headerlink" title="3.计算机输出"></a>3.计算机输出</h3><table>
+<h3 id="3计算机输出"><a href="#3-计算机输出" class="headerlink" title="3.计算机输出"></a>3.计算机输出</h3><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>标签</th>
@@ -416,8 +419,10 @@
 </tr>
 </tbody>
 </table>
+</div>
 <p>例程：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">code</span>&gt;</span>Computer code<span class="tag">&lt;/<span class="name">code</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">br</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kbd</span>&gt;</span>Keyboard input<span class="tag">&lt;/<span class="name">kbd</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">br</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">tt</span>&gt;</span>Teletype text<span class="tag">&lt;/<span class="name">tt</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">br</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">samp</span>&gt;</span>Sample text<span class="tag">&lt;/<span class="name">samp</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">br</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">var</span>&gt;</span>Computer variable<span class="tag">&lt;/<span class="name">var</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">br</span> /&gt;</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>注释：<span class="tag">&lt;/<span class="name">p</span>&gt;</span>这些标签常用于显示计算机/编程代码。</div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<h3 id="4文字格式标签"><a href="#4-文字格式标签" class="headerlink" title="4.文字格式标签"></a>4.文字格式标签</h3><table>
+<h3 id="4文字格式标签"><a href="#4-文字格式标签" class="headerlink" title="4.文字格式标签"></a>4.文字格式标签</h3><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>标签</th>
@@ -455,6 +460,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <p>例程：<br><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="section">1.&lt;abbr&gt;:</span></div><div class="line">------</div><div class="line"><span class="section">&lt;abbr title="etcetera"&gt;etc.&lt;/abbr&gt;</span></div><div class="line">------</div><div class="line"></div><div class="line"><span class="section">2.&lt;address&gt;:</span></div><div class="line">------</div><div class="line">&lt;address&gt;</div><div class="line">Written by &lt;a href="https://penguin858.github.io"&gt;Xu Zeping&lt;/a&gt;.&lt;br&gt; </div><div class="line">Visit me at:&lt;br&gt;</div><div class="line">xuzeping858@gmail.com&lt;br&gt;</div><div class="line">Peking University&lt;br&gt;</div><div class="line"><span class="section">&lt;/address&gt;</span></div><div class="line">------</div><div class="line"></div><div class="line"><span class="section">3.&lt;bdo&gt;</span></div><div class="line">------</div><div class="line">&lt;bdo dir="rtl"&gt;</div><div class="line">test</div><div class="line"><span class="section">&lt;/bdo&gt;</span></div><div class="line">------</div><div class="line"></div><div class="line"><span class="section">4.&lt;blockquote&gt; / &lt;q&gt;</span></div><div class="line">------</div><div class="line">&lt;blockquote&gt;</div><div class="line">This is long quote.</div><div class="line">&lt;/blockquote&gt;</div><div class="line"></div><div class="line">&lt;q&gt;</div><div class="line">This is short quote.</div><div class="line"><span class="section">&lt;/q&gt;</span></div><div class="line">------</div><div class="line"></div><div class="line"><span class="section">5.&lt;bdo&gt;</span></div><div class="line">------</div><div class="line">&lt;bdo dir="rtl"&gt;</div><div class="line">Here is some test text.</div><div class="line"><span class="section">&lt;/bdo&gt;</span></div><div class="line">------</div></pre></td></tr></table></figure></p>
 <h2 id="六html结构与布局"><a href="#六-HTML结构与布局" class="headerlink" title="(六)HTML结构与布局"></a>(六)HTML结构与布局</h2><h3 id="1表格"><a href="#1-表格" class="headerlink" title="1.表格"></a>1.表格</h3><p>表格由标签<strong>&lt;table&gt;</strong>定义，每个表格均有若干行(行由标签<strong>&lt;tr&gt;</strong>定义)，每个单元格由<strong>&lt;td&gt;</strong>生成</p>
 <p>表头可以通过<strong>&lt;th&gt;</strong>生成（多数情况下会渲染成加粗居中的样式）</p>
@@ -573,11 +579,11 @@
         </li>
         
         <li>
-            <a class="footer-post" href="/categories/Blog/">Blog</a>
+            <a class="footer-post" href="/categories/计算机视觉/">计算机视觉</a>
         </li>
         
         <li>
-            <a class="footer-post" href="/categories/计算机视觉/">计算机视觉</a>
+            <a class="footer-post" href="/categories/Blog/">Blog</a>
         </li>
         
     </ul>
@@ -652,7 +658,7 @@
         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
-</script>
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 

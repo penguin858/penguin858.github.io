@@ -138,6 +138,18 @@
 <h2 id="reference参考"><a href="#Reference参考" class="headerlink" title="Reference参考"></a>Reference参考</h2><p>1.<a href="http://docs.opencv.org/2.4/modules/contrib/doc/facerec/index.html">opencv官方文档</a><br>2.<a href="http://blog.csdn.net/smartempire/article/details/23377385">人脸识别经典算法三：Fisherface（LDA）</a><br>3.<a href="http://blog.csdn.net/smartempire/article/details/23249517">人脸识别经典算法二：LBP方法</a><br>4.<a href="http://blog.csdn.net/smartempire/article/details/21406005">人脸识别经典算法一：特征脸方法（Eigenface）</a></p>
 ]]></content>
       
+        <categories>
+            
+            <category> 计算机视觉 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> opencv </tag>
+            
+        </tags>
         
     </entry>
     

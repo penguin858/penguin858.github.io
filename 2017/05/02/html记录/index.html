@@ -203,6 +203,7 @@
 <li><a href="#2列表">2.列表</a></li>
 <li><a href="#3块">3.块</a></li>
 <li><a href="#4使用ltdiv为网站布局">4.使用&lt;div&gt;为网站布局</a></li>
+<li><a href="#5html框架">5.HTML框架</a></li>
 </ul>
 </li>
 <li><a href="#七html-css">(七)HTML CSS</a></li>
@@ -485,6 +486,12 @@
 <h3 id="4使用ltdivgt为网站布局"><a href="#4-使用-lt-div-gt-为网站布局" class="headerlink" title="4.使用&lt;div&gt;为网站布局"></a>4.使用&lt;div&gt;为网站布局</h3><p>例子：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span> = <span class="string">"container"</span> <span class="attr">style</span> = <span class="string">"width:800px"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span> = <span class="string">"header"</span> <span class="attr">style</span> = <span class="string">"background-color:bisque;"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span> = <span class="string">"https://penguin858.github.io"</span>&gt;</span><span class="tag">&lt;<span class="name">h1</span>&gt;</span>欢迎来到我的网站！<span class="tag">&lt;/<span class="name">h1</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span> = <span class="string">"menu"</span> <span class="attr">style</span> = <span class="string">"background-color:darkseagreen;height:474px;width:200px;float:left;"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">b</span>&gt;</span>内容：<span class="tag">&lt;/<span class="name">b</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></div><div class="line">        html<span class="tag">&lt;<span class="name">br</span>/&gt;</span></div><div class="line">        MIPS<span class="tag">&lt;<span class="name">br</span>/&gt;</span></div><div class="line">        hexo</div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span> = <span class="string">"content"</span> <span class="attr">style</span> = <span class="string">"width:600px;height:474px;float:left;"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://pic6.huitu.com/res/20130116/84481_20130116142820494200_1.jpg"</span> </span></div><div class="line">        <span class="attr">width</span>=<span class="string">"600px"</span> <span class="attr">height</span> = <span class="string">"474px"</span> <span class="attr">alt</span> = <span class="string">"wronganswer"</span> <span class="attr">usemap</span>=<span class="string">"#h"</span>/&gt;</div><div class="line">        <span class="tag">&lt;<span class="name">map</span> <span class="attr">name</span>=<span class="string">"h"</span>,<span class="attr">id</span> = <span class="string">"h"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">area</span> <span class="attr">shape</span> = <span class="string">"rect"</span> <span class="attr">coords</span> = <span class="string">"0,0,50,50"</span> <span class="attr">href</span> = <span class="string">"ImageDemo.html"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">area</span> <span class="attr">shape</span> = <span class="string">"rect"</span> <span class="attr">coords</span>=<span class="string">"538,242,581,287"</span> <span class="attr">href</span> = <span class="string">"http://penguin858.github.io"</span> </span></div><div class="line">            <span class="attr">target</span>=<span class="string">"_blank"</span> <span class="attr">alt</span>=<span class="string">"down!"</span>&gt;</div><div class="line">        <span class="tag">&lt;/<span class="name">map</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span> = <span class="string">"footer"</span> <span class="attr">style</span> = <span class="string">"background-color:thistle;clear:both;text-align:center;"</span>&gt;</span></div><div class="line">        Copyright @ penguin858</div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p>效果如下：<br><img src="/2017/05/02/html记录/布局效果图.png" alt="布局效果图"></p>
 <p><strong>注：</strong><br>使用 CSS 最大的好处是，如果把 CSS 代码存放到外部样式表中，那么站点会更易于维护。通过编辑单一的文件，就可以改变所有页面的布局。</p>
+<h3 id="5html框架"><a href="#5-HTML框架" class="headerlink" title="5.HTML框架"></a>5.HTML框架</h3><p>通过使用html框架，可以在一个浏览器窗口显示不止一个界面。每一份html文档都是一个框架，并且每一个框架都独立于其他的框架。</p>
+<p>使用框架的坏处：</p>
+<ul>
+<li>开发人员必须同时跟踪多个不同的html文档</li>
+<li>很难打印整个页面。</li>
+</ul>
 <h2 id="七html-css"><a href="#七-HTML-CSS" class="headerlink" title="(七)HTML CSS"></a>(七)HTML CSS</h2><p>待补充。</p>
 
     </div>
@@ -532,6 +539,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2017/06/08/基于opencv的人脸识别/">基于opencv的人脸识别</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2017/05/02/html记录/">html记录</a>
             </li>
             
@@ -541,10 +552,6 @@
             
             <li>
                 <a class="footer-post" href="/2017/03/01/用hexo在github上搭建自己的博客/">用hexo在github上搭建自己的博客</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2017/03/01/Hello!/">Hello!</a>
             </li>
             
         </ul>

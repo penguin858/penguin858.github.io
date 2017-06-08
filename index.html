@@ -139,6 +139,84 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2017/06/08/基于opencv的人脸识别/">
+                基于opencv的人脸识别
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017-06-08</span>
+            
+            
+                <a href="http://penguin858.com/2017/06/08/基于opencv的人脸识别/#disqus_thread" class="comments article-comment-link">留言</a>
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h1 id="算分project——基于OpenCV的人脸识别"><a href="#算分project——基于OpenCV的人脸识别" class="headerlink" title="算分project——基于OpenCV的人脸识别"></a>算分project——基于OpenCV的人脸识别</h1><p>小组成员：许泽平        祁俊昆</p>
+<!-- toc -->
+<ul>
+<li><a href="#step1配置环境-安装opencv">step1:配置环境-安装opencv</a><ul>
+<li><a href="#mac-os上的安装过程">mac os上的安装过程**</a><ul>
+<li><a href="#1利用homebrew安装相关包">1.利用homebrew安装相关包</a></li>
+<li><a href="#2设置pkg-config">2.设置pkg-config</a></li>
+<li><a href="#3测试">3.测试</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#step2实验概述">step2:实验概述</a><ul>
+<li><a href="#0opencv">0.OpenCV</a></li>
+<li><a href="#1准备数据">1.准备数据</a></li>
+<li><a href="#2特征脸法">2.特征脸法</a><ul>
+<li><a href="#算法原理">算法原理:</a></li>
+<li><a href="#算法内容">算法内容</a></li>
+<li><a href="#理论基础">理论基础</a></li>
+<li><a href="#代码实现">代码实现</a></li>
+</ul>
+</li>
+<li><a href="#3fisherfaces">3.Fisherfaces</a><ul>
+<li><a href="#算法原理">算法原理</a></li>
+<li><a href="#公式推导">公式推导</a></li>
+<li><a href="#代码实现-1">代码实现</a></li>
+</ul>
+</li>
+<li><a href="#4local-binary-patterns-histograms">4.Local Binary Patterns Histograms</a><ul>
+<li><a href="#算法思想">算法思想</a></li>
+<li><a href="#算法改进">算法改进</a><ul>
+<li><a href="#1圆形lbp算子">1.圆形LBP算子</a></li>
+<li><a href="#2lbp等价模式">2.LBP等价模式</a></li>
+</ul>
+</li>
+<li><a href="#代码框架">代码框架</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#step3得出实验结果">step3:得出实验结果</a></li>
+<li><a href="#step4应用性别识别">step4:应用——性别识别</a></li>
+<li><a href="#appendix附录">Appendix附录</a><ul>
+<li><a href="#1数据库结构">1.数据库结构</a></li>
+<li><a href="#2转换为csv采用的python脚本">2.转换为CSV采用的python脚本</a></li>
+</ul>
+</li>
+<li><a href="#reference参考">Reference参考</a></li>
+</ul>
+<!-- tocstop -->
+        </div>
+        <a href="/2017/06/08/基于opencv的人脸识别/" class="read-more">Read More</a>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2017/05/02/html记录/">
                 html记录
             </a>
@@ -204,6 +282,7 @@
 <li><a href="#2列表">2.列表</a></li>
 <li><a href="#3块">3.块</a></li>
 <li><a href="#4使用ltdiv为网站布局">4.使用&lt;div&gt;为网站布局</a></li>
+<li><a href="#5html框架">5.HTML框架</a></li>
 </ul>
 </li>
 <li><a href="#七html-css">(七)HTML CSS</a></li>
@@ -377,6 +456,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2017/06/08/基于opencv的人脸识别/">基于opencv的人脸识别</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2017/05/02/html记录/">html记录</a>
             </li>
             
@@ -386,10 +469,6 @@
             
             <li>
                 <a class="footer-post" href="/2017/03/01/用hexo在github上搭建自己的博客/">用hexo在github上搭建自己的博客</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2017/03/01/Hello!/">Hello!</a>
             </li>
             
         </ul>

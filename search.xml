@@ -840,16 +840,8 @@
     </entry>
     
     <entry>
-      <title><![CDATA[contact]]></title>
-      <url>http://penguin858.com/contact/index.html</url>
-      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>Name: Xu Zeping<br><a href="https://github.com/penguin858">This is my github address</a></p>
-<p>Gmail: xuzeping858@gmail.com<br>QQ Email: 1363380773@qq.com</p>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[tags]]></title>
-      <url>http://penguin858.com/tags/index.html</url>
+      <title><![CDATA[categories]]></title>
+      <url>http://penguin858.com/categories/index.html</url>
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script>]]></content>
     </entry>
     
@@ -863,8 +855,16 @@
     </entry>
     
     <entry>
-      <title><![CDATA[categories]]></title>
-      <url>http://penguin858.com/categories/index.html</url>
+      <title><![CDATA[contact]]></title>
+      <url>http://penguin858.com/contact/index.html</url>
+      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>Name: Xu Zeping<br><a href="https://github.com/penguin858">This is my github address</a></p>
+<p>Gmail: xuzeping858@gmail.com<br>QQ Email: 1363380773@qq.com</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[tags]]></title>
+      <url>http://penguin858.com/tags/index.html</url>
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script>]]></content>
     </entry>
     

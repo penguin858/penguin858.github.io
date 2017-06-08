@@ -98,7 +98,7 @@
 <p>这之后从类间散列度和类内散列度来考虑。</p>
 <p>首先计算每类数据的均值(中心点)：<br>$\mu_i = \frac{1}{N_i}\sum\limits_{x\in\omega_i}x$<br>这里的下标i代表了这一类，$N_i$表示这一类中的元素个数。所以$\mu_i$就代表这一类的中心。</p>
 <p>整个样本的中心定义为：<br>$\mu = \frac{1}{N}\sum\limits_{\forall x}x = \frac{1}{N}\sum\limits_{\forall x}N_i\mu_i$</p>
-<p>变量类中散列度$S<em>w$定义如下：<br>$S_w = \sum\limits\</em>{i=1}^{c}S_{wi}$<br>其中：$S_{wi} = \sum\limits_{x\in\omega_i}(x-\mu_i)(x-\mu_i)^\mathrm{T}$   代表第i类内的散列度，是一个nxn矩阵（个人理解：这个公式实际上和方差公示一样，这样做运算也是将各个维度和它们之间的相互作用放在了一个平等的位置上来看待）</p>
+<p>变量类中散列度$S_w$定义如下：<br>$S_w = \sum\limits_{i=1}^{c}S_{wi}$<br>其中：$S_{wi} = \sum\limits_{x\in\omega_i}(x-\mu_i)(x-\mu_i)^\mathrm{T}$   代表第i类内的散列度，是一个nxn矩阵（个人理解：这个公式实际上和方差公示一样，这样做运算也是将各个维度和它们之间的相互作用放在了一个平等的位置上来看待）</p>
 <p>类间散列度$S_B$定义如下:<br>$S_B = \sum\limits_{i=1}^{c}N_i(\mu_i-\mu)(\mu_i-\mu)^\mathrm{T}$<br>表示各个类别到样本中心的距离，也是一个nxn矩阵，其中的$N_i$代表一个类别中的样本数，也就是这个人的图片个数</p>
 <p>以上都是投影之前的数据。下面我们来计算投影后的数据：</p>
 <p>投影后第i类的样本中心：<br>$\widetilde{\mu_i} = \frac{1}{N_i}\sum\limits_{y\in\omega_i}y$</p>

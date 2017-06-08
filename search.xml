@@ -6,8 +6,7 @@
     <entry>
       <title><![CDATA[基于opencv的人脸识别]]></title>
       <url>http://penguin858.com/2017/06/08/%E5%9F%BA%E4%BA%8Eopencv%E7%9A%84%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%AB/</url>
-      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h1 id="算分project基于opencv的人脸识别"><a href="#算分project——基于OpenCV的人脸识别" class="headerlink" title="算分project——基于OpenCV的人脸识别"></a>算分project——基于OpenCV的人脸识别</h1><p>小组成员：许泽平        祁俊昆</p>
-<!-- toc -->
+      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><!-- toc -->
 <ul>
 <li><a href="#step1配置环境-安装opencv">step1:配置环境-安装opencv</a><ul>
 <li><a href="#mac-os上的安装过程">mac os上的安装过程**</a><ul>
@@ -827,17 +826,17 @@
     </entry>
     
     <entry>
-      <title><![CDATA[tags]]></title>
-      <url>http://penguin858.com/tags/index.html</url>
-      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script>]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[contact]]></title>
       <url>http://penguin858.com/contact/index.html</url>
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>Name: Xu Zeping<br><a href="https://github.com/penguin858">This is my github address</a></p>
 <p>Gmail: xuzeping858@gmail.com<br>QQ Email: 1363380773@qq.com</p>
 ]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[tags]]></title>
+      <url>http://penguin858.com/tags/index.html</url>
+      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script>]]></content>
     </entry>
     
   

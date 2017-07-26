@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="Zeping&#39;s Home"/>
+        <meta property="og:title" content="swift摘要"/>
     
 
     <!--Open Graph Description-->
@@ -33,7 +33,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="article" />
     
 
     <!--Page Cover-->
@@ -44,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>Zeping&#39;s Home</title>
+    <title>swift摘要 - Zeping&#39;s Home</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
@@ -127,46 +127,14 @@
     <div class="logo">
         <a href="/"><i class="logo-icon fa fa-bolt" aria-hidden="true"></i></a>
         
-            <h1 id="main-title" class="title">Zeping's Home</h1>
-        
     </div>
 </header>
 
         <section class="main">
             
-                
 <div class="post">
 
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2017/07/18/配置owncloud私有云/">
-                配置owncloud私有云（Centos）
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2017-07-18</span>
-            
-            
-                <a href="http://penguin858.com/2017/07/18/配置owncloud私有云/#disqus_thread" class="comments article-comment-link">留言</a>
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <h2 id="零、平台说明"><a href="#零、平台说明" class="headerlink" title="零、平台说明"></a>零、平台说明</h2><p>我配置owncloud所使用的服务器是阿里云的学生版服务器，以下许多服务也是基于阿里云提供的服务，不同的地方大多可以通过百度解决。<br>这篇文章所描述的是刚购买来的服务器，在这之前还没有进行过apache等服务的配置，所以其中会有一些与owncloud无关的配置过程。</p>
-        </div>
-        <a href="/2017/07/18/配置owncloud私有云/" class="read-more">Read More</a>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
+    <div class="post-header">
         <h1 class="title">
             <a href="/2017/06/28/swift摘要/">
                 swift摘要
@@ -176,16 +144,18 @@
             
                 <span class="date">2017-06-28</span>
             
-            
-                <a href="http://penguin858.com/2017/06/28/swift摘要/#disqus_thread" class="comments article-comment-link">留言</a>
-            
+            <a href="#disqus_thread" class="comments">留言</a>
             
         </div>
     </div>
 
-    
-        <div class="content">
-            <script src="/assets/js/APlayer.min.js"> </script><h1 id="一-入门"><a href="#一、入门" class="headerlink" title="一、入门"></a>一、入门</h1><h2 id="一基本操作"><a href="#（一）基本操作" class="headerlink" title="（一）基本操作"></a>（一）基本操作</h2><h3 id="1简单值"><a href="#1-简单值" class="headerlink" title="1.简单值"></a>1.简单值</h3><p>可以使用<code>let</code>声明常量，<code>var</code>声明变量。<br>变量的类型不需要声明，一般由编译器自动推断，如果需要指定的类型，则可以在后面添加一个冒号来主动声明。<br><figure class="highlight vbnet"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> <span class="keyword">explicit</span>: <span class="built_in">Double</span> = <span class="number">70</span></div></pre></td></tr></table></figure></p>
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <script src="/assets/js/APlayer.min.js"> </script><h1 id="一-入门"><a href="#一、入门" class="headerlink" title="一、入门"></a>一、入门</h1><h2 id="一基本操作"><a href="#（一）基本操作" class="headerlink" title="（一）基本操作"></a>（一）基本操作</h2><h3 id="1简单值"><a href="#1-简单值" class="headerlink" title="1.简单值"></a>1.简单值</h3><p>可以使用<code>let</code>声明常量，<code>var</code>声明变量。<br>变量的类型不需要声明，一般由编译器自动推断，如果需要指定的类型，则可以在后面添加一个冒号来主动声明。<br><figure class="highlight vbnet"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> <span class="keyword">explicit</span>: <span class="built_in">Double</span> = <span class="number">70</span></div></pre></td></tr></table></figure></p>
 <p>类型转换：<strong>值永远不会被隐式转换</strong>，转换需要显式的声明：<br><figure class="highlight nix"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> <span class="attr">a</span> = <span class="string">"a = "</span></div><div class="line"><span class="keyword">let</span> <span class="attr">b</span> = <span class="number">94</span></div><div class="line"><span class="keyword">let</span> <span class="attr">c</span> = a + String(b)</div></pre></td></tr></table></figure></p>
 <p>另外，在引号中，把值转换成字符串有一种更好的方法：把值写到括号中，并在前面加一个反斜杠：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> <span class="built_in">c</span> = <span class="string">"a = <span class="subst">\(b)</span>"</span></div></pre></td></tr></table></figure></p>
 <h3 id="2数组与字典"><a href="#2-数组与字典" class="headerlink" title="2.数组与字典"></a>2.数组与字典</h3><p>swift中可以直接使用<code>[]</code>来创建数组和字典，使用下标或key来访问对应的元素。<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">var</span> arrays = [<span class="string">"I "</span>,<span class="string">"am "</span>,<span class="string">"a "</span>,<span class="string">"teacher"</span>]</div><div class="line"><span class="function"><span class="title">print</span><span class="params">(arrays)</span></span></div><div class="line">arrays[<span class="number">1</span>] = <span class="string">"was "</span></div><div class="line"><span class="function"><span class="title">print</span><span class="params">(arrays)</span></span></div><div class="line"></div><div class="line"><span class="selector-tag">var</span> diction = [</div><div class="line">    <span class="string">"TOM"</span>:<span class="string">"Teacher"</span>,</div><div class="line">    <span class="string">"SAM"</span>:<span class="string">"Student"</span></div><div class="line">]</div><div class="line">diction[<span class="string">"JOHN"</span>] = <span class="string">"Head master"</span></div></pre></td></tr></table></figure></p>
@@ -202,250 +172,30 @@
 <li>判断语句必须是一个bool表达式，这点和c语言不同，类似if a{……}的语句会报错，除非a是一个可选类型<br>-</li>
 </ul>
 
-        </div>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2017/06/08/基于opencv的人脸识别/">
-                基于opencv的人脸识别
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2017-06-08</span>
-            
-            
-                <a href="http://penguin858.com/2017/06/08/基于opencv的人脸识别/#disqus_thread" class="comments article-comment-link">留言</a>
-            
-            
-                <span class="category">
-                    <a href="/categories/计算机视觉/">计算机视觉</a>
-                </span>
-            
-        </div>
     </div>
 
     
-        <div class="content">
-            <!-- toc -->
-<ul>
-<li><a href="#step1配置环境-安装opencv">step1:配置环境-安装opencv</a><ul>
-<li><a href="#mac-os上的安装过程">mac os上的安装过程</a><ul>
-<li><a href="#1利用homebrew安装相关包">1.利用homebrew安装相关包</a></li>
-<li><a href="#2设置pkg-config">2.设置pkg-config</a></li>
-<li><a href="#3测试">3.测试</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#step2实验概述">step2:实验概述</a><ul>
-<li><a href="#0opencv">0.OpenCV</a></li>
-<li><a href="#1准备数据">1.准备数据</a></li>
-<li><a href="#2特征脸法">2.特征脸法</a><ul>
-<li><a href="#算法原理">算法原理:</a></li>
-<li><a href="#算法内容">算法内容</a></li>
-<li><a href="#理论基础">理论基础</a></li>
-<li><a href="#代码实现">代码实现</a></li>
-</ul>
-</li>
-<li><a href="#3fisherfaces">3.Fisherfaces</a><ul>
-<li><a href="#算法原理">算法原理</a></li>
-<li><a href="#公式推导">公式推导</a></li>
-<li><a href="#代码实现-1">代码实现</a></li>
-</ul>
-</li>
-<li><a href="#4local-binary-patterns-histograms">4.Local Binary Patterns Histograms</a><ul>
-<li><a href="#算法思想">算法思想</a></li>
-<li><a href="#算法改进">算法改进</a><ul>
-<li><a href="#1圆形lbp算子">1.圆形LBP算子</a></li>
-<li><a href="#2lbp等价模式">2.LBP等价模式</a></li>
-</ul>
-</li>
-<li><a href="#代码框架">代码框架</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#step3得出实验结果">step3:得出实验结果</a></li>
-<li><a href="#step4应用性别识别">step4:应用——性别识别</a></li>
-<li><a href="#appendix附录">Appendix附录</a><ul>
-<li><a href="#1数据库结构">1.数据库结构</a></li>
-<li><a href="#2转换为csv采用的python脚本">2.转换为CSV采用的python脚本</a></li>
-</ul>
-</li>
-<li><a href="#reference参考">Reference参考</a></li>
-</ul>
-<!-- tocstop -->
-        </div>
-        <a href="/2017/06/08/基于opencv的人脸识别/" class="read-more">Read More</a>
+
     
 
+    <!-- Comments -->
+    
+    <div class="comments">
+        
+<div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
-            
-                
-<div class="post">
 
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2017/05/02/html记录/">
-                html记录
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2017-05-02</span>
-            
-            
-                <a href="http://penguin858.com/2017/05/02/html记录/#disqus_thread" class="comments article-comment-link">留言</a>
-            
-            
-        </div>
+
+
     </div>
-
-    
-        <div class="content">
-            <!-- toc -->
-<ul>
-<li><a href="#一-html概述">一、html概述</a><ul>
-<li><a href="#一基本概念">（一）基本概念</a><ul>
-<li><a href="#1什么是html">1.什么是html</a></li>
-<li><a href="#2html标签html-tag">2.html标签(html tag)</a></li>
-<li><a href="#3html文档">3.html文档</a></li>
-<li><a href="#4html中的大小写">4.html中的大小写</a></li>
-<li><a href="#5html网页结构">5.html网页结构</a></li>
-</ul>
-</li>
-<li><a href="#二基本的html标签">(二)基本的html标签</a><ul>
-<li><a href="#0html文本与正文">0.html文本与正文</a></li>
-<li><a href="#1html标题">1.html标题</a></li>
-<li><a href="#2html段落">2.html段落</a></li>
-<li><a href="#3html链接">3.html链接</a></li>
-<li><a href="#4html图像">4.html图像</a><ul>
-<li><a href="#关于如何设置图像映射">关于如何设置图像映射：</a></li>
-</ul>
-</li>
-<li><a href="#5水平线">5.水平线</a></li>
-<li><a href="#6注释">6.注释</a></li>
-</ul>
-</li>
-<li><a href="#三html元素">(三).html元素</a><ul>
-<li><a href="#1概念">1.概念</a></li>
-<li><a href="#2基本语法">2.基本语法</a></li>
-<li><a href="#3嵌套的html元素">3.嵌套的html元素</a></li>
-<li><a href="#4空元素">4.空元素</a></li>
-</ul>
-</li>
-<li><a href="#四属性">(四)属性</a><ul>
-<li><a href="#0通用">0.通用</a></li>
-<li><a href="#1style">1.style:</a></li>
-</ul>
-</li>
-<li><a href="#五文本格式化httpwwww3schoolcomcnhtmlhtml_formattingasp">(五)<a href="http://www.w3school.com.cn/html/html_formatting.asp">文本格式化</a></a><ul>
-<li><a href="#1文本格式">1.文本格式</a></li>
-<li><a href="#2预格式文本">2.预格式文本</a></li>
-<li><a href="#3计算机输出">3.计算机输出</a></li>
-<li><a href="#4文字格式标签">4.文字格式标签</a></li>
-</ul>
-</li>
-<li><a href="#六html结构与布局">(六)HTML结构与布局</a><ul>
-<li><a href="#1表格">1.表格</a></li>
-<li><a href="#2列表">2.列表</a></li>
-<li><a href="#3块">3.块</a></li>
-<li><a href="#4使用ltdiv为网站布局">4.使用&lt;div&gt;为网站布局</a></li>
-<li><a href="#5html框架">5.HTML框架</a></li>
-</ul>
-</li>
-<li><a href="#七html-css">(七)HTML CSS</a></li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
-        </div>
-        <a href="/2017/05/02/html记录/" class="read-more">Read More</a>
     
 
 </div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2017/03/26/MIPS汇编语言程序设计/">
-                MIPS汇编语言程序设计
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2017-03-26</span>
-            
-            
-                <a href="http://penguin858.com/2017/03/26/MIPS汇编语言程序设计/#disqus_thread" class="comments article-comment-link">留言</a>
-            
-            
-                <span class="category">
-                    <a href="/categories/RISC/">RISC</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <!-- toc -->
-<ul>
-<li><a href="#零-写在前面">零、写在前面</a></li>
-<li><a href="#一-用系统功能调用实现简单输入输出">一、用系统功能调用实现简单输入输出</a><ul>
-<li><a href="#题目">题目：</a></li>
-<li><a href="#预备知识">预备知识：</a><ul>
-<li><a href="#一系统调用">（一）系统调用</a></li>
-<li><a href="#二汇编指令">（二）汇编指令</a></li>
-</ul>
-</li>
-<li><a href="#问题代码">问题代码</a></li>
-</ul>
-</li>
-<li><a href="#二-字符串查找比较">二、字符串查找比较</a><ul>
-<li><a href="#题目-1">题目：</a></li>
-<li><a href="#问题代码-1">问题代码</a></li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
-<h2 id="零、写在前面"><a href="#零、写在前面" class="headerlink" title="零、写在前面"></a>零、写在前面</h2><p>作为RISC指令系统的代表之一，MIPS以其简洁、规整，极适合作为教学语言使用。我们以MARS集成开发环境作为工具，系统地学习汇编语言程序设计，并了解可执行文件的文件结构。<br><a href="http://courses.missouristate.edu/KenVollmar/Mars/index.htm">MARS开发环境下载地址</a>(只需要在操作系统上安装JDK即可使用)</p>
-        </div>
-        <a href="/2017/03/26/MIPS汇编语言程序设计/" class="read-more">Read More</a>
-    
-
-</div>
-            
         </section>
+
     </div>
 </div>
-
-
-
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="wrap-pagination">
-                <a class="disabled" href="/">
-                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
-                </a>
-                <a class="" href="/page/2/">
-                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                </a>
-            </div>
-        </div>
-    </div>
-
-
-
 
 </div>
 
@@ -577,7 +327,7 @@
         var dsq = document.createElement('script');
         dsq.type = 'text/javascript';
         dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->

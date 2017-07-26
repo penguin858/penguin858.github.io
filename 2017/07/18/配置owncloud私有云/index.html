@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Try">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Xu Zeping">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="配置owncloud私有云（Centos）"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Try" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Zeping&#39;s Home"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>配置owncloud私有云（Centos） - Zeping&#39;s Home</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+
+</head>
+
+
+<body>
+
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-bolt" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2017/07/18/配置owncloud私有云/">
+                配置owncloud私有云（Centos）
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017-07-18</span>
+            
+            <a href="#disqus_thread" class="comments">留言</a>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <script src="/assets/js/APlayer.min.js"> </script><h2 id="零-平台说明"><a href="#零、平台说明" class="headerlink" title="零、平台说明"></a>零、平台说明</h2><p>我配置owncloud所使用的服务器是阿里云的学生版服务器，以下许多服务也是基于阿里云提供的服务，不同的地方大多可以通过百度解决。<br>这篇文章所描述的是刚购买来的服务器，在这之前还没有进行过apache等服务的配置，所以其中会有一些与owncloud无关的配置过程。</p>
+<a id="more"></a>
+<h2 id="一-安装"><a href="#一、安装" class="headerlink" title="一、安装"></a>一、安装</h2><h3 id="1预装软件包"><a href="#1-预装软件包" class="headerlink" title="1.预装软件包"></a>1.预装软件包</h3><p>这一步需要安装apache、php、mysql等软件，他们都是lamp的一部分。（下面脚本的安装不包括php，要安装php的话请参考<a href="http://blog.csdn.net/dxywx/article/details/50609137">这里</a>）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">yum update</div><div class="line">yum install httpd mariadb-server mariadb sqlite wget vim mod_ssl</div></pre></td></tr></table></figure></p>
+<h3 id="2安装owncloud"><a href="#2-安装owncloud" class="headerlink" title="2.安装owncloud"></a>2.安装owncloud</h3><p>我安装的版本是<a href="http://download.owncloud.org/download/repositories/10.0/owncloud/">10.0</a>，不过官方的稳定版本通常发布在<a href="https://download.owncloud.org/download/repositories/stable/owncloud/">这个页面</a>，根据对应版本下面的提示进行下载即可。</p>
+<h3 id="3配置mysql"><a href="#3-配置mysql" class="headerlink" title="3.配置mysql"></a>3.配置mysql</h3><p>接下来需要在数据库中创建owncloud所使用的账号。<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ mysql -u root -p</div><div class="line">mysql&gt; create database owncloud;</div><div class="line">mysql&gt; create user 'owncloud'@'localhost' identified by 'MyOwncloudName';</div><div class="line">mysql&gt; grand all on owncloud.* to 'owncloud'@'localhost';</div><div class="line">mysql&gt; flush privileges;</div><div class="line">mysql&gt; quit;</div></pre></td></tr></table></figure></p>
+<p>之后打开浏览器，访问 ‘<your_server_name>/owncloud’，将页面内的信息补充完整之后便可使用得到的有管理员权限的账号访问owncloud了。（访问使用<code>&lt;your_server_name&gt;/owncloud</code>）</your_server_name></p>
+<h2 id="二-通过域名访问owncloud"><a href="#二、通过域名访问owncloud" class="headerlink" title="二、通过域名访问owncloud"></a>二、通过域名访问owncloud</h2><p>现在owncloud能用了，但是还只能通过ip地址访问，这对我想和朋友分享的时候会造成很大的不便，所以我想注册一个域名来帮助我解决这个问题，并且为以后添加新的服务做准备。<br>这里需要注意的是，在中国，如果想要通过http访问一个网站，那么必须去备案，我觉得这个过程太麻烦了= =!，所以自己的网站现在只能通过https访问，下面的配置中也主要会讲https服务器的配置。</p>
+<h3 id="1申请证书"><a href="#1-申请证书" class="headerlink" title="1.申请证书"></a>1.申请证书</h3><p>阿里云提供了证书服务，也有免费的证书（赛门铁克）可供申请。如果不想申请证书，自签名可以参考<a href="http://www.centoscn.com/CentosSecurity/CentosSafe/2013/0729/785.html">这里</a><br>在阿里云申请赛门铁克的证书时需要在域名管理系统里添加两个条目。第一个是证书提供商测试使用的，要根据证书提供商的要求设置一个TXT类型的解析记录，记录值和主机记录可在<code>证书服务-进度</code>处查看。第二个条目便是自己想要使用的域名的信息了，记录类型为A，记录值是自己服务器的ip地址，主机记录是域名的前缀。</p>
+<p>等到证书下发后，将证书上传到服务器：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scp  -r local_dir username@servername:remote_dir</div></pre></td></tr></table></figure></p>
+<h3 id="2配置https服务器"><a href="#2-配置https服务器" class="headerlink" title="2.配置https服务器"></a>2.配置https服务器</h3><p>这块网上流传最多的便是找到配置文件里注释的一句话并删掉<code>#</code>，如果没有这条注释就说明apache缺少<code>mod_ssl</code>模块。这个说法是有问题的。有这个注释的版本应该是比较早的版本了，新版本的注释并没有这样一条- -。要验证自己的apache到底有没有安装<code>mod_ssl</code>，只需要打开apache安装目录下的<code>modules</code>文件夹，看看里面有没有<code>mod_ssl.so</code>就可以了。（一开始被误导浪费了不少时间- -，阿里云上的说明也是和网上的这些说明一样- -非常坑= =！）。<br>个人觉得比较方便的一种方法是创建一个新的虚拟主机。找到apache的安装目录<code>/etc/httpd</code>，打开<code>conf</code>里的<code>httpd.conf</code>文件，在文件末尾（创建一个新文件亦可）添加如下内容:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="section">&lt;VirtualHost *:443&gt;</span></div><div class="line"> <span class="attribute"><span class="nomarkup">ServerName</span></span> owncloud.xzping.top</div><div class="line"> <span class="attribute"><span class="nomarkup">DocumentRoot</span></span> <span class="string">"your_path_to_owncloud"</span></div><div class="line"> <span class="attribute">SSLEngine</span> <span class="literal">on</span></div><div class="line"> <span class="attribute">SSLCertificateFile</span> your_certificate_path/public.pem</div><div class="line"> <span class="attribute">SSLCertificateKeyFile</span> your_certificate_path/your_private_key.key</div><div class="line"> <span class="attribute">SSLCertificateChainFile</span> your_certificate_path/chain.pem</div><div class="line"> <span class="attribute"><span class="nomarkup">Header</span></span> always set Strict-Transport-Security <span class="string">"max-age=63072000"</span></div><div class="line"><span class="section">&lt;/VirtualHost&gt;</span></div></pre></td></tr></table></figure>
+<p>这途中碰到了一个问题。owncloud需要把域名添加到可信任列表里才能通过域名来访问，然而我在这么设置了之后不能直接通过点击那个buttom完成，点击之后会404- -。这时我就采用了直接修改配置文件<code>config.php</code>直接将域名添加信任就完成了。</p>
+<h3 id="3防火墙设置"><a href="#3-防火墙设置" class="headerlink" title="3.防火墙设置"></a>3.防火墙设置</h3><p>我的服务器没有启用防火墙，而是利用了阿里云提供的安全组策略。不过不管采用什么方法，都需要开启443端口。</p>
+<p>这样一来便可以通过https访问owncloud了！</p>
+<h2 id="三-优化"><a href="#三、优化" class="headerlink" title="三、优化"></a>三、优化</h2><p>实际上owncloud的默认配置并不是其最优配置，所以我们在成功启用owncloud以后还可以对其进行一定的调整。一些警告可以在用管理员账号登陆后进入<code>设置-常规</code>看到，下面我们来消除警告。</p>
+<h3 id="1启用cron"><a href="#1-启用cron" class="headerlink" title="1.启用cron"></a>1.启用cron</h3><h4 id="cron简介"><a href="#cron简介" class="headerlink" title="cron简介"></a>cron简介</h4><p>cron 是linux系统提供的一个会根据命令和执行时间来按时来调用度工作任务的工具</p>
+<p><strong>命令：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">crontab -u //设定某个用户的cron服务，一般root用户在执行这个命令的时候需要此参数</div><div class="line">crontab -l //列出某个用户cron服务的详细内容</div><div class="line">crontab -r //删除某个用户的cron服务</div><div class="line">crontab -e //编辑某个用户的cron服务</div></pre></td></tr></table></figure></p>
+<h4 id="cron表达式"><a href="#cron表达式" class="headerlink" title="cron表达式"></a>cron表达式</h4><p>这里搬运一下配置文件<code>/etc/crontab</code>中的注释来说明：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"># For details see man 4 crontabs</div><div class="line"></div><div class="line"># Example of job definition:</div><div class="line"># .---------------- minute (0 - 59)</div><div class="line"># |  .------------- hour (0 - 23)</div><div class="line"># |  |  .---------- day of month (1 - 31)</div><div class="line"># |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...</div><div class="line"># |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat</div><div class="line"># |  |  |  |  |</div><div class="line"># *  *  *  *  * user-name  command to be executed</div></pre></td></tr></table></figure></p>
+<p>表达式中的特殊符号：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">*：表示匹配该域的任意值，假如在Minutes域使用*, 即表示每分钟都会触发事件</div><div class="line">/:表示起始时间开始触发，然后每隔固定时间触发一次，例如在Minutes域使用5/20,则意味着5分钟触发一次，而25，45等分别触发一次</div></pre></td></tr></table></figure></p>
+<p>更详细的可以参考这个：<a href="http://www.cnblogs.com/junrong624/p/4239517.html">cron表达式详解</a></p>
+<h4 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h4><p>其实明白了crontab的工作原理，就很清楚应该怎么设置了。owncloud提供了一个任务计划<code>cron.php</code>，只需要设置定时用php去执行这个任务计划就可以了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ crontab -u root -e</div><div class="line">*/15 * * * * /usr/bin/php -f your_owncloud_path/cron.php</div></pre></td></tr></table></figure></p>
+<p>最后打开浏览器访问一下<code>http[s]://&lt;domain-of-your-server&gt;/owncloud/cron.php</code>配置就成功了。</p>
+<h3 id="2事务文件锁定transactional-file-locking与memcache"><a href="#2-事务文件锁定-Transactional-File-Locking-与memcache" class="headerlink" title="2.事务文件锁定(Transactional File Locking)与memcache"></a>2.事务文件锁定(Transactional File Locking)与memcache</h3><h4 id="tfl介绍"><a href="#TFL介绍" class="headerlink" title="TFL介绍"></a>TFL介绍</h4><p>TFL系统是为了保证正常操作中不会出现文件的问题而设计的。owncloud默认的是通过基于数据库的锁系统来支持TFL，但这一方案性能很差。如果修改为基于内存的存储方式则性能会提高很多，为了支持这一点，需要安装一个memcache系统（还可以加快访问速度）。我选择的是redis。</p>
+<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">yum install redis php56w-pecl-redis</div><div class="line">systemctl start redis</div></pre></td></tr></table></figure>
+<p>安装并启动完成以后，打开owncloud的配置文件，在最后加入如下内容：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="string">'memcache.local'</span> =&gt; <span class="string">'\OC\Memcache\Redis'</span>,</div><div class="line">  <span class="string">'redis'</span> =&gt; <span class="keyword">array</span>(</div><div class="line">        <span class="string">'host'</span> =&gt; <span class="string">'localhost'</span>,</div><div class="line">        <span class="string">'port'</span> =&gt; <span class="number">6379</span>,</div><div class="line">  ),</div><div class="line"><span class="string">'memcache.locking'</span> =&gt; <span class="string">'OC\Memcache\Redis'</span></div></pre></td></tr></table></figure></p>
+<p>这样一来就配置好了。</p>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+    <div class="comments">
+        
+<div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+
+
+
+    </div>
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>About</h2>
+                <p>
+                    欢迎！
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2017/07/18/配置owncloud私有云/">配置owncloud私有云（Centos）</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2017/06/28/swift摘要/">swift摘要</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2017/06/08/基于opencv的人脸识别/">基于opencv的人脸识别</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2017/05/02/html记录/">html记录</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-categories">
+    <h2>Categories</h2>
+    <ul>
+        
+        <li>
+            <a class="footer-post" href="/categories/数据库/">数据库</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/RISC/">RISC</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/Blog/">Blog</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/计算机视觉/">计算机视觉</a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/penguin858">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:xuzeping858@gmail.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @Untitled.All right reserved | by Xu Zeping
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Disqus Comments -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'Penguin858';
+
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+
+</body>
+
+</html>

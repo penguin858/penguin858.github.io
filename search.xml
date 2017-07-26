@@ -38,30 +38,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[swift摘要]]></title>
-      <url>http://penguin858.com/2017/06/28/swift%E6%91%98%E8%A6%81/</url>
-      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h1 id="一-入门"><a href="#一、入门" class="headerlink" title="一、入门"></a>一、入门</h1><h2 id="一基本操作"><a href="#（一）基本操作" class="headerlink" title="（一）基本操作"></a>（一）基本操作</h2><h3 id="1简单值"><a href="#1-简单值" class="headerlink" title="1.简单值"></a>1.简单值</h3><p>可以使用<code>let</code>声明常量，<code>var</code>声明变量。<br>变量的类型不需要声明，一般由编译器自动推断，如果需要指定的类型，则可以在后面添加一个冒号来主动声明。<br><figure class="highlight vbnet"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> <span class="keyword">explicit</span>: <span class="built_in">Double</span> = <span class="number">70</span></div></pre></td></tr></table></figure></p>
-<p>类型转换：<strong>值永远不会被隐式转换</strong>，转换需要显式的声明：<br><figure class="highlight nix"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> <span class="attr">a</span> = <span class="string">"a = "</span></div><div class="line"><span class="keyword">let</span> <span class="attr">b</span> = <span class="number">94</span></div><div class="line"><span class="keyword">let</span> <span class="attr">c</span> = a + String(b)</div></pre></td></tr></table></figure></p>
-<p>另外，在引号中，把值转换成字符串有一种更好的方法：把值写到括号中，并在前面加一个反斜杠：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> <span class="built_in">c</span> = <span class="string">"a = <span class="subst">\(b)</span>"</span></div></pre></td></tr></table></figure></p>
-<h3 id="2数组与字典"><a href="#2-数组与字典" class="headerlink" title="2.数组与字典"></a>2.数组与字典</h3><p>swift中可以直接使用<code>[]</code>来创建数组和字典，使用下标或key来访问对应的元素。<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">var</span> arrays = [<span class="string">"I "</span>,<span class="string">"am "</span>,<span class="string">"a "</span>,<span class="string">"teacher"</span>]</div><div class="line"><span class="function"><span class="title">print</span><span class="params">(arrays)</span></span></div><div class="line">arrays[<span class="number">1</span>] = <span class="string">"was "</span></div><div class="line"><span class="function"><span class="title">print</span><span class="params">(arrays)</span></span></div><div class="line"></div><div class="line"><span class="selector-tag">var</span> diction = [</div><div class="line">    <span class="string">"TOM"</span>:<span class="string">"Teacher"</span>,</div><div class="line">    <span class="string">"SAM"</span>:<span class="string">"Student"</span></div><div class="line">]</div><div class="line">diction[<span class="string">"JOHN"</span>] = <span class="string">"Head master"</span></div></pre></td></tr></table></figure></p>
-<p>初始化有专门的初始化语法，不过如果能根据上下文推断，也可不显示声明地构造空数组／列表<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">let a = [<span class="string">String</span>](<span class="link"></span>)</div><div class="line">let b = [<span class="string">String:Float</span>](<span class="link"></span>)</div><div class="line"></div><div class="line">var array1 = []</div><div class="line">var dic1 = [:]</div></pre></td></tr></table></figure></p>
-<h3 id="3可选类型"><a href="#3-可选类型" class="headerlink" title="3.可选类型"></a>3.可选类型</h3><p>Swift中声明的一个变量时, 默认情况下它是non-optional的, 即必须赋予这个变量一个非空的值. 如果给non-optional类型的变量赋值<strong>nil（表示可选类型的值缺失）</strong>, 编译器就会报错。<br>这意味着在Swift中不能声明一个没有初始值的属性. Swift中引入了可选类型(optional type)来解决这一问题. 它的定义是通过在类型生命后加加一个<code>?</code>操作符完成的.<br><figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a : <span class="built_in">String</span>?</div></pre></td></tr></table></figure></p>
-<p>Swift是一门安全的编程语言. 正如苹果所言, 可选类型就是证明Swift是一门安全的编程语言的一个小例子。Swift的可选类型加强了对空值的检查, 并且在编译阶段就给开发者提供了可能的错误信息。 很明显, 可选类型的引入可以让代码的质量变得更好。</p>
-<p><strong>解包可选类型：</strong><br>假设我的一个函数Myfunction会返回一个字符串：<br><figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> s:<span class="built_in">String</span>? = Myfunction()</div><div class="line"><span class="keyword">if</span> s &#123;</div><div class="line">	<span class="built_in">print</span>(s!)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>上述的if语句可以判断s是否有值，<code>!</code>表示对其进行<strong>硬解包</strong>。<br>但是硬解包存在着一定的风险（在没有条件判断的时候）</p>
-<p>另外有一种<strong>可选绑定(optional Binding)</strong>，即将待解包的可选类型赋值给一个常量／变量：<br><figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> s:<span class="built_in">String</span>? = Myfunction()</div><div class="line"><span class="keyword">if</span> let temps = s &#123;</div><div class="line">	<span class="built_in">print</span>(temps!)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><code>if let</code>和<code>if var</code>是用来进行可选绑定的两个关键字，功能为：如果s为空，跳过语句块，如果s有值，则将其赋值给temps并执行条件语句块。</p>
-<h3 id="4控制流"><a href="#4-控制流" class="headerlink" title="4.控制流"></a>4.控制流</h3><p>条件操作采用<code>if</code>和<code>switch</code>，循环操作采用<code>for-in</code>、<code>for</code>、<code>while</code>和<code>repeat-while</code><br>包裹条件和循环变量的大括号可以省略，但是循环体的大括号必须保留。</p>
-<p><strong>注：</strong></p>
-<ul>
-<li>判断语句必须是一个bool表达式，这点和c语言不同，类似if a{……}的语句会报错，除非a是一个可选类型<br>-</li>
-</ul>
-]]></content>
-      
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[基于opencv的人脸识别]]></title>
       <url>http://penguin858.com/2017/06/08/%E5%9F%BA%E4%BA%8Eopencv%E7%9A%84%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%AB/</url>
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><!-- toc -->
@@ -898,17 +874,12 @@
     </entry>
     
     <entry>
-      <title><![CDATA[contact]]></title>
-      <url>http://penguin858.com/contact/index.html</url>
-      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>Name: Xu Zeping<br><a href="https://github.com/penguin858">This is my github address</a></p>
-<p>Gmail: xuzeping858@gmail.com<br>QQ Email: 1363380773@qq.com</p>
+      <title><![CDATA[about]]></title>
+      <url>http://penguin858.com/about/index.html</url>
+      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>北京某野鸡大学计算机专业大二学生，目前致力于数据库方面研究。</p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=836330&auto=1&height=66"></iframe>
+
 ]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[tags]]></title>
-      <url>http://penguin858.com/tags/index.html</url>
-      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script>]]></content>
     </entry>
     
     <entry>
@@ -918,11 +889,16 @@
     </entry>
     
     <entry>
-      <title><![CDATA[about]]></title>
-      <url>http://penguin858.com/about/index.html</url>
-      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>北京某野鸡大学计算机专业大二学生，目前致力于数据库方面研究。</p>
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=836330&auto=1&height=66"></iframe>
-
+      <title><![CDATA[tags]]></title>
+      <url>http://penguin858.com/tags/index.html</url>
+      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script>]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[contact]]></title>
+      <url>http://penguin858.com/contact/index.html</url>
+      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>Name: Xu Zeping<br><a href="https://github.com/penguin858">This is my github address</a></p>
+<p>Gmail: xuzeping858@gmail.com<br>QQ Email: 1363380773@qq.com</p>
 ]]></content>
     </entry>
     

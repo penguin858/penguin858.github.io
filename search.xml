@@ -30,8 +30,25 @@
 <p>最后打开浏览器访问一下<code>http[s]://&lt;domain-of-your-server&gt;/owncloud/cron.php</code>配置就成功了。</p>
 <h3 id="2事务文件锁定transactional-file-locking与memcache"><a href="#2-事务文件锁定-Transactional-File-Locking-与memcache" class="headerlink" title="2.事务文件锁定(Transactional File Locking)与memcache"></a>2.事务文件锁定(Transactional File Locking)与memcache</h3><h4 id="tfl介绍"><a href="#TFL介绍" class="headerlink" title="TFL介绍"></a>TFL介绍</h4><p>TFL系统是为了保证正常操作中不会出现文件的问题而设计的。owncloud默认的是通过基于数据库的锁系统来支持TFL，但这一方案性能很差。如果修改为基于内存的存储方式则性能会提高很多，为了支持这一点，需要安装一个memcache系统（还可以加快访问速度）。我选择的是redis。</p>
 <h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">yum install redis php56w-pecl-redis</div><div class="line">systemctl start redis</div></pre></td></tr></table></figure>
-<p>安装并启动完成以后，打开owncloud的配置文件，在最后加入如下内容：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="string">'memcache.local'</span> =&gt; <span class="string">'\OC\Memcache\Redis'</span>,</div><div class="line">  <span class="string">'redis'</span> =&gt; <span class="keyword">array</span>(</div><div class="line">        <span class="string">'host'</span> =&gt; <span class="string">'localhost'</span>,</div><div class="line">        <span class="string">'port'</span> =&gt; <span class="number">6379</span>,</div><div class="line">  ),</div><div class="line"><span class="string">'memcache.locking'</span> =&gt; <span class="string">'OC\Memcache\Redis'</span></div></pre></td></tr></table></figure></p>
+<p>安装并启动完成以后，打开owncloud的配置文件，在最后加入如下内容：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="string">'memcache.local'</span> =&gt; <span class="string">'\OC\Memcache\Redis'</span>,</div><div class="line"><span class="string">'redis'</span> =&gt; <span class="keyword">array</span>(</div><div class="line">      <span class="string">'host'</span> =&gt; <span class="string">'localhost'</span>,</div><div class="line">      <span class="string">'port'</span> =&gt; <span class="number">6379</span>,</div><div class="line">),</div><div class="line"><span class="string">'memcache.locking'</span> =&gt; <span class="string">'OC\Memcache\Redis'</span></div></pre></td></tr></table></figure></p>
 <p>这样一来就配置好了。</p>
+<h3 id="3启用htaccess"><a href="#3-启用-htaccess" class="headerlink" title="3.启用.htaccess"></a>3.启用.htaccess</h3><p>这个和owncloud无关，但在我升级为nextcloud之后会显示这个警告，实际上这是一个apache的配置选项。</p>
+<h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><p>.htaccess文件提供了针对目录改变配置的方法， 即，在一个特定的文档目录中放置一个包含一个或多个指令的文件， 以作用于此目录及其所有子目录。作为用户，所能使用的命令受到限制。管理员可以通过Apache的AllowOverride指令来设置。<br>关于.htaccess的更详细说明可以参考<a href="http://www.cnblogs.com/adforce/archive/2012/11/23/2784664.html">这里</a></p>
+<h4 id="开启"><a href="#开启" class="headerlink" title="开启"></a>开启</h4><p>检查一下modules目录下是否有<code>mod_rewrite.so</code>，如果有则说明支持这个功能。<br>只需要找到管理nextcloud这个目录的文件目录选项中的这个条目：<br><figure class="highlight apache"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">AllowOverride</span> none</div></pre></td></tr></table></figure></p>
+<p>改为：<br><figure class="highlight apache"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">AllowOverride</span> <span class="literal">all</span></div></pre></td></tr></table></figure></p>
+<p>就配置成功了</p>
+<h3 id="4配置opcache"><a href="#4-配置opcache" class="headerlink" title="4.配置opcache"></a>4.配置opcache</h3><p>opcache是一个由php支持的对其加速的cache，nextcloud采用了这个技术。<br>如果系统的php一开始没有安装配置这个opcache，那么在nextcloud中会出现警告，要求你根据它的提示配置对应的参数。<br>php官网上显示5.5.0以后的版本是自带opcache的，但不知道为啥我的php5.6中并没有这样的</p>
+<h3 id="5启用nextant全局搜索插件"><a href="#5-启用nextant全局搜索插件" class="headerlink" title="5.启用nextant全局搜索插件"></a>5.启用nextant全局搜索插件</h3><p>这个插件的启用需要额外的支持。我们需要现在服务器上安装好solr，<a href="https://github.com/nextcloud/nextant/wiki">这里是官方说明</a>.<br>安装java并下载solr的压缩包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ yum install java</div><div class="line">$ wget https://mirrors.tuna.tsinghua.edu.cn/apache/lucene/solr/6.6.0/solr-6.6.0.tgz</div><div class="line">$ tar -zxvf solr-6.6.0.tgz</div></pre></td></tr></table></figure></p>
+<p>然后利用脚本初始化solr：<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo ./solr<span class="number">-6.6</span><span class="number">.0</span>/bin/install_solr_service.sh  solr<span class="number">-6.6</span><span class="number">.0</span></div></pre></td></tr></table></figure></p>
+<p>solr默认监控所有的主机，官方提供了只监控本地主机的方法，见<a href="https://github.com/nextcloud/nextant/wiki/Setup-your-local-Solr-as-a-Service">官方说明</a>。<br>然后确认一下8983端口有没有被占用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ netstat -ano | grep 8983</div></pre></td></tr></table></figure></p>
+<p>如果没有的话则可以启动solr：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo /etc/init.d/solr start</div><div class="line">sudo -u solr /opt/solr/bin/solr create -c nextant</div></pre></td></tr></table></figure></p>
+<p>之后就可以使用nextant了</p>
+<h2 id="四-更新为nextcloud"><a href="#四、更新为nextcloud" class="headerlink" title="四、更新为nextcloud"></a>四、更新为nextcloud</h2><p>由于owncloud的公司破产重组，之后的owncloud实际上是由原来团队中的一小部分来开发的，结果出现了很多的bug。后来我发现原来的公司仍然存活，只是产品名变成了nextcloud，下面就介绍如何将owncloud更新为nextcloud。<br>owncloud 10.0 以下版本可以直接按照<a href="https://nextcloud.com/migration/">这里</a>的要求来做，有现成的脚本可以完成这个任务。而更新的版本则不行。</p>
+<h3 id="1备份"><a href="#1-备份" class="headerlink" title="1.备份"></a>1.备份</h3><p>升级前先对owncloud及其数据库进行备份。<br>首先备份owncloud文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cp -pr owncloud_path backup_path</div></pre></td></tr></table></figure></p>
+<p>然后备份数据库：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysqldump --single-transaction -u root -p [db_name] &gt; backup_file.bak</div></pre></td></tr></table></figure></p>
+<p>接着从本地将nextcloud上传：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scp nextcloud.zip root@server_ip</div></pre></td></tr></table></figure></p>
+<p>然后解压并将其用户修改为apache：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">unzip nextcloud.zip</div><div class="line">chown -R apache:apache nextcloud</div></pre></td></tr></table></figure></p>
+<p>后续的话参见<a href="https://nextcloud.com/migration/">这里</a>来操作就可以了。</p>
 ]]></content>
       
         
@@ -883,14 +900,14 @@
     </entry>
     
     <entry>
-      <title><![CDATA[categories]]></title>
-      <url>http://penguin858.com/categories/index.html</url>
+      <title><![CDATA[tags]]></title>
+      <url>http://penguin858.com/tags/index.html</url>
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script>]]></content>
     </entry>
     
     <entry>
-      <title><![CDATA[tags]]></title>
-      <url>http://penguin858.com/tags/index.html</url>
+      <title><![CDATA[categories]]></title>
+      <url>http://penguin858.com/categories/index.html</url>
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script>]]></content>
     </entry>
     

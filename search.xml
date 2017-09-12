@@ -7,6 +7,7 @@
       <title><![CDATA[理解autoreleasepool工作原理]]></title>
       <url>http://penguin858.com/2017/09/12/%E7%90%86%E8%A7%A3autoreleasepool%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/</url>
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h2 id="autoreleasepool的工作方式"><a href="#autoreleasepool的工作方式" class="headerlink" title="autoreleasepool的工作方式"></a>autoreleasepool的工作方式</h2><p>  ios系统通过 <code>@autoreleasepool{}</code> 的方式来创建自动释放池。每一个线程会对应一个runloop，系统会为每一个runloop隐式地创建一个自动释放池，所有的autoreleasepool构成一个栈式的结构，在每个runloop结束的时候，当前栈顶的autoreleasepool会被销毁，此时这个自动释放池会对其中的每个对象做release。</p>
+<a id="more"></a>
 <h2 id="autoreleasepool的实现方式"><a href="#autoreleasepool的实现方式" class="headerlink" title="autoreleasepool的实现方式"></a>autoreleasepool的实现方式</h2><h3 id="数据结构autoreleasepoolpage"><a href="#数据结构AutoreleasePoolPage" class="headerlink" title="数据结构AutoreleasePoolPage"></a>数据结构AutoreleasePoolPage</h3><p>每个autoreleasepool对象都是由若干个autoreleasepoolpage通过双向链表连接而成，类的定义如下：</p>
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> AutoreleasePoolPage&#123;</div><div class="line">  magic_t <span class="keyword">const</span> magic; <span class="comment">//用来校验 AutoreleasePoolPage 的结构是否完整；</span></div><div class="line">  <span class="keyword">id</span> * next; <span class="comment">//指向栈顶最新被添加进来的autorelease对象的下一个位置</span></div><div class="line">  pthread_t <span class="keyword">const</span> thread; <span class="comment">//指向当前进程</span></div><div class="line">  AutoreleasePoolPage * <span class="keyword">const</span> parent;</div><div class="line">  AutoreleasePoolPage * child;</div><div class="line">  uint32_t <span class="keyword">const</span> depth;</div><div class="line">  uint32_t hiwat; <span class="comment">// high water mark</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
@@ -938,17 +939,17 @@
     </entry>
     
     <entry>
+      <title><![CDATA[tags]]></title>
+      <url>http://penguin858.com/tags/index.html</url>
+      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script>]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[contact]]></title>
       <url>http://penguin858.com/contact/index.html</url>
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>Name: Xu Zeping<br><a href="https://github.com/penguin858">This is my github address</a></p>
 <p>Gmail: xuzeping858@gmail.com<br>QQ Email: 1363380773@qq.com</p>
 ]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[tags]]></title>
-      <url>http://penguin858.com/tags/index.html</url>
-      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script>]]></content>
     </entry>
     
   

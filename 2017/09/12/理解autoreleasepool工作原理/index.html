@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="Zeping&#39;s Home"/>
+        <meta property="og:title" content="理解autoreleasepool工作原理"/>
     
 
     <!--Open Graph Description-->
@@ -33,7 +33,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="article" />
     
 
     <!--Page Cover-->
@@ -44,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>归档：2017/6 - Zeping&#39;s Home</title>
+    <title>理解autoreleasepool工作原理 - Zeping&#39;s Home</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
@@ -119,9 +119,7 @@
 <div class="container">
 
     <!-- Main Content -->
-    
-
-<div class="row">
+    <div class="row">
     <div class="col-sm-12">
 
         <!--Title and Logo-->
@@ -129,77 +127,76 @@
     <div class="logo">
         <a href="/"><i class="logo-icon fa fa-bolt" aria-hidden="true"></i></a>
         
-            <h1 id="main-title" class="title">2017/6</h1>
-        
     </div>
 </header>
 
-        <section class="main archive-container">
+        <section class="main">
             
-                <div class="archive-post">
-    <a href="/2017/03/01/Hello!/">
-        <span class="archive-date">
-            Mar 2017
-        </span>
-        Hello!
-    </a>
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2017/09/12/理解autoreleasepool工作原理/">
+                理解autoreleasepool工作原理
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017-09-12</span>
+            
+            <a href="#disqus_thread" class="comments">留言</a>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <script src="/assets/js/APlayer.min.js"> </script><h2 id="autoreleasepool的工作方式"><a href="#autoreleasepool的工作方式" class="headerlink" title="autoreleasepool的工作方式"></a>autoreleasepool的工作方式</h2><p>  ios系统通过 <code>@autoreleasepool{}</code> 的方式来创建自动释放池。每一个线程会对应一个runloop，系统会为每一个runloop隐式地创建一个自动释放池，所有的autoreleasepool构成一个栈式的结构，在每个runloop结束的时候，当前栈顶的autoreleasepool会被销毁，此时这个自动释放池会对其中的每个对象做release。</p>
+<h2 id="autoreleasepool的实现方式"><a href="#autoreleasepool的实现方式" class="headerlink" title="autoreleasepool的实现方式"></a>autoreleasepool的实现方式</h2><h3 id="数据结构autoreleasepoolpage"><a href="#数据结构AutoreleasePoolPage" class="headerlink" title="数据结构AutoreleasePoolPage"></a>数据结构AutoreleasePoolPage</h3><p>每个autoreleasepool对象都是由若干个autoreleasepoolpage通过双向链表连接而成，类的定义如下：</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> AutoreleasePoolPage&#123;</div><div class="line">  magic_t <span class="keyword">const</span> magic; <span class="comment">//用来校验 AutoreleasePoolPage 的结构是否完整；</span></div><div class="line">  <span class="keyword">id</span> * next; <span class="comment">//指向栈顶最新被添加进来的autorelease对象的下一个位置</span></div><div class="line">  pthread_t <span class="keyword">const</span> thread; <span class="comment">//指向当前进程</span></div><div class="line">  AutoreleasePoolPage * <span class="keyword">const</span> parent;</div><div class="line">  AutoreleasePoolPage * child;</div><div class="line">  uint32_t <span class="keyword">const</span> depth;</div><div class="line">  uint32_t hiwat; <span class="comment">// high water mark</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>autoreleasePoolPage会开辟4096^即0x1000 字节空间，除了上面的实例变量所占的空间，剩余的空间全部用来存储autorelease对象的地址</li>
+<li>next指针指向下一个内存为空的地址，如果向其中加入了新的object，那么这个指针就会自动移向下一个空地址</li>
+<li>一个autoreleasePoolPage空间被占满时，会创建一个新的autoreleasePoolPage对象，后来的对象添加在新的autoreleasePoolPage中</li>
+</ul>
+<h3 id="哨兵对象pool_sentinel"><a href="#哨兵对象（POOL-SENTINEL）" class="headerlink" title="哨兵对象（POOL_SENTINEL）"></a>哨兵对象（POOL_SENTINEL）</h3><p><code>POOL_SENTINEL</code>实际上只是<code>nil</code>的别名。<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#define POOL_SENTINEL nil</span></div></pre></td></tr></table></figure></p>
+<p>系统通过一个栈来管理所有的自动释放池，每当创建了一个新的自动释放池，系统就会把它压入栈顶，并且传入一个哨兵对象,将哨兵对象插入hotPage。每当有一个自动释放池要被释放的时候，哨兵对象就会作为参数被传入，找到该哨兵对象所在的位置后，将所有晚于哨兵对象的autorelease弹出，并对他们做一次release，然后将next指针一到合适的位置。</p>
+<h2 id="自动释放池的使用"><a href="#自动释放池的使用" class="headerlink" title="自动释放池的使用"></a>自动释放池的使用</h2><h3 id="mrc模式下的使用"><a href="#MRC模式下的使用" class="headerlink" title="MRC模式下的使用"></a>MRC模式下的使用</h3><ul>
+<li>对象作为函数返回值：<br>当一个对象要作为函数返回值的时候，因为要遵循谁申请谁释放的思想，所以应该在返回之前释放，但要是返回之前释放了，就会造成野指针错误，但是要是不释放，那么就违背了谁申请谁释放的原则，所以就可以使用autorelease延迟释放的特性，将其在返回之前做一次autorelease，加入到自动释放池中，保证可以被返回。</li>
+<li>临时生成大量对象,一定要将自动释放池放在for循环里面，要释放在外面，就会因为大量对象得不到及时释放，而造成内存紧张，最后程序意外退出</li>
+</ul>
+
+    </div>
+
+    
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/ios/">#ios</a>
+        </div>
+    
+
+    <!-- Comments -->
+    
+    <div class="comments">
+        
+<div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
-            
-                <div class="archive-post">
-    <a href="/2017/03/26/MIPS汇编语言程序设计/">
-        <span class="archive-date">
-            Mar 2017
-        </span>
-        MIPS汇编语言程序设计
-    </a>
+
+
+
+    </div>
+    
+
 </div>
-            
-                <div class="archive-post">
-    <a href="/2017/05/02/html记录/">
-        <span class="archive-date">
-            May 2017
-        </span>
-        html记录
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2017/06/08/基于opencv的人脸识别/">
-        <span class="archive-date">
-            Jun 2017
-        </span>
-        基于opencv的人脸识别
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2017/09/12/理解autoreleasepool工作原理/">
-        <span class="archive-date">
-            Sep 2017
-        </span>
-        理解autoreleasepool工作原理
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2017/03/01/用hexo在github上搭建自己的博客/">
-        <span class="archive-date">
-            Mar 2017
-        </span>
-        用hexo在github上搭建自己的博客
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2017/07/18/配置owncloud私有云/">
-        <span class="archive-date">
-            Jul 2017
-        </span>
-        配置owncloud私有云（Centos）
-    </a>
-</div>
-            
         </section>
+
     </div>
 </div>
 
@@ -333,7 +330,7 @@
         var dsq = document.createElement('script');
         dsq.type = 'text/javascript';
         dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->

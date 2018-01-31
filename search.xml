@@ -4,7 +4,7 @@
   
     
     <entry>
-      <title><![CDATA[nettools源码解析-如何在net-tools中添加一个新的功能]]></title>
+      <title><![CDATA[nettools源码解析]]></title>
       <url>http://penguin858.com/2018/01/31/nettools%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/</url>
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><!-- toc -->
 <!-- tocstop -->
@@ -950,6 +950,12 @@
     </entry>
     
     <entry>
+      <title><![CDATA[categories]]></title>
+      <url>http://penguin858.com/categories/index.html</url>
+      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script>]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[about]]></title>
       <url>http://penguin858.com/about/index.html</url>
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>北京某野鸡大学计算机专业大二学生，目前致力于数据库方面研究。</p>
@@ -959,8 +965,8 @@
     </entry>
     
     <entry>
-      <title><![CDATA[categories]]></title>
-      <url>http://penguin858.com/categories/index.html</url>
+      <title><![CDATA[tags]]></title>
+      <url>http://penguin858.com/tags/index.html</url>
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script>]]></content>
     </entry>
     
@@ -970,12 +976,6 @@
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>Name: Xu Zeping<br><a href="https://github.com/penguin858">This is my github address</a></p>
 <p>Gmail: xuzeping858@gmail.com<br>QQ Email: 1363380773@qq.com</p>
 ]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[tags]]></title>
-      <url>http://penguin858.com/tags/index.html</url>
-      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script>]]></content>
     </entry>
     
   

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Try">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Xu Zeping">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="nettools源码解析-如何在net-tools中添加一个新的功能"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Try" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Zeping&#39;s Home"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>nettools源码解析-如何在net-tools中添加一个新的功能 - Zeping&#39;s Home</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+
+</head>
+
+
+<body>
+
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-bolt" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2018/01/31/nettools源码解析/">
+                nettools源码解析-如何在net-tools中添加一个新的功能
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2018-01-31</span>
+            
+            <a href="#disqus_thread" class="comments">留言</a>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <script src="/assets/js/APlayer.min.js"> </script><!-- toc -->
+<!-- tocstop -->
+<a id="more"></a>
+<p>本文尝试对linux下的<code>net-tools</code>工具包的源代码进行分析。分析的代码版本为<code>net-tools-1.60</code></p>
+<p>添加一个新的功能就是去添加一个全新的封装好的系统调用。下面将分析如果要添加一个完整的新的系统调用需要做些什么。这里以net-tools中的创建套接字函数<code>sockets_open</code>为起点说明创建流程。</p>
+<p>首先，在<code>include/sockets.h</code>中可以找到该函数的声明：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// sockets.h</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">extern</span> <span class="keyword">int</span> <span class="title">sockets_open</span><span class="params">(<span class="keyword">int</span> family)</span></span>;</div></pre></td></tr></table></figure>
+<p>其定义存在于<code>lib/sockets.c</code>中：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// sockets.c</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">sockets_open</span><span class="params">(<span class="keyword">int</span> family)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">struct</span> aftype **aft;</div><div class="line">    <span class="keyword">int</span> sfd = <span class="number">-1</span>;</div><div class="line">    <span class="keyword">static</span> <span class="keyword">int</span> force = <span class="number">-1</span>;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (force &lt; <span class="number">0</span>) &#123;</div><div class="line">    force = <span class="number">0</span>;</div><div class="line">    <span class="keyword">if</span> (kernel_version() &lt; KRELEASE(<span class="number">2</span>, <span class="number">1</span>, <span class="number">0</span>))</div><div class="line">        force = <span class="number">1</span>;</div><div class="line">    <span class="keyword">if</span> (access(<span class="string">"/proc/net"</span>, R_OK))</div><div class="line">        force = <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">    ···</div><div class="line">    af-&gt;fd = socket(af-&gt;af, type, <span class="number">0</span>);</div><div class="line">    <span class="keyword">if</span> (af-&gt;fd &gt;= <span class="number">0</span>)</div><div class="line">        sfd = af-&gt;fd;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (sfd &lt; <span class="number">0</span>)</div><div class="line">    <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, _(<span class="string">"No usable address families found.\n"</span>));</div><div class="line">    <span class="keyword">return</span> sfd;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>其间执行了许多的系统调用，我们选择去看<code>socket</code>这个系统调用的定义：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// sys/socket.h</span></div><div class="line">···</div><div class="line">__BEGIN_DECLS</div><div class="line">···</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">socket</span><span class="params">(<span class="keyword">int</span>, <span class="keyword">int</span>, <span class="keyword">int</span>)</span></span>;</div><div class="line">···</div><div class="line">__END_DECLS</div></pre></td></tr></table></figure></p>
+<p>这里的两个宏指明了它们之间的声明都是<code>extern</code>类型的。实际上的实现由glibc完成。其定义在<code>glibc-2.26/sysdeps/unix/sysv/linux/socket.c</code>:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span></div><div class="line">__socket (<span class="keyword">int</span> fd, <span class="keyword">int</span> type, <span class="keyword">int</span> domain)</div><div class="line">&#123;</div><div class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __ASSUME_SOCKET_SYSCALL</span></div><div class="line">  <span class="keyword">return</span> INLINE_SYSCALL (socket, <span class="number">3</span>, fd, type, domain);</div><div class="line"><span class="meta">#<span class="meta-keyword">else</span></span></div><div class="line">  <span class="keyword">return</span> SOCKETCALL (socket, fd, type, domain);</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line">&#125;</div><div class="line">libc_hidden_def (__socket)</div><div class="line">weak_alias (__socket, socket)</div></pre></td></tr></table></figure>
+<p>后两个宏的作用就和函数名一样。</p>
+<p>在内核版本2.6.37后，走的就是<code>INLINE_SYSCALL</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* These syscalls were added for SH in 2.6.37.  */</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> __ASSUME_SOCKET_SYSCALL     1</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> __ASSUME_BIND_SYSCALL       1</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> __ASSUME_CONNECT_SYSCALL    1</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> __ASSUME_LISTEN_SYSCALL     1</span></div></pre></td></tr></table></figure>
+<p>而<code>INLINE_SYSCALL</code>的定义在<code>glibc-2.26/sysdeps/unix/sysv/linux/x86_64/sysdep.h</code>中：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="meta"># <span class="meta-keyword">undef</span> INLINE_SYSCALL</span></div><div class="line"><span class="meta"># <span class="meta-keyword">define</span> INLINE_SYSCALL(name, nr, args...) \</span></div><div class="line">  (&#123;                        \</div><div class="line">    unsigned long int resultvar = INTERNAL_SYSCALL (name, , nr, args);        \</div><div class="line">    <span class="meta-keyword">if</span> (__glibc_unlikely (INTERNAL_SYSCALL_ERROR_P (resultvar, )))        \</div><div class="line">      &#123;                       \</div><div class="line">  __set_errno (INTERNAL_SYSCALL_ERRNO (resultvar, ));         \</div><div class="line">  resultvar = (unsigned long int) -1;             \</div><div class="line">      &#125;                       \</div><div class="line">    (long int) resultvar; &#125;)</div><div class="line">···</div><div class="line"><span class="meta"># <span class="meta-keyword">define</span> INTERNAL_SYSCALL_NCS(name, err, nr, args...) \</span></div><div class="line">  (&#123;                        \</div><div class="line">    unsigned long int resultvar;                \</div><div class="line">    LOAD_ARGS_##nr (args)                 \</div><div class="line">    LOAD_REGS_##nr                    \</div><div class="line">    asm volatile (                    \</div><div class="line">    <span class="meta-string">"syscall\n\t"</span>                   \</div><div class="line">    : <span class="meta-string">"=a"</span> (resultvar)                    \</div><div class="line">    : <span class="meta-string">"0"</span> (name) ASM_ARGS_##nr : <span class="meta-string">"memory"</span>, REGISTERS_CLOBBERED_BY_SYSCALL);   \</div><div class="line">    (long int) resultvar; &#125;)</div><div class="line"><span class="meta"># <span class="meta-keyword">undef</span> INTERNAL_SYSCALL</span></div><div class="line"><span class="meta"># <span class="meta-keyword">define</span> INTERNAL_SYSCALL(name, err, nr, args...) \</span></div><div class="line">  INTERNAL_SYSCALL_NCS (__NR_##name, err, nr, ##args)</div></pre></td></tr></table></figure>
+<p>syscall的name为<strong>NR_##name，在本例中即为</strong>NR_socket。其定义在/usr/include/asm/unistd_64.h中。<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">define</span> __NR_bind 49</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> __NR_listen 50</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> __NR_getsockname 51</span></div></pre></td></tr></table></figure></p>
+<p>系统调用号的声明在内核的<code>linux/arch/x86/entry/syscalls/syscall_64.tbl</code>中，然后就可以通过这样的方法调用封装好的系统调用了（注册系统调用的流程可以参考<a href="http://blog.csdn.net/a364572/article/details/50764234">这里</a>）。</p>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+    <div class="comments">
+        
+<div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+
+
+
+    </div>
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>About</h2>
+                <p>
+                    欢迎！
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2018/01/31/nettools源码解析/">nettools源码解析-如何在net-tools</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2017/09/12/理解autoreleasepool工作原理/">理解autoreleasepool工作原理</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2017/07/18/配置owncloud私有云/">配置owncloud私有云（Centos）</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2017/06/08/基于opencv的人脸识别/">基于opencv的人脸识别</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-categories">
+    <h2>Categories</h2>
+    <ul>
+        
+        <li>
+            <a class="footer-post" href="/categories/数据库/">数据库</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/RISC/">RISC</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/计算机视觉/">计算机视觉</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/Blog/">Blog</a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/penguin858">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:xuzeping858@gmail.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @Untitled.All right reserved | by Xu Zeping
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Disqus Comments -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'Penguin858';
+
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+</body>
+
+</html>

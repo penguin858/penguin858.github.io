@@ -155,7 +155,64 @@
         
 
         <!-- Post Content -->
-        <script src="/assets/js/APlayer.min.js"> </script><!--toc-->
+        <script src="/assets/js/APlayer.min.js"> </script><!-- toc -->
+<ul>
+<li><a href="#一-bgp协议概述">一、BGP协议概述</a><ul>
+<li><a href="#一bgp协议">（一）BGP协议</a></li>
+<li><a href="#二bgp基本特性">（二）BGP基本特性</a></li>
+<li><a href="#三路由选择算法">（三）路由选择算法</a><ul>
+<li><a href="#1距离向量算法distance-vectordv">1.距离向量算法（Distance-Vector，DV）</a><ul>
+<li><a href="#1算法内容">（1）算法内容</a></li>
+<li><a href="#2无穷计数">（2）无穷计数</a></li>
+</ul>
+</li>
+<li><a href="#2层次路由选择算法">2.层次路由选择算法</a><ul>
+<li><a href="#1自治系统asautonomous-system">（1）自治系统AS（Autonomous System）</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#四bgp协议">（四）BGP协议</a><ul>
+<li><a href="#1bgp协议功能">1.BGP协议功能</a></li>
+<li><a href="#2bgp重要概念">2.bgp重要概念</a></li>
+<li><a href="#3bgp重要属性">3.BGP重要属性</a><ul>
+<li><a href="#0origin">（0）ORIGIN</a></li>
+<li><a href="#1as-path">（1）AS-PATH</a></li>
+<li><a href="#2next-hop">（2）NEXT-HOP</a></li>
+<li><a href="#3local-pref">（3）LOCAL-PREF</a></li>
+<li><a href="#4-multi_exit_discmed可选不可传递属性">（4） MULTI_EXIT_DISC（MED，可选不可传递属性）</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#二-bgp-4-rfc描述">二、BGP-4-rfc描述</a><ul>
+<li><a href="#一bgp概述">（一）BGP概述</a></li>
+<li><a href="#二routing-information-bases">（二）Routing Information Bases</a></li>
+<li><a href="#三信息格式">（三）信息格式</a><ul>
+<li><a href="#1bgp报头">1.BGP报头</a></li>
+<li><a href="#2open类型报文格式">2.OPEN类型报文格式</a></li>
+<li><a href="#3update类型报文格式">3.UPDATE类型报文格式</a></li>
+<li><a href="#4keepalive报文格式">4.KEEPALIVE报文格式</a></li>
+<li><a href="#5notification报文格式">5.NOTIFICATION报文格式</a></li>
+</ul>
+</li>
+<li><a href="#四路由选择">（四）路由选择</a></li>
+</ul>
+</li>
+<li><a href="#三-代码实现quagga中的bgp协议">三、代码实现——quagga中的BGP协议</a><ul>
+<li><a href="#一结构">（一）结构</a><ul>
+<li><a href="#1struct-bgp">1.struct bgp</a></li>
+<li><a href="#2-路由表存储">2. 路由表存储</a></li>
+<li><a href="#3路由表修改">3.路由表修改</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+<a id="more"></a>
 <h2 id="一-bgp协议概述"><a href="#一、BGP协议概述" class="headerlink" title="一、BGP协议概述"></a>一、BGP协议概述</h2><h3 id="一bgp协议"><a href="#（一）BGP协议" class="headerlink" title="（一）BGP协议"></a>（一）BGP协议</h3><p>边界网关协议(<em>Border Gateway Protocol,BGP</em>)是现在使用最为广泛的外部网关协议。目前有三个主要的修订版本。现在通用的标准版本为第四版，缩写为<em>BGP-4</em>。由于长时间其标准都没改变，所以一般术语BGP都是直接指版本4的BGP协议。</p>
 <h3 id="二bgp基本特性"><a href="#（二）BGP基本特性" class="headerlink" title="（二）BGP基本特性"></a>（二）BGP基本特性</h3><ul>
 <li>自治系统之间路由：协议在自治系统层次上提供路由信息，即所有路径都可以作为自治系统的通路。</li>

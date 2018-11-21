@@ -4,6 +4,510 @@
   
     
     <entry>
+      <title><![CDATA[bgp概述]]></title>
+      <url>http://penguin858.com/2018/11/21/bgp%E6%A6%82%E8%BF%B0/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><!--toc-->
+<h2 id="一-bgp协议概述"><a href="#一、BGP协议概述" class="headerlink" title="一、BGP协议概述"></a>一、BGP协议概述</h2><h3 id="一bgp协议"><a href="#（一）BGP协议" class="headerlink" title="（一）BGP协议"></a>（一）BGP协议</h3><p>边界网关协议(<em>Border Gateway Protocol,BGP</em>)是现在使用最为广泛的外部网关协议。目前有三个主要的修订版本。现在通用的标准版本为第四版，缩写为<em>BGP-4</em>。由于长时间其标准都没改变，所以一般术语BGP都是直接指版本4的BGP协议。</p>
+<h3 id="二bgp基本特性"><a href="#（二）BGP基本特性" class="headerlink" title="（二）BGP基本特性"></a>（二）BGP基本特性</h3><ul>
+<li>自治系统之间路由：协议在自治系统层次上提供路由信息，即所有路径都可以作为自治系统的通路。</li>
+<li>规定政策性条款：BGP允许发送者和接受者强加一些约束，例如管理员可以通过配置BGP限制哪些路径可以通告到网络外部。</li>
+<li>中转路由设施：可以自主的规定网络系统是否允许某个业务流通过本系统转送到另一个自治系统。（中转系统^transit&emsp;system 与残存系统^stub&emsp;system ）</li>
+<li>可靠性：使用TCP保证数据传输正确性。</li>
+</ul>
+<h3 id="三路由选择算法"><a href="#（三）路由选择算法" class="headerlink" title="（三）路由选择算法"></a>（三）路由选择算法</h3><h4 id="1距离向量算法distance-vectordv"><a href="#1-距离向量算法（Distance-Vector，DV）" class="headerlink" title="1.距离向量算法（Distance-Vector，DV）"></a>1.距离向量算法（Distance-Vector，DV）</h4><h5 id="1算法内容"><a href="#（1）算法内容" class="headerlink" title="（1）算法内容"></a>（1）算法内容</h5><p>DV算法有以下特点：</p>
+<ul>
+<li>分布式：每个节点都要从一个或多个直接相连的邻居接受某些信息，执行计算，然后还要把结果分发给邻居。</li>
+<li>迭代的：计算过程要持续到邻居之间无更多信息要交换为止。</li>
+<li>异步的：不要求节点同步操作</li>
+</ul>
+<p>算法由每个节点x维护一个自身的距离向量Dx<br>每个节点x执行以下算法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">Begin </div><div class="line">	初始化：</div><div class="line">		 对每个N中的节点y 	        </div><div class="line">		 	 Dx(y) = c(x,y) </div><div class="line">		 /* if y is not a neighbor then c(x,y) = max */  	    </div><div class="line">		 对每个y的邻居w</div><div class="line">		    把距离向量Dx= [Dx[y]: y in N]发送给w</div><div class="line">		    </div><div class="line">	while(true): </div><div class="line">	    wait (直到x发现到某个节点w的边权改变或者收到从邻居w发来的距离向量)  </div><div class="line">	    对N中的每个节点y  </div><div class="line">	        Dx(y) = min v&#123;c(x,v) + Dv(y)&#125;  </div><div class="line">	    if 对某个节点y，Dx(y) 发生了改变：</div><div class="line">	        把距离向量Dx = [Dx(y) : y in N]发送给所有邻居</div><div class="line"></div><div class="line">End</div></pre></td></tr></table></figure></p>
+<h5 id="2无穷计数"><a href="#（2）无穷计数" class="headerlink" title="（2）无穷计数"></a>（2）无穷计数</h5><p>考虑以下简单例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">          y</div><div class="line">        ／  \</div><div class="line">60&lt;--4 ／    \  1</div><div class="line">      ／  50  \</div><div class="line">     x—————————z</div></pre></td></tr></table></figure>
+<p>我们考虑该例子中链路费用改变前后的距离向量：<br>改变前，Dy(x) = 4,Dy(z) = 1, Dz(y) = 1,Dz(x) = 5。链路费用发生改变后，算法检测到该变化，重新计算得到<br>Dy(x) = min{c(y,x)+Dx(x),c(y,z) + Dz(x)} = min{60+0,1+5} = 6<br>然后y把这个距离向量告诉z，计算出Dz(x) = min{50+0,1+6} = 7。类似再传递给x，Dx(y) = 8。<br>也就是说要经过44次迭代才能够得到z发现经由y的路径费用大于50。<br>这种情况下链路费用增加的坏消息传递的很慢，有时这种现象被称为<em>无穷计数</em>(<em>count-to-infinity</em>)。</p>
+<p>解决方案：<em>毒性反转</em>（<em>poisoned-reverse</em>）：如果z通过y到大目的地x，则z将跟y说Dz(x)= ∞。这样y在迭代的时候就因为这个“善意的谎言”避免的上述问题。</p>
+<h4 id="2层次路由选择算法"><a href="#2-层次路由选择算法" class="headerlink" title="2.层次路由选择算法"></a>2.层次路由选择算法</h4><h5 id="1自治系统asautonomous-system"><a href="#（1）自治系统AS（Autonomous-System）" class="headerlink" title="（1）自治系统AS（Autonomous System）"></a>（1）自治系统AS（Autonomous System）</h5><p>提出原因：</p>
+<ul>
+<li>规模：当今的公共因特网由数亿台主机组成，在这些主机中存储路由选择信息的开销十分巨大。同时设计路由选择信息的计算、存储以及通信带来的开销将变得无法估计。</li>
+<li>管理自治：需要满足网络使用者能够按照自己的愿望运行和管理网络</li>
+</ul>
+<p>由此我们将路由器组织成为AS。每个AS由一组通常处于相同管理控制下的路由器组成，在同一个AS中的路由器全部运行同样的路由选择算法（这种在一个自治系统内运行的路由选择算法叫做<em>自治系统内部路由选择协议</em>(<em>intra-autonomous system routing protocol</em>)），并且拥有彼此的信息。这个AS内中的一个或多个路由器用来和其他的AS互联，负责向其他AS转发分组，这些路由器被称为<em>网关路由器</em>（<em>gateway router</em>）</p>
+<p>为了完成AS之间的通讯，一个AS的网关路由器需要：</p>
+<ul>
+<li>经过相邻AS可达哪些AS</li>
+<li>向AS内的路由器传播这些可达性信息，这样内部路由器可以配置转发表决定将数据转发给哪个网关</li>
+</ul>
+<p>BGP就是一个完成上述任务的<em>自治系统间路由选择协议</em>（<em>inter-autonomous system routing protocol</em>）</p>
+<h3 id="四bgp协议"><a href="#（四）BGP协议" class="headerlink" title="（四）BGP协议"></a>（四）BGP协议</h3><h4 id="1bgp协议功能"><a href="#1-BGP协议功能" class="headerlink" title="1.BGP协议功能"></a>1.BGP协议功能</h4><p>BGP为每个AS提供：</p>
+<ul>
+<li>从相邻AS处获得所有子网可达性信息</li>
+<li>向本AS内部的所有路由器传播这些可达性信息</li>
+<li>基于可达性信息和AS策略，决定到达子网的“好”路由</li>
+</ul>
+<p>BGP让每个子网向因特网中其余的部分通告它的存在，使得他们不被隔离，相互互联。</p>
+<h4 id="2bgp重要概念"><a href="#2-bgp重要概念" class="headerlink" title="2.bgp重要概念"></a>2.bgp重要概念</h4><ul>
+<li>TCP端口号：默认179</li>
+<li><em>BGP对等方</em>（<em>BGP peers</em>）：BGP TCP链接的双方</li>
+<li><em>BGP会话</em>（<em>BGP session</em>）：传输BGP报文的TCP链接。其中在两个AS间进行的会话称为<em>外部BGP会话</em>（<em>external BGP session</em>，<em>eBGP</em>），在一个AS内部进行的会话称为<em>内部BGP会话</em>（<em>internal BGP session</em>，<em>iBGP</em>）</li>
+<li>BGP协议中的“目的地”：不是某个host，而是CDIR化的前缀（一个子网）</li>
+<li><em>自治系统号</em>（<em>Autonomous System Number</em>，<em>ASN</em>）：BGP中用以标识某个AS的全局唯一号码。由ICANN地区注册机构分配。</li>
+<li><em>bgp speaker</em>：参与bgp协议的路由器</li>
+</ul>
+<h4 id="3bgp重要属性"><a href="#3-BGP重要属性" class="headerlink" title="3.BGP重要属性"></a>3.BGP重要属性</h4><p>BGP的属性分为四类：</p>
+<ol>
+<li>Well-known mandatory（公认必选）</li>
+<li>Well-known discretionary（公认自选）.</li>
+<li>Optional transitive.（可选可传递）</li>
+<li>Optional non-transitive.（可选不可传递）</li>
+</ol>
+<h5 id="0origin"><a href="#（0）ORIGIN" class="headerlink" title="（0）ORIGIN"></a>（0）ORIGIN</h5><p>该属性属于第一类。在路由器之间建立BGP邻居之后，邻居之间只能相互传递BGP路由表中的路由，在初始状态下，BGP的路由表为空，没有任何路由，要让BGP传递相应的路由，只能先将该路由导入BGP路由表，之后才能在BGP邻居之间传递。默认情况下，任何路由都不会自动进入BGP路由表，只能手工导入或者由其他特殊途径得到，而这一添加路由的方式就记录在<code>ORIGIN</code>属性中。总共有三种方式：</p>
+<ul>
+<li>从IGP获得（手工导入，指定掩码）</li>
+<li>从EGP获得</li>
+<li>路由重分布</li>
+</ul>
+<h5 id="1as-path"><a href="#（1）AS-PATH" class="headerlink" title="（1）AS-PATH"></a>（1）AS-PATH</h5><p>该属性属于第一类。它包含了通告已经经过的AS信息。BGP的路由可能会从一个AS发往另外一个AS，从而穿越多个AS。但是由于运行BGP的网络会是一个很大的网络，路由从一个AS被发出，可能在经过转发之后，又回到了最初的AS之中，最终形成路由环路（上述已经分析过这样的环路形成的后果），所以出于防止环路的目的考虑，BGP协议要求在<code>AS-PATH</code>属性中记录这个通告所经过的AS的ASN。注意，BGP只有在将路由发给eBGP时，才会在AS-path中添加自己的ASN，而在发给iBGP时，是不会添加ASN的，因为iBGP邻居在同一个AS中，即使要添加，ASN全是一样的，所以没有必要。</p>
+<h5 id="2next-hop"><a href="#（2）NEXT-HOP" class="headerlink" title="（2）NEXT-HOP"></a>（2）NEXT-HOP</h5><p>该属性也属于第一类。属性的含义为BGP将数据包发往目的地的下一跳，而BGP路由的下一跳，就是BGP建立邻居时的地址，也是BGP之间建立TCP连接所使用的地址。因为这个地址可以是路由器上任意接口的地址，是要能通信即可（其连通性由IGP提供保证），所以BGP在将数据包发往下一跳时，通常需要采用递归查询在IGP路由表中查询该下一跳地址。默认情况下，一台BGP路由器将路由传递给eBGP邻居时，会将Next-hop属性改为自己的地址，也就是和对方建立邻居<br>所使用的地址，而在将路由传递给iBGP邻居时，不会改变Next-hop属性。</p>
+<p>对于将路由传递给BGP邻居时，是否改变Next-hop属性的功能，可以自由关闭或启用。</p>
+<p>BGP路由表中由本地产生路由，所以本地发起路由的Next-hop属性都为0.0.0.0。</p>
+<h5 id="3local-pref"><a href="#（3）LOCAL-PREF" class="headerlink" title="（3）LOCAL-PREF"></a>（3）LOCAL-PREF</h5><p>Local_Pref称为本地优先级，其中的（Local）本地就是指本AS，或AS内的意思，所以可以想象得出，<br>Local_Pref属性的传递范围，只在同一个AS内有效，一条路由的Local_Pref属性只能在同一AS内部传递，出了<br>AS后就会被还原成默认值。</p>
+<p>Local_Pref属性在BGP邻居之间是自动传递的，只有在将路由发给iBGP时才会传递，而在发给eBGP时，是没有<br>Local_Pref值的，一条路由的Local_Pref属性在一个AS内的所有BGP路由器上是完全相同的。Local_Pref的默<br>认值为100，由此可以看出，一条路由在AS内的所有路由器上默认值为100。</p>
+<p>本地优先级属性是用于区分到同一目的地的各个路由优先程度的。本地优先级越高，路由优先级越高。默认值<br>为100。</p>
+<p>当BGP路由表中到达同一目的地存在多条路径时，会比较Local_Pref值的大小，Local_Pref值大的会被选为最<br>优路径。</p>
+<p>Local_Pref值可以被随意修改，修改后将在整个AS内传递，所以推荐使用Local_Pref属性来控制一个AS的路由<br>器去往目的地在其它AS的路径</p>
+<h5 id="4-multi_exit_discmed可选不可传递属性"><a href="#（4）-MULTI-EXIT-DISC（MED，可选不可传递属性）" class="headerlink" title="（4） MULTI_EXIT_DISC（MED，可选不可传递属性）"></a>（4） MULTI_EXIT_DISC（MED，可选不可传递属性）</h5><p>MED就是BGP路由中的metric，是被设计用来影响在多个下一跳都为eBGP邻居时，如何选择最优路径，因为在多<br>个下一跳都为iBGP时，是建议使用修改Local_Pref属性来影响选路的，而多个下一跳都为eBGP时，则使用MED。<br>MED是BGP路由的metric，所以多条路径中拥有最小MED值的路径会被优先使用。MED默认值为0。</p>
+<p>Local_Pref属性只在同一个AS内部传递，而MED只能在AS之间传递，只有在将路由发给eBGP邻居时，才会传递<br>MED，在发给iBGP时，是不会传递MED的。当一条路由被设置MED值后传递给eBGP邻居，在eBGP邻居收到后，如<br>果将该路由继续传递给iBGP邻居，那么这个值会被还原为默认值0，也就是说同一个AS内，所有发给iBGP邻居<br>的路由的MED值都为0，这是为了让所有AS内部路由器都能够拥有相同的选路结果</p>
+<p>MED值也是可以随意修改的。</p>
+<h2 id="二-bgp-4-rfc描述"><a href="#二、BGP-4-rfc描述" class="headerlink" title="二、BGP-4-rfc描述"></a>二、BGP-4-rfc描述</h2><h3 id="一bgp概述"><a href="#（一）BGP概述" class="headerlink" title="（一）BGP概述"></a>（一）BGP概述</h3><p>BGP协议是建立在以前的EGP协议的经验之上的。BGP协议的作用就是在BGP系统之间进行可达性信息的交换。这些可达性信息可以绘制AS之间的联通关系，并且避免路由循环，从而让AS能够在自己的层次上执行相应的协议。<br>这些路由信息只能是基于目的地的转发形式（即路由器转发一个包的方式仅仅根据其ip数据包的包头信息确定）。<br>BGP-4协议扩展了CIDR，包括IP前缀对应的子网信息。<br>BGP使用TCP作为传输协议。TCP链接建立在两个AS之间。<br>初始数据流是是根据Adj-Ribs-Out确定的BGP路由表，数据的更新以路由表更新的形式发送出来，不过协议并不要求周期性的刷新路由表。<br>AS需要周期性的发送<code>KEEPALIVE</code>信息来确保链接。<code>NOTIFICATION</code>消息用来响应错误或用在特定的条件下。<br>BGP协议由两部分组成：EBGP（外部路由器之前）和IBGP（内部路由器之间）</p>
+<h3 id="二routing-information-bases"><a href="#（二）Routing-Information-Bases" class="headerlink" title="（二）Routing Information Bases"></a>（二）Routing Information Bases</h3><p>BGP协议的路由存储在<em>Routing Information Bases</em>(<em>RIBs</em>)中，其所包括的三个域如下：</p>
+<ul>
+<li>Adj-RIBs-In：从邻居处获得的路由信息，用来对路由选择提供信息。</li>
+<li>Loc-RIB：本地路由信息，是根据Adj-RIBs-In生成的。这个部分的信息是本地的路由器使用的。</li>
+<li>Adj-RIBs-Out：用来广播的部分</li>
+</ul>
+<p>实现并不需要完全符合这个要求</p>
+<h3 id="三信息格式"><a href="#（三）信息格式" class="headerlink" title="（三）信息格式"></a>（三）信息格式</h3><h4 id="1bgp报头"><a href="#1-BGP报头" class="headerlink" title="1.BGP报头"></a>1.BGP报头</h4><p>报头由三部分组成：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Marker</th>
+<th>Length</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>16bytes</td>
+<td>2bytes</td>
+<td>1byte</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>Marker: 16字节，全部为1，标识bgp边界</li>
+<li>Length：2字节，表示数据包长度，包括头部本身在内</li>
+<li><p>Type：1字节，使用无符号整型来表示类型。包括四类：</p>
+<pre><code>  1 - OPEN
+  2 - UPDATE
+  3 - NOTIFICATION
+  4 - KEEPALIVE
+</code></pre></li>
+</ul>
+<h4 id="2open类型报文格式"><a href="#2-OPEN类型报文格式" class="headerlink" title="2.OPEN类型报文格式"></a>2.OPEN类型报文格式</h4><p>OPEN类型报文是在BGP TCP链接创建时首个发送的报文。在OPEN报文被接收后，链接的维持由KEEPALIVE报文发送。</p>
+<p>格式如下：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>My Autonomous System</th>
+<th>Hold Time</th>
+<th>BGP Identifier</th>
+<th>Opt Parm Len</th>
+<th>Optional Parameters (variable)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1byte</td>
+<td>2bytes</td>
+<td>2bytes</td>
+<td>4bytes</td>
+<td>1bytes</td>
+<td>根据前一个字节的值觉得</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>version：bgp版本号。当前版本号为4.</li>
+<li>My Autonomous System：该域表明了报文创建者的ASN</li>
+<li>hold time: 发送者希望链接维持的时间（不接受到新的报文断开链接的时间界）。注意接受者不一定会真的维持这个时间，它会选择发送方的holdtime和自己预设值中间的较小值。报文中该字段的值要么是0，要么至少是三秒。某些值甚至会导致某些实现直接拒绝链接。</li>
+<li>BGP Identifier：发送者的BGP标识，通常是分配给该BGP speaker的一个IP地址。</li>
+<li><p>Optional parameter length：可选参数的长度。0表示没有参数</p>
+</li>
+<li><p>Optional Parameters：</p>
+</li>
+</ul>
+<p>每个参数的形式如下：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>para type</th>
+<th>para length</th>
+<th>para value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1byte</td>
+<td>1byte</td>
+<td>看para length的值</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="3update类型报文格式"><a href="#3-UPDATE类型报文格式" class="headerlink" title="3.UPDATE类型报文格式"></a>3.UPDATE类型报文格式</h4><p>UPDATE类型的报文用来进行路由信息交换。</p>
+<p>报文格式如下：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Withdrawn Routes Length</th>
+<th>Withdrawn Routes</th>
+<th>Total Path Attribute Length</th>
+<th>Path Attributes</th>
+<th>Network Layer Reachability Information</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2bytes</td>
+<td>根据前一属性</td>
+<td>2bytes</td>
+<td>根据前一属性</td>
+<td>可变，下文说明</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>Withdrawn Routes Length：withdrawn routes有多长。为0时代表withdrawn routes域不存在。</li>
+<li><p>Withdrawn Routes：这个域包括了一系列不再可用IP地址前缀。这些地址前缀用二元组的形式编码</p>
+<p>  length | prefix<br>  ———- | ———-<br>  1byte | 根据前一属性</p>
+<p>  length域表示prefix占用的比特（bit）数。prefix需填充满一个字节。</p>
+</li>
+<li><p>Total Path Attribute Length：Path Attribute routes有多长。为0时代表Path Attribute域不存在。</p>
+</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>attribute type</th>
+<th>attribute length</th>
+<th>attribute value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2bytes</td>
+<td>根据attribute.flags的某一位确定</td>
+<td>根据前项确定</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>attribute type的组成：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>attr.Flags</th>
+<th>attr.Type Code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1byte</td>
+<td>1byte</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>attr.Flags各个比特的意义（由高位到低位）：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>bit</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1表示这个属性是可选的，0表示公认的</td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td>1表示这个属性是可传递的，0表示不可传递（公认属性该位强制为1）</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>1表示这个属性的信息是待补全的，0表示完整（公认属性和不可传递属性强制设为0）</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>扩展长度位。1表示attribute length为2字节，0表示为1字节</td>
+<td></td>
+</tr>
+<tr>
+<td>4～7</td>
+<td>暂时未使用。强制为0。</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>下表展示了目前已经定义的属性类型：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>attribute</th>
+<th>类型</th>
+<th>code</th>
+<th>length</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ORIGIN</td>
+<td>必选</td>
+<td>1</td>
+<td>1byte</td>
+<td></td>
+</tr>
+<tr>
+<td>AS_PATH</td>
+<td>必选</td>
+<td>2</td>
+<td>可变</td>
+<td></td>
+</tr>
+<tr>
+<td>NEXT_HOP</td>
+<td>必选</td>
+<td>3</td>
+<td>4bytes(?存疑)</td>
+<td></td>
+</tr>
+<tr>
+<td>MULTI_EXIT_DISC</td>
+<td>可选不可传递</td>
+<td>4</td>
+<td>4bytes</td>
+<td></td>
+</tr>
+<tr>
+<td>LOCAL_PREF</td>
+<td>必选（Update中）</td>
+<td>5</td>
+<td>4bytes</td>
+<td></td>
+</tr>
+<tr>
+<td>ATOMIC_AGGREGATE</td>
+<td>公认自选</td>
+<td>6</td>
+<td>0（没有长度）</td>
+<td></td>
+</tr>
+<tr>
+<td>AGGREGATOR</td>
+<td>可选可传递</td>
+<td>7</td>
+<td>6bytes</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>属性的对应含义和实现方式如下表所示：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>attribute</th>
+<th>实现方式</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ORIGIN</td>
+<td><br>0:IGP<br>1:EGP<br>2:INCOMPLETE(即除IGP、EGP以外其它方式)</td>
+<td>该属性表明了路径信息的来源，优先选择具有较小ORIGIN的路由。</td>
+<td></td>
+</tr>
+<tr>
+<td>AS_PATH</td>
+<td>每段的结构：\<path segment="" type(1byte),="" path="" length(1byte),="" value(2bytes="" per="" as)=""></path><br>type段有两种取值：<br>&emsp;1:AS_SET-信息内的AS是无序的。<br>&emsp;2:AS_SEQUENCE-信息内的AS是有序的。<br>length段的整数表示value段内有多少个AS<br>value段每个AS占用两个字节，存放其ASN。</td>
+<td>包含了通告已经经过的AS信息。具体变更方法：<br>&emsp;a)当bgp speaker向内部路由器广播时，中介路由器不应该修改这个属性<br>&emsp;b)当bgpspeaker向外部路由器广播，中介路由器需要向这个属性添加数据，当首个AS_PATH段的type为AS_SEQUENCE时需要将中介自身的ASN添加到value的尾部（溢出的话必须新建一个类型为AS_SEQUENCE的AS_PATH段并将自身ASN添加到其中；当首个AS_PATH段的type是AS_SET时，新建一个类型为AS_SEQUENCE的AS_PATH段并将自身ASN添加进去；当不存在时，创建一个类型为AS_SEQUENCE的AS_PATH段并将自身ASN添加进去。<br>创建方法：<br>&emsp;a)在向外部路由发送的报文中，创建者把自身的ASN以类型AS_SEQUENCE放在首歌AS_PATH属性内<br>&emsp;b)在向内部路由发送报文时，创建者奖AS_PATH段设为空。</td>
+<td></td>
+</tr>
+<tr>
+<td>NEXT_HOP</td>
+<td>存放IP地址</td>
+<td>保存下一跳信息。<br>&emsp;a)在向内部路由发送报文时,如果不是报文的产生者，则该路由器不能对该属性进行修改（除非被显式的要求设置该字段为自身的IP；创建者则需要把一个可达的中介路由器地址写在该字段中，特殊情况是报文的终点就是内部路由，此时该字段填写的是创建者的IP地址。<br>&emsp;在向外部路由器发送报文时，有如下情况：<br>&emsp;&emsp;(i)路由来自内部邻居或是自己产生的：采用路由实际来源地址。<br>&emsp;&emsp;(ii)路由来自外部且来源和目标不处于同一网段：采用自己对应端口的地址。<br>&emsp;&emsp;(iii)路由来自外部且和目标处于同一网段（网络可以多路访问）</td>
+<td></td>
+</tr>
+<tr>
+<td>MULTI_EXIT_DISC</td>
+<td>用来区分同一个AS节点发出的路由信息的优先级，一般来说，该值较低的路径应该被优先选择</td>
+<td>实现时从相邻AS获得的该属性信息不能被传播给其他的相邻AS。（详见路由选择部分）</td>
+<td></td>
+</tr>
+<tr>
+<td>LOCAL_PREF</td>
+<td>计算得出</td>
+<td>不能被传播给其他的AS，只在IBGP内部传播。（详见路由选择部分）</td>
+<td></td>
+</tr>
+<tr>
+<td>ATOMIC_AGGREGATE</td>
+<td>只看报文是否包含这个属性</td>
+<td>用来通告路由接收者，该路由是经过聚合的。有时BGP发布者会收到两条重叠的路由，其中一条路由包含的地址是另一条路由的子集。一般情况下BGP发布者会优选更精细的路由（前者），但是在对外发布时，如果它选择发布更粗略的那条路由（后者），这时需要附加上ATOMIC-AGGREGATE属性，以知会对等体。它实际上是一种警告，因为发布更粗略的路由意味着更精细的路由信息在发布过程中丢失了。</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>Network Layer Reachability Information：这个部分的长度并没有显式的声明，而是需要通过计算得到：UPDATE报文总长度 - 23（固定域总长度）- Total Path Attribute Length - Withdrawn Routes Length。</li>
+</ul>
+<p>可达性信息采用了二元组的形式描述：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>length</th>
+<th>prefix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1byte</td>
+<td>\</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>length表示前缀的比特数。当length为0时表示一个与所有ip地址匹配的前缀。<br>前缀需填充满一个字节。</p>
+<h4 id="4keepalive报文格式"><a href="#4-KEEPALIVE报文格式" class="headerlink" title="4.KEEPALIVE报文格式"></a>4.KEEPALIVE报文格式</h4><p>KEEPALIVE报文仅仅包含BGP报文头部。<br>注意KEEPALIVE报文发送不能超过1个/s.</p>
+<h4 id="5notification报文格式"><a href="#5-NOTIFICATION报文格式" class="headerlink" title="5.NOTIFICATION报文格式"></a>5.NOTIFICATION报文格式</h4><p>NOTIFICATION报文用于通知错误信息，发送NOTIFICATION报文后BGP TCP链接会立即终止。</p>
+<p>报文格式如下：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Error code</th>
+<th>Error subcode</th>
+<th>Data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1byte</td>
+<td>1byte</td>
+<td>根据前两者确定</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>Error Code：目前已经定义的有如下类型</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Error Code</th>
+<th>Symbolic Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Message Header Error </td>
+</tr>
+<tr>
+<td>2</td>
+<td>OPEN Message Error     </td>
+</tr>
+<tr>
+<td>3</td>
+<td>UPDATE Message Error</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Hold Timer Expired</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Finite State Machine Error</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Cease</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>另外两个字段不详述，参见<a href="https://tools.ietf.org/html/rfc4271#section-4.5">[rfc_4271 4.5]</a></p>
+<h3 id="四路由选择"><a href="#（四）路由选择" class="headerlink" title="（四）路由选择"></a>（四）路由选择</h3><p>三条准则：</p>
+<ul>
+<li>1.计算每条路由的深度（长度）</li>
+<li>2.在1的基础上</li>
+</ul>
+<h2 id="三-代码实现quagga中的bgp协议"><a href="#三、代码实现——quagga中的BGP协议" class="headerlink" title="三、代码实现——quagga中的BGP协议"></a>三、代码实现——quagga中的BGP协议</h2><p>quegga是一个优秀的网络模拟软件，下面以该软件讲述如何实现BGP协议。</p>
+<h3 id="一结构"><a href="#（一）结构" class="headerlink" title="（一）结构"></a>（一）结构</h3><h4 id="1struct-bgp"><a href="#1-struct-bgp" class="headerlink" title="1.struct bgp"></a>1.struct bgp</h4><p>结构体定义在<code>bgpd/bgpd.h</code>中，该结构体定义了一个bgp对象所需要的信息，包括ASN、访问锁、bgp peer、各种类型的路由信息。其中锁的作用是避免在删除bgp peer时出现冲突。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div></pre></td><td class="code"><pre><div class="line">/* BGP instance structure.  */</div><div class="line">struct bgp </div><div class="line">&#123;</div><div class="line">  /* AS number of this BGP instance.  */</div><div class="line">  as_t as;</div><div class="line"></div><div class="line">  /* Name of this BGP instance.  */</div><div class="line">  char *name;</div><div class="line">  </div><div class="line">  /* Reference count to allow peer_delete to finish after bgp_delete */</div><div class="line">  int lock;</div><div class="line"></div><div class="line">  /* Self peer.  */</div><div class="line">  struct peer *peer_self;</div><div class="line"></div><div class="line">  /* BGP peer. */</div><div class="line">  struct list *peer;</div><div class="line"></div><div class="line">  /* BGP peer group.  */</div><div class="line">  struct list *group;</div><div class="line"></div><div class="line">  /* BGP route-server-clients. */</div><div class="line">  struct list *rsclient;</div><div class="line"></div><div class="line">  /* BGP configuration.  */</div><div class="line">  u_int16_t config;</div><div class="line">#define BGP_CONFIG_ROUTER_ID              (1 &lt;&lt; 0)</div><div class="line">#define BGP_CONFIG_CLUSTER_ID             (1 &lt;&lt; 1)</div><div class="line">#define BGP_CONFIG_CONFEDERATION          (1 &lt;&lt; 2)</div><div class="line"></div><div class="line">  /* BGP router identifier.  */</div><div class="line">  struct in_addr router_id;</div><div class="line">  struct in_addr router_id_static;</div><div class="line"></div><div class="line">  /* BGP route reflector cluster ID.  */</div><div class="line">  struct in_addr cluster_id;</div><div class="line"></div><div class="line">  /* BGP confederation information.  */</div><div class="line">  as_t confed_id;</div><div class="line">  as_t *confed_peers;</div><div class="line">  int confed_peers_cnt;</div><div class="line"></div><div class="line">  struct thread *t_startup;</div><div class="line"></div><div class="line">  /* BGP flags. */</div><div class="line">  u_int32_t flags;</div><div class="line">#define BGP_FLAG_ALWAYS_COMPARE_MED       (1 &lt;&lt; 0)</div><div class="line">#define BGP_FLAG_DETERMINISTIC_MED        (1 &lt;&lt; 1)</div><div class="line">#define BGP_FLAG_MED_MISSING_AS_WORST     (1 &lt;&lt; 2)</div><div class="line">#define BGP_FLAG_MED_CONFED               (1 &lt;&lt; 3)</div><div class="line">#define BGP_FLAG_NO_DEFAULT_IPV4          (1 &lt;&lt; 4)</div><div class="line">#define BGP_FLAG_NO_CLIENT_TO_CLIENT      (1 &lt;&lt; 5)</div><div class="line">#define BGP_FLAG_ENFORCE_FIRST_AS         (1 &lt;&lt; 6)</div><div class="line">#define BGP_FLAG_COMPARE_ROUTER_ID        (1 &lt;&lt; 7)</div><div class="line">#define BGP_FLAG_ASPATH_IGNORE            (1 &lt;&lt; 8)</div><div class="line">#define BGP_FLAG_IMPORT_CHECK             (1 &lt;&lt; 9)</div><div class="line">#define BGP_FLAG_NO_FAST_EXT_FAILOVER     (1 &lt;&lt; 10)</div><div class="line">#define BGP_FLAG_LOG_NEIGHBOR_CHANGES     (1 &lt;&lt; 11)</div><div class="line">#define BGP_FLAG_GRACEFUL_RESTART         (1 &lt;&lt; 12)</div><div class="line">#define BGP_FLAG_ASPATH_CONFED            (1 &lt;&lt; 13)</div><div class="line">#define BGP_FLAG_ASPATH_MULTIPATH_RELAX   (1 &lt;&lt; 14)</div><div class="line">#define BGP_FLAG_DELETING                 (1 &lt;&lt; 15)</div><div class="line">#define BGP_FLAG_RR_ALLOW_OUTBOUND_POLICY (1 &lt;&lt; 16)</div><div class="line"></div><div class="line">  /* BGP Per AF flags */</div><div class="line">  u_int16_t af_flags[AFI_MAX][SAFI_MAX];</div><div class="line">#define BGP_CONFIG_DAMPENING              (1 &lt;&lt; 0)</div><div class="line"></div><div class="line">  /* Static route configuration.  */</div><div class="line">  struct bgp_table *route[AFI_MAX][SAFI_MAX];</div><div class="line"></div><div class="line">  /* Aggregate address configuration.  */</div><div class="line">  struct bgp_table *aggregate[AFI_MAX][SAFI_MAX];</div><div class="line"></div><div class="line">  /* BGP routing information base.  */</div><div class="line">  struct bgp_table *rib[AFI_MAX][SAFI_MAX];</div><div class="line"></div><div class="line">  /* BGP redistribute configuration. */</div><div class="line">  u_char redist[AFI_MAX][ZEBRA_ROUTE_MAX];</div><div class="line"></div><div class="line">  /* BGP redistribute metric configuration. */</div><div class="line">  u_char redist_metric_flag[AFI_MAX][ZEBRA_ROUTE_MAX];</div><div class="line">  u_int32_t redist_metric[AFI_MAX][ZEBRA_ROUTE_MAX];</div><div class="line"></div><div class="line">  /* BGP redistribute route-map.  */</div><div class="line">  struct</div><div class="line">  &#123;</div><div class="line">    char *name;</div><div class="line">    struct route_map *map;</div><div class="line">  &#125; rmap[AFI_MAX][ZEBRA_ROUTE_MAX];</div><div class="line"></div><div class="line">  /* BGP distance configuration.  */</div><div class="line">  u_char distance_ebgp;</div><div class="line">  u_char distance_ibgp;</div><div class="line">  u_char distance_local;</div><div class="line"></div><div class="line">  /* BGP ipv6 distance configuration.  */</div><div class="line">  u_char ipv6_distance_ebgp;</div><div class="line">  u_char ipv6_distance_ibgp;</div><div class="line">  u_char ipv6_distance_local;</div><div class="line">  </div><div class="line">  /* BGP default local-preference.  */</div><div class="line">  u_int32_t default_local_pref;</div><div class="line"></div><div class="line">  /* BGP default timer.  */</div><div class="line">  u_int32_t default_holdtime;</div><div class="line">  u_int32_t default_keepalive;</div><div class="line"></div><div class="line">  /* BGP graceful restart */</div><div class="line">  u_int32_t restart_time;</div><div class="line">  u_int32_t stalepath_time;</div><div class="line"></div><div class="line">  /* Maximum-paths configuration */</div><div class="line">  struct bgp_maxpaths_cfg &#123;</div><div class="line">    u_int16_t maxpaths_ebgp;</div><div class="line">    u_int16_t maxpaths_ibgp;</div><div class="line">  &#125; maxpaths[AFI_MAX][SAFI_MAX];</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h4 id="2-路由表存储"><a href="#2-路由表存储" class="headerlink" title="2. 路由表存储"></a>2. 路由表存储</h4><p><code>route_table</code>结构体如下。这是整个路由表最上层的结构。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* Routing table top structure. */</span></div><div class="line"><span class="keyword">struct</span> route_table</div><div class="line">&#123;</div><div class="line">  <span class="keyword">struct</span> route_node *top;</div><div class="line"></div><div class="line">  <span class="comment">/*</span></div><div class="line">   * Delegate that performs certain functions for this table.</div><div class="line">   */</div><div class="line">  <span class="keyword">route_table_delegate_t</span> *delegate;</div><div class="line">  </div><div class="line">  <span class="keyword">unsigned</span> <span class="keyword">long</span> count;</div><div class="line">  </div><div class="line">  <span class="comment">/*</span></div><div class="line">   * User data.</div><div class="line">   */</div><div class="line">  <span class="keyword">void</span> *info;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>其中委托的结构如下：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> route_table_delegate_t_ <span class="keyword">route_table_delegate_t</span>;</div><div class="line">···</div><div class="line"><span class="keyword">struct</span> route_table_delegate_t_ </div><div class="line">&#123;</div><div class="line">  <span class="keyword">route_table_create_node_func_t</span> create_node;</div><div class="line">  <span class="keyword">route_table_destroy_node_func_t</span> destroy_node;</div><div class="line">&#125;;</div><div class="line"><span class="comment">/*</span></div><div class="line"> * Default delegate.</div><div class="line"> */</div><div class="line"><span class="keyword">static</span> <span class="keyword">route_table_delegate_t</span> default_delegate = &#123;</div><div class="line">  .create_node = route_node_create,</div><div class="line">  .destroy_node = route_node_destroy</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>委托中保存了清除节点和创建节点的函数。</p>
+<p>再来看<code>route_node</code>：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">define</span> ROUTE_NODE_FIELDS			\</span></div><div class="line">  <span class="comment">/* Actual prefix of this radix. */</span>		\</div><div class="line">  struct prefix p;				\</div><div class="line">						\</div><div class="line">  <span class="comment">/* Tree link. */</span>				\</div><div class="line">  struct route_table *table;			\</div><div class="line">  struct route_node *parent;			\</div><div class="line">  struct route_node *link[2];			\</div><div class="line">						\</div><div class="line">  <span class="comment">/* Lock of this radix */</span>			\</div><div class="line">  unsigned int lock;				\</div><div class="line">						\</div><div class="line">  <span class="comment">/* Each node of route. */</span>			\</div><div class="line">  void *info;					\</div><div class="line">						\</div><div class="line">  <span class="comment">/* Aggregation. */</span>				\</div><div class="line">  void *aggregate;</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">/* Each routing entry. */</span></div><div class="line"><span class="keyword">struct</span> route_node</div><div class="line">&#123;</div><div class="line">  ROUTE_NODE_FIELDS</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> l_left   link[0]</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> l_right  link[1]</span></div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>可以看到每个节点的信息都被完整的保存在了这个结构体中，其中最重要的信息就是节点的前缀。<br>整个route列表被组织成了二叉树，这样</p>
+<h4 id="3路由表修改"><a href="#3-路由表修改" class="headerlink" title="3.路由表修改"></a>3.路由表修改</h4><p>我们以删除一个节点为例参看quagga是如何修改这个数据结构的：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* Delete node from the routing table. */</span></div><div class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span></span></div><div class="line"><span class="title">route_node_delete</span> <span class="params">(<span class="keyword">struct</span> route_node *node)</span></div><div class="line">&#123;</div><div class="line">  <span class="keyword">struct</span> route_node *child;</div><div class="line">  <span class="keyword">struct</span> route_node *parent;</div><div class="line"></div><div class="line">  assert (node-&gt;lock == <span class="number">0</span>);</div><div class="line">  assert (node-&gt;info == <span class="literal">NULL</span>);</div><div class="line"></div><div class="line">  <span class="keyword">if</span> (node-&gt;l_left &amp;&amp; node-&gt;l_right)</div><div class="line">    <span class="keyword">return</span>;</div><div class="line"></div><div class="line">  <span class="keyword">if</span> (node-&gt;l_left)</div><div class="line">    child = node-&gt;l_left;</div><div class="line">  <span class="keyword">else</span></div><div class="line">    child = node-&gt;l_right;</div><div class="line"></div><div class="line">  parent = node-&gt;parent;</div><div class="line"></div><div class="line">  <span class="keyword">if</span> (child)</div><div class="line">    child-&gt;parent = parent;</div><div class="line"></div><div class="line">  <span class="keyword">if</span> (parent)</div><div class="line">    &#123;</div><div class="line">      <span class="keyword">if</span> (parent-&gt;l_left == node)</div><div class="line">	parent-&gt;l_left = child;</div><div class="line">      <span class="keyword">else</span></div><div class="line">	parent-&gt;l_right = child;</div><div class="line">    &#125;</div><div class="line">  <span class="keyword">else</span></div><div class="line">    node-&gt;table-&gt;top = child;</div><div class="line"></div><div class="line">  node-&gt;table-&gt;count--;</div><div class="line"></div><div class="line">  route_node_free (node-&gt;table, node);</div><div class="line"></div><div class="line">  <span class="comment">/* If parent node is stub then delete it also. */</span></div><div class="line">  <span class="keyword">if</span> (parent &amp;&amp; parent-&gt;lock == <span class="number">0</span>)</div><div class="line">    route_node_delete (parent);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>本质上就是二叉树节点的删除。</p>
+]]></content>
+      
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[wordpress学习]]></title>
+      <url>http://penguin858.com/2018/03/03/wordpress%E5%AD%A6%E4%B9%A0/</url>
+      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script>]]></content>
+      
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[nettools源码解析]]></title>
       <url>http://penguin858.com/2018/01/31/nettools%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/</url>
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><!-- toc -->
@@ -902,7 +1406,7 @@
 <p>这时可以通过输入以下命令解决：(为什么？)<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm <span class="keyword">install</span> hexo-deployer-git <span class="comment">--save</span></div></pre></td></tr></table></figure></p>
 <p>然后提交还是出错：<br><figure class="highlight basic"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">remote: Anonymous access to ***/***.github.io.git denied.</span></div></pre></td></tr></table></figure></p>
 <p>估计应该是ssh密钥没能匹配上，后来我重新设置了一下user.name和user.email就好了。</p>
-<h3 id="六-一些其他命令"><a href="#六、一些其他命令：" class="headerlink" title="六、一些其他命令："></a>六、一些其他命令：</h3><p>可以使用new创建新文章：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo <span class="keyword">new</span> <span class="string">"新文章的名字"</span></div></pre></td></tr></table></figure></p>
+<h3 id="六-一些其他命令"><a href="#六、一些其他命令：" class="headerlink" title="六、一些其他命令："></a>六、一些其他命令：</h3><p>可以使用new创建新文章：<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo <span class="keyword">new</span> <span class="string">"新文章的名字"</span></div></pre></td></tr></table></figure></p>
 ]]></content>
       
         <categories>
@@ -950,9 +1454,22 @@
     </entry>
     
     <entry>
-      <title><![CDATA[categories]]></title>
-      <url>http://penguin858.com/categories/index.html</url>
-      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script>]]></content>
+      <title><![CDATA[linuxTCP/IP协议栈]]></title>
+      <url>http://penguin858.com/linuxTCP:IP%E5%8D%8F%E8%AE%AE%E6%A0%88.html</url>
+      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h1 id="linuxtcpip协议栈"><a href="#linuxTCP-IP协议栈" class="headerlink" title="linuxTCP/IP协议栈"></a>linuxTCP/IP协议栈</h1><h2 id="一-基本的linux数据结构和术语"><a href="#一、基本的linux数据结构和术语" class="headerlink" title="一、基本的linux数据结构和术语"></a>一、基本的linux数据结构和术语</h2><h3 id="一链表结构"><a href="#（一）链表结构" class="headerlink" title="（一）链表结构"></a>（一）链表结构</h3><p>linux中的链表结构定义在<code>include/linux/list.h</code>中：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">struct</span> list_head &#123;</div><div class="line">	<span class="keyword">struct</span> list_head *next, *prev;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>要注意的是，这个链表数据结构 <em>没有数据域</em> 。开发者在需要将某种数据结构组织成链表的时候就会包含一个<code>struct list_head</code>成员。</p>
+<p>有一系列的宏被设计用来访问这个链表，最常用的<code>list_entry</code>：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">define</span> list_entry(prt,type,member) container_of(ptr,type,member)</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> container_of(ptr,type,member) (&#123; \</span></div><div class="line">	const typeof( ((type *) 0) -&gt;member) *__mptr = (ptr); \</div><div class="line">	(type *) ((char *) __mptr - offsetof(type,member) );&#125;)</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> offsetof(TYPE,MENBER) ((size_t) &amp; ((TYPE *) 0) -&gt; MENBER)</span></div></pre></td></tr></table></figure>
+<p><code>typeof</code>是GCC支持的运算，作用是获取变量的类型。 </p>
+<p>而另一种数据结构<code>hlist</code>是 <em>hash list</em> 的简称：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">struct</span> hlist_head &#123;</div><div class="line">	<span class="keyword">struct</span> hlist_node *first;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">struct</span> hlist_node &#123;</div><div class="line">	<span class="keyword">struct</span> hlist_node *next, **pprev;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="二linux系统初始化"><a href="#（二）linux系统初始化" class="headerlink" title="（二）linux系统初始化"></a>（二）linux系统初始化</h3><p>linux系统初始化最重要的代码为以下部分：</p>
+<ul>
+<li>4个汇编程序：<code>bootsect.S</code> <code>setup.S</code> <code>head.S</code> <code>entry.S</code></li>
+<li><code>init</code>目录下的<code>main.c</code></li>
+</ul>
+]]></content>
     </entry>
     
     <entry>
@@ -965,8 +1482,8 @@
     </entry>
     
     <entry>
-      <title><![CDATA[tags]]></title>
-      <url>http://penguin858.com/tags/index.html</url>
+      <title><![CDATA[categories]]></title>
+      <url>http://penguin858.com/categories/index.html</url>
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script>]]></content>
     </entry>
     
@@ -976,6 +1493,12 @@
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>Name: Xu Zeping<br><a href="https://github.com/penguin858">This is my github address</a></p>
 <p>Gmail: xuzeping858@gmail.com<br>QQ Email: 1363380773@qq.com</p>
 ]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[tags]]></title>
+      <url>http://penguin858.com/tags/index.html</url>
+      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script>]]></content>
     </entry>
     
   

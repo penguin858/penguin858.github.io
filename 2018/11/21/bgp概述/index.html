@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="Zeping&#39;s Home"/>
+        <meta property="og:title" content="bgp概述"/>
     
 
     <!--Open Graph Description-->
@@ -33,7 +33,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="article" />
     
 
     <!--Page Cover-->
@@ -44,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>Zeping&#39;s Home</title>
+    <title>bgp概述 - Zeping&#39;s Home</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
@@ -127,17 +127,14 @@
     <div class="logo">
         <a href="/"><i class="logo-icon fa fa-bolt" aria-hidden="true"></i></a>
         
-            <h1 id="main-title" class="title">Zeping's Home</h1>
-        
     </div>
 </header>
 
         <section class="main">
             
-                
 <div class="post">
 
-    <div class="post-header index">
+    <div class="post-header">
         <h1 class="title">
             <a href="/2018/11/21/bgp概述/">
                 bgp概述
@@ -147,16 +144,18 @@
             
                 <span class="date">2018-11-21</span>
             
-            
-                <a href="http://penguin858.com/2018/11/21/bgp概述/#disqus_thread" class="comments article-comment-link">留言</a>
-            
+            <a href="#disqus_thread" class="comments">留言</a>
             
         </div>
     </div>
 
-    
-        <div class="content">
-            <script src="/assets/js/APlayer.min.js"> </script><!--toc-->
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <script src="/assets/js/APlayer.min.js"> </script><!--toc-->
 <h2 id="一-bgp协议概述"><a href="#一、BGP协议概述" class="headerlink" title="一、BGP协议概述"></a>一、BGP协议概述</h2><h3 id="一bgp协议"><a href="#（一）BGP协议" class="headerlink" title="（一）BGP协议"></a>（一）BGP协议</h3><p>边界网关协议(<em>Border Gateway Protocol,BGP</em>)是现在使用最为广泛的外部网关协议。目前有三个主要的修订版本。现在通用的标准版本为第四版，缩写为<em>BGP-4</em>。由于长时间其标准都没改变，所以一般术语BGP都是直接指版本4的BGP协议。</p>
 <h3 id="二bgp基本特性"><a href="#（二）BGP基本特性" class="headerlink" title="（二）BGP基本特性"></a>（二）BGP基本特性</h3><ul>
 <li>自治系统之间路由：协议在自治系统层次上提供路由信息，即所有路径都可以作为自治系统的通路。</li>
@@ -645,148 +644,30 @@
 <h4 id="3路由表修改"><a href="#3-路由表修改" class="headerlink" title="3.路由表修改"></a>3.路由表修改</h4><p>我们以删除一个节点为例参看quagga是如何修改这个数据结构的：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* Delete node from the routing table. */</span></div><div class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span></span></div><div class="line"><span class="title">route_node_delete</span> <span class="params">(<span class="keyword">struct</span> route_node *node)</span></div><div class="line">&#123;</div><div class="line">  <span class="keyword">struct</span> route_node *child;</div><div class="line">  <span class="keyword">struct</span> route_node *parent;</div><div class="line"></div><div class="line">  assert (node-&gt;lock == <span class="number">0</span>);</div><div class="line">  assert (node-&gt;info == <span class="literal">NULL</span>);</div><div class="line"></div><div class="line">  <span class="keyword">if</span> (node-&gt;l_left &amp;&amp; node-&gt;l_right)</div><div class="line">    <span class="keyword">return</span>;</div><div class="line"></div><div class="line">  <span class="keyword">if</span> (node-&gt;l_left)</div><div class="line">    child = node-&gt;l_left;</div><div class="line">  <span class="keyword">else</span></div><div class="line">    child = node-&gt;l_right;</div><div class="line"></div><div class="line">  parent = node-&gt;parent;</div><div class="line"></div><div class="line">  <span class="keyword">if</span> (child)</div><div class="line">    child-&gt;parent = parent;</div><div class="line"></div><div class="line">  <span class="keyword">if</span> (parent)</div><div class="line">    &#123;</div><div class="line">      <span class="keyword">if</span> (parent-&gt;l_left == node)</div><div class="line">	parent-&gt;l_left = child;</div><div class="line">      <span class="keyword">else</span></div><div class="line">	parent-&gt;l_right = child;</div><div class="line">    &#125;</div><div class="line">  <span class="keyword">else</span></div><div class="line">    node-&gt;table-&gt;top = child;</div><div class="line"></div><div class="line">  node-&gt;table-&gt;count--;</div><div class="line"></div><div class="line">  route_node_free (node-&gt;table, node);</div><div class="line"></div><div class="line">  <span class="comment">/* If parent node is stub then delete it also. */</span></div><div class="line">  <span class="keyword">if</span> (parent &amp;&amp; parent-&gt;lock == <span class="number">0</span>)</div><div class="line">    route_node_delete (parent);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>本质上就是二叉树节点的删除。</p>
 
-        </div>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2018/03/03/wordpress学习/">
-                wordpress学习
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2018-03-03</span>
-            
-            
-                <a href="http://penguin858.com/2018/03/03/wordpress学习/#disqus_thread" class="comments article-comment-link">留言</a>
-            
-            
-        </div>
     </div>
 
     
-        <div class="content">
-            <script src="/assets/js/APlayer.min.js"> </script>
-        </div>
+
     
 
+    <!-- Comments -->
+    
+    <div class="comments">
+        
+<div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
-            
-                
-<div class="post">
 
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2018/01/31/nettools源码解析/">
-                nettools源码解析
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2018-01-31</span>
-            
-            
-                <a href="http://penguin858.com/2018/01/31/nettools源码解析/#disqus_thread" class="comments article-comment-link">留言</a>
-            
-            
-        </div>
+
+
     </div>
-
-    
-        <div class="content">
-            <!-- toc -->
-<!-- tocstop -->
-        </div>
-        <a href="/2018/01/31/nettools源码解析/" class="read-more">Read More</a>
     
 
 </div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2017/09/12/理解autoreleasepool工作原理/">
-                理解autoreleasepool工作原理
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2017-09-12</span>
-            
-            
-                <a href="http://penguin858.com/2017/09/12/理解autoreleasepool工作原理/#disqus_thread" class="comments article-comment-link">留言</a>
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <h2 id="autoreleasepool的工作方式"><a href="#autoreleasepool的工作方式" class="headerlink" title="autoreleasepool的工作方式"></a>autoreleasepool的工作方式</h2><p>  ios系统通过 <code>@autoreleasepool{}</code> 的方式来创建自动释放池。每一个线程会对应一个runloop，系统会为每一个runloop隐式地创建一个自动释放池，所有的autoreleasepool构成一个栈式的结构，在每个runloop结束的时候，当前栈顶的autoreleasepool会被销毁，此时这个自动释放池会对其中的每个对象做release。</p>
-        </div>
-        <a href="/2017/09/12/理解autoreleasepool工作原理/" class="read-more">Read More</a>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2017/07/18/配置owncloud私有云/">
-                配置owncloud私有云（Centos）
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2017-07-18</span>
-            
-            
-                <a href="http://penguin858.com/2017/07/18/配置owncloud私有云/#disqus_thread" class="comments article-comment-link">留言</a>
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <h2 id="零、平台说明"><a href="#零、平台说明" class="headerlink" title="零、平台说明"></a>零、平台说明</h2><p>我配置owncloud所使用的服务器是阿里云的学生版服务器，以下许多服务也是基于阿里云提供的服务，不同的地方大多可以通过百度解决。<br>这篇文章所描述的是刚购买来的服务器，在这之前还没有进行过apache等服务的配置，所以其中会有一些与owncloud无关的配置过程。</p>
-        </div>
-        <a href="/2017/07/18/配置owncloud私有云/" class="read-more">Read More</a>
-    
-
-</div>
-            
         </section>
+
     </div>
 </div>
-
-
-
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="wrap-pagination">
-                <a class="disabled" href="/">
-                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
-                </a>
-                <a class="" href="/page/2/">
-                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                </a>
-            </div>
-        </div>
-    </div>
-
-
-
 
 </div>
 
@@ -918,7 +799,7 @@
         var dsq = document.createElement('script');
         dsq.type = 'text/javascript';
         dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->

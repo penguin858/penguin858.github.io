@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="Zeping&#39;s Home"/>
+        <meta property="og:title" content="Programming Language Exploration"/>
     
 
     <!--Open Graph Description-->
@@ -33,7 +33,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="article" />
     
 
     <!--Page Cover-->
@@ -44,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>Zeping&#39;s Home</title>
+    <title>Programming Language Exploration - Zeping&#39;s Home</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
@@ -127,17 +127,14 @@
     <div class="logo">
         <a href="/"><i class="logo-icon fa fa-bolt" aria-hidden="true"></i></a>
         
-            <h1 id="main-title" class="title">Zeping's Home</h1>
-        
     </div>
 </header>
 
         <section class="main">
             
-                
 <div class="post">
 
-    <div class="post-header index">
+    <div class="post-header">
         <h1 class="title">
             <a href="/2019/08/06/Programming-Language-Exploration/">
                 Programming Language Exploration
@@ -147,16 +144,18 @@
             
                 <span class="date">2019-08-06</span>
             
-            
-                <a href="http://penguin858.com/2019/08/06/Programming-Language-Exploration/#disqus_thread" class="comments article-comment-link">留言</a>
-            
+            <a href="#disqus_thread" class="comments">留言</a>
             
         </div>
     </div>
 
-    
-        <div class="content">
-            <script src="/assets/js/APlayer.min.js"> </script><h2 id="chapter-0-introduction"><a href="#Chapter-0-Introduction" class="headerlink" title="Chapter 0: Introduction"></a>Chapter 0: Introduction</h2><h3 id="1-indispensable-elements-of-programming-language"><a href="#1-Indispensable-elements-of-programming-language" class="headerlink" title="1. Indispensable elements of programming language"></a>1. Indispensable elements of programming language</h3><ul>
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <script src="/assets/js/APlayer.min.js"> </script><h2 id="chapter-0-introduction"><a href="#Chapter-0-Introduction" class="headerlink" title="Chapter 0: Introduction"></a>Chapter 0: Introduction</h2><h3 id="1-indispensable-elements-of-programming-language"><a href="#1-Indispensable-elements-of-programming-language" class="headerlink" title="1. Indispensable elements of programming language"></a>1. Indispensable elements of programming language</h3><ul>
 <li>Value: a unit of data</li>
 <li>Literal: a representation of a value</li>
 <li>Variable: a name that refers to a value</li>
@@ -202,204 +201,30 @@
 <p>Output is too long to show here.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ node --use-strict wordcount.js &lt; 171025_03.txt</div></pre></td></tr></table></figure></p>
 <p><strong>Note</strong>: This example uses Node’s built-in <code>readline</code> module. The script will write out each word and its count in sorted order.</p>
 
-        </div>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2018/11/21/bgp概述/">
-                bgp概述
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2018-11-21</span>
-            
-            
-                <a href="http://penguin858.com/2018/11/21/bgp概述/#disqus_thread" class="comments article-comment-link">留言</a>
-            
-            
-        </div>
     </div>
 
     
-        <div class="content">
-            <!-- toc -->
-<ul>
-<li><a href="#一-bgp协议概述">一、BGP协议概述</a><ul>
-<li><a href="#一bgp协议">（一）BGP协议</a></li>
-<li><a href="#二bgp基本特性">（二）BGP基本特性</a></li>
-<li><a href="#三路由选择算法">（三）路由选择算法</a><ul>
-<li><a href="#1距离向量算法distance-vectordv">1.距离向量算法（Distance-Vector，DV）</a><ul>
-<li><a href="#1算法内容">（1）算法内容</a></li>
-<li><a href="#2无穷计数">（2）无穷计数</a></li>
-</ul>
-</li>
-<li><a href="#2层次路由选择算法">2.层次路由选择算法</a><ul>
-<li><a href="#1自治系统asautonomous-system">（1）自治系统AS（Autonomous System）</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#四bgp协议">（四）BGP协议</a><ul>
-<li><a href="#1bgp协议功能">1.BGP协议功能</a></li>
-<li><a href="#2bgp重要概念">2.bgp重要概念</a></li>
-<li><a href="#3bgp重要属性">3.BGP重要属性</a><ul>
-<li><a href="#0origin">（0）ORIGIN</a></li>
-<li><a href="#1as-path">（1）AS-PATH</a></li>
-<li><a href="#2next-hop">（2）NEXT-HOP</a></li>
-<li><a href="#3local-pref">（3）LOCAL-PREF</a></li>
-<li><a href="#4-multi_exit_discmed可选不可传递属性">（4） MULTI_EXIT_DISC（MED，可选不可传递属性）</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#二-bgp-4-rfc描述">二、BGP-4-rfc描述</a><ul>
-<li><a href="#一bgp概述">（一）BGP概述</a></li>
-<li><a href="#二routing-information-bases">（二）Routing Information Bases</a></li>
-<li><a href="#三信息格式">（三）信息格式</a><ul>
-<li><a href="#1bgp报头">1.BGP报头</a></li>
-<li><a href="#2open类型报文格式">2.OPEN类型报文格式</a></li>
-<li><a href="#3update类型报文格式">3.UPDATE类型报文格式</a></li>
-<li><a href="#4keepalive报文格式">4.KEEPALIVE报文格式</a></li>
-<li><a href="#5notification报文格式">5.NOTIFICATION报文格式</a></li>
-</ul>
-</li>
-<li><a href="#四路由选择">（四）路由选择</a></li>
-</ul>
-</li>
-<li><a href="#三-代码实现quagga中的bgp协议">三、代码实现——quagga中的BGP协议</a><ul>
-<li><a href="#一结构">（一）结构</a><ul>
-<li><a href="#1struct-bgp">1.struct bgp</a></li>
-<li><a href="#2-路由表存储">2. 路由表存储</a></li>
-<li><a href="#3路由表修改">3.路由表修改</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
-        </div>
-        <a href="/2018/11/21/bgp概述/" class="read-more">Read More</a>
+
     
 
+    <!-- Comments -->
+    
+    <div class="comments">
+        
+<div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
-            
-                
-<div class="post">
 
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2018/03/03/wordpress学习/">
-                wordpress学习
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2018-03-03</span>
-            
-            
-                <a href="http://penguin858.com/2018/03/03/wordpress学习/#disqus_thread" class="comments article-comment-link">留言</a>
-            
-            
-        </div>
+
+
     </div>
-
-    
-        <div class="content">
-            <script src="/assets/js/APlayer.min.js"> </script>
-        </div>
     
 
 </div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2018/01/31/nettools源码解析/">
-                nettools源码解析
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2018-01-31</span>
-            
-            
-                <a href="http://penguin858.com/2018/01/31/nettools源码解析/#disqus_thread" class="comments article-comment-link">留言</a>
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <!-- toc -->
-<!-- tocstop -->
-        </div>
-        <a href="/2018/01/31/nettools源码解析/" class="read-more">Read More</a>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2017/09/12/理解autoreleasepool工作原理/">
-                理解autoreleasepool工作原理
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2017-09-12</span>
-            
-            
-                <a href="http://penguin858.com/2017/09/12/理解autoreleasepool工作原理/#disqus_thread" class="comments article-comment-link">留言</a>
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <h2 id="autoreleasepool的工作方式"><a href="#autoreleasepool的工作方式" class="headerlink" title="autoreleasepool的工作方式"></a>autoreleasepool的工作方式</h2><p>  ios系统通过 <code>@autoreleasepool{}</code> 的方式来创建自动释放池。每一个线程会对应一个runloop，系统会为每一个runloop隐式地创建一个自动释放池，所有的autoreleasepool构成一个栈式的结构，在每个runloop结束的时候，当前栈顶的autoreleasepool会被销毁，此时这个自动释放池会对其中的每个对象做release。</p>
-        </div>
-        <a href="/2017/09/12/理解autoreleasepool工作原理/" class="read-more">Read More</a>
-    
-
-</div>
-            
         </section>
+
     </div>
 </div>
-
-
-
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="wrap-pagination">
-                <a class="disabled" href="/">
-                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
-                </a>
-                <a class="" href="/page/2/">
-                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                </a>
-            </div>
-        </div>
-    </div>
-
-
-
 
 </div>
 
@@ -531,7 +356,7 @@
         var dsq = document.createElement('script');
         dsq.type = 'text/javascript';
         dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->

@@ -168,6 +168,14 @@
 <li>4个汇编程序：<code>bootsect.S</code> <code>setup.S</code> <code>head.S</code> <code>entry.S</code></li>
 <li><code>init</code>目录下的<code>main.c</code></li>
 </ul>
+<p><code>main.c</code>中最重要的函数应当是<code>start_kernel</code>和<code>rest_init</code>函数了，但是要在其中找出网络协议栈的初始化，需要先了解其他知识</p>
+<h3 id="三elf文件格式"><a href="#（三）ELF文件格式" class="headerlink" title="（三）ELF文件格式"></a>（三）ELF文件格式</h3><p>elf是*NIX系统上可执行文件的标准格式，有三种形式：</p>
+<ul>
+<li>Relocatable: 由编译器和汇编器生成，由linker处理</li>
+<li>Executable: 即可执行文件格式</li>
+<li>Shared Object: 包含了linker需要的符号信息和运行时刻所需的代码</li>
+</ul>
+<p>ELF文件有很多section，</p>
 
     </div>
 
@@ -213,6 +221,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2019/08/06/Programming-Language-Exploration/">Programming Language Expl</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2018/11/21/bgp概述/">bgp概述</a>
             </li>
             
@@ -222,10 +234,6 @@
             
             <li>
                 <a class="footer-post" href="/2018/01/31/nettools源码解析/">nettools源码解析</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2017/09/12/理解autoreleasepool工作原理/">理解autoreleasepool工作原理</a>
             </li>
             
         </ul>

@@ -156,53 +156,22 @@
 
     
         <div class="content">
-            <script src="/assets/js/APlayer.min.js"> </script><h2 id="chapter-0-introduction"><a href="#Chapter-0-Introduction" class="headerlink" title="Chapter 0: Introduction"></a>Chapter 0: Introduction</h2><h3 id="1-indispensable-elements-of-programming-language"><a href="#1-Indispensable-elements-of-programming-language" class="headerlink" title="1. Indispensable elements of programming language"></a>1. Indispensable elements of programming language</h3><ul>
-<li>Value: a unit of data</li>
-<li>Literal: a representation of a value</li>
-<li>Variable: a name that refers to a value</li>
-<li>Expression: a combination of literals, variables and operators that is evaluated to produce a value</li>
-<li>routine: a unit of code. Some languages called <em>function</em> .</li>
-<li>Type: determines a collection of values with some prescribed behaviors.</li>
-<li>statement: code that performs an action. <br> Types of statements : <br> 1. declaration statement. <br> 2. expression statement <br> 3. assignment statement <br> 4. invocation statement <br> 5. conditional statement <br> 6. iteration statement <br> 7. disruptive statement</li>
-</ul>
-<h3 id="2-evaluating-programming-languages"><a href="#2-Evaluating-programming-languages" class="headerlink" title="2. Evaluating programming languages"></a>2. Evaluating programming languages</h3><ul>
-<li>Readability</li>
-<li>Writability</li>
-<li>Expressiveness </li>
-<li>Guidance</li>
-<li>Efficient compilation , efficient execution, or both.</li>
-</ul>
-<h2 id="chapter-1-javascript"><a href="#Chapter-1-JavaScript" class="headerlink" title="Chapter 1 JavaScript"></a>Chapter 1 JavaScript</h2><h3 id="1background"><a href="#1-Background" class="headerlink" title="1.Background"></a>1.Background</h3><p>1.&emsp;Strongly influenced by C: </p>
+            <!-- toc -->
 <ul>
-<li>curly braces</li>
-<li>assignment statement</li>
-<li>if, while, for</li>
+<li><a href="#chapter-0-introduction">Chapter 0: Introduction</a><ul>
+<li><a href="#1-indispensable-elements-of-programming-language">1. Indispensable elements of programming language</a></li>
+<li><a href="#2-evaluating-programming-languages">2. Evaluating programming languages</a></li>
 </ul>
-<p>2.&emsp;But JavaScript and C are worlds apart.</p>
-<ul>
-<li>Function are first-class values: they can be assigned to variables, passed to functions, and returned from functions.</li>
+</li>
+<li><a href="#chapter-1-javascript">Chapter 1 JavaScript</a><ul>
+<li><a href="#1background">1.Background</a></li>
+<li><a href="#2hello-js">2.Hello JS</a></li>
 </ul>
-<p>3.&emsp;features</p>
-<ul>
-<li>Weak Typing</li>
-<li>Automatic semicolon insertion</li>
+</li>
 </ul>
-<h3 id="2hello-js"><a href="#2-Hello-JS" class="headerlink" title="2.Hello JS"></a>2.Hello JS</h3><p>1.&emsp;First programme:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(<span class="keyword">let</span> c = <span class="number">1</span>; c &lt;= <span class="number">40</span>; c++)&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> b = <span class="number">1</span>; b &lt; c; b++)&#123;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> a = <span class="number">1</span>; a &lt; b; a++)&#123;</div><div class="line">            <span class="keyword">if</span>(a * a + b * b === c * c)&#123;</div><div class="line">            	<span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;a&#125;</span>, <span class="subst">$&#123;b&#125;</span>, <span class="subst">$&#123;c&#125;</span>`</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>Note</strong>: In JavaScript, <code>x === y</code> is true iff x and y have the same value and the same type. <code>x == y</code> is true when the two objects are <em>similar</em> to, rather than equal to, each other(And sometimes behaves unexpectedly).</p>
-<p><strong>Note</strong>: <code>${e}</code> interpolates the value of expression e into the string.</p>
-<p>2.&emsp;Second programme: </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">generatePermutations</span>(<span class="params">a,n</span>)</span>&#123;</div><div class="line">        <span class="keyword">if</span>(n == <span class="number">0</span>)&#123;</div><div class="line">                <span class="built_in">console</span>.log(a.join(<span class="string">''</span>));</div><div class="line">        &#125; <span class="keyword">else</span>&#123;</div><div class="line">                <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span> ; i &lt; n ; i++)&#123;</div><div class="line">                        generatePermutations(a, n<span class="number">-1</span>);</div><div class="line">                        <span class="keyword">const</span> j = n % <span class="number">2</span> === <span class="number">0</span> ? <span class="number">0</span> : i;</div><div class="line">                        [a[j],a[n]] = [a[n], a[j]];</div><div class="line">                &#125;</div><div class="line">                generatePermutations(a, n<span class="number">-1</span>);</div><div class="line">        &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">if</span>(process.argv.length !== <span class="number">3</span>)&#123;</div><div class="line">        <span class="built_in">console</span>.error(<span class="string">'Exactly one argument is required'</span>);</div><div class="line">        process.exit(<span class="number">1</span>);</div><div class="line">&#125;</div><div class="line"><span class="keyword">const</span> word = process.argv[<span class="number">2</span>];</div><div class="line">generatePermutations(word.split(<span class="string">''</span>), word.length - <span class="number">1</span>);</div></pre></td></tr></table></figure>
-<p>Output:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$ node --use-strict anagram.js rat</div><div class="line">rat</div><div class="line">art</div><div class="line">tra</div><div class="line">rta</div><div class="line">atr</div><div class="line">tar</div></pre></td></tr></table></figure></p>
-<p><strong>Note</strong>: This is an example of how to access the command line. JavaScript does not define the way, so the user have to choose a specific implementation. This is an example using Node.js.<br>Node’s built-in variable <code>process.argv</code> contains the command line tokens invoking our script(excluding options).<br>In this case, <code>process.argv === [&#39;node&#39;, &#39;anagrams.js&#39;, &#39;rat&#39;]</code>.</p>
-<p><strong>Note</strong>: This algorithm is called <em>Heap’s algorithm</em>, which can generate all permutations of n objects.</p>
-<p><strong>Note</strong>: JavaScript strings are <em>immutable</em> : you cannot make any changes. So in this programme, we <code>split</code> the string into an array of its characters, as array is mutable. Then use <code>join</code> to get a new string for output.</p>
-<p>3.&emsp;Third programme:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> readline = <span class="built_in">require</span>(<span class="string">'readline'</span>);</div><div class="line"><span class="keyword">const</span> reader = readline.createInterface(process.stdin, <span class="literal">null</span>);</div><div class="line"><span class="keyword">const</span> counts = <span class="keyword">new</span> <span class="built_in">Map</span>();</div><div class="line"></div><div class="line">reader.on(<span class="string">'line'</span>, line =&gt; &#123;</div><div class="line">        <span class="keyword">for</span>( <span class="keyword">let</span> word <span class="keyword">of</span> line.toLowerCase().match(<span class="regexp">/[a-z']+/g</span>) || [])&#123;</div><div class="line">                counts.set(word, (counts.get(word) || <span class="number">0</span>) + <span class="number">1</span>);</div><div class="line">        &#125;</div><div class="line">&#125;).on(<span class="string">'close'</span>, () =&gt; &#123;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> word <span class="keyword">of</span> <span class="built_in">Array</span>.from(counts.keys()).sort())&#123;</div><div class="line">                <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;word&#125;</span> <span class="subst">$&#123;counts.get(word)&#125;</span>`</span>);</div><div class="line">        &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>Output is too long to show here.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ node --use-strict wordcount.js &lt; 171025_03.txt</div></pre></td></tr></table></figure></p>
-<p><strong>Note</strong>: This example uses Node’s built-in <code>readline</code> module. The script will write out each word and its count in sorted order.</p>
-
+<!-- tocstop -->
         </div>
+        <a href="/2019/08/06/Programming-Language-Exploration/" class="read-more">Read More</a>
     
 
 </div>
@@ -297,34 +266,6 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/03/03/wordpress学习/">
-                wordpress学习
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2018-03-03</span>
-            
-            
-                <a href="http://penguin858.com/2018/03/03/wordpress学习/#disqus_thread" class="comments article-comment-link">留言</a>
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <script src="/assets/js/APlayer.min.js"> </script>
-        </div>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
             <a href="/2018/01/31/nettools源码解析/">
                 nettools源码解析
             </a>
@@ -379,6 +320,35 @@
 
 </div>
             
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2017/07/18/配置owncloud私有云/">
+                配置owncloud私有云（Centos）
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017-07-18</span>
+            
+            
+                <a href="http://penguin858.com/2017/07/18/配置owncloud私有云/#disqus_thread" class="comments article-comment-link">留言</a>
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h2 id="零、平台说明"><a href="#零、平台说明" class="headerlink" title="零、平台说明"></a>零、平台说明</h2><p>我配置owncloud所使用的服务器是阿里云的学生版服务器，以下许多服务也是基于阿里云提供的服务，不同的地方大多可以通过百度解决。<br>这篇文章所描述的是刚购买来的服务器，在这之前还没有进行过apache等服务的配置，所以其中会有一些与owncloud无关的配置过程。</p>
+        </div>
+        <a href="/2017/07/18/配置owncloud私有云/" class="read-more">Read More</a>
+    
+
+</div>
+            
         </section>
     </div>
 </div>
@@ -429,11 +399,11 @@
             </li>
             
             <li>
-                <a class="footer-post" href="/2018/03/03/wordpress学习/">wordpress学习</a>
+                <a class="footer-post" href="/2018/01/31/nettools源码解析/">nettools源码解析</a>
             </li>
             
             <li>
-                <a class="footer-post" href="/2018/01/31/nettools源码解析/">nettools源码解析</a>
+                <a class="footer-post" href="/2017/09/12/理解autoreleasepool工作原理/">理解autoreleasepool工作原理</a>
             </li>
             
         </ul>
@@ -534,24 +504,7 @@
         dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
-</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 

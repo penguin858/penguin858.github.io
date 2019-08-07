@@ -215,7 +215,7 @@
 <h4 id="1利用homebrew安装相关包"><a href="#1-利用homebrew安装相关包" class="headerlink" title="1.利用homebrew安装相关包"></a>1.利用homebrew安装相关包</h4><p>按照官网上的要求，我们需要安装<code>pkg-config</code>、<code>cmake</code>、<code>g++\gcc</code><br>在电脑上安装好<strong>homebrew</strong>的情况下，我们可以通过它来安装上述插件，比如要安装cmake时，只需要使用以下命令：<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">brew </span>search cmake</div></pre></td></tr></table></figure></p>
 <p>根据反馈来看看有没有这个包/名字有没有写错，没有的话则可使用以下命令安装：<br><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">brew </span><span class="keyword">install </span>cmake</div></pre></td></tr></table></figure></p>
 <p>在安装好上述插件以后，就可以安装opencv了（直接使用homebrew安装比到官网上下载编译要容易）：<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">brew </span>tap homebrew/science</div><div class="line"><span class="keyword">brew </span>install opencv</div></pre></td></tr></table></figure></p>
-<h4 id="2设置pkg-config"><a href="#2-设置pkg-config" class="headerlink" title="2.设置pkg-config"></a>2.设置pkg-config</h4><p>安装完成以后，在<code>/usr/local/Cellar</code>下就会出现一个新的文件夹<code>opencv</code>。接下来打开<code>.bash_profile</code>配置<code>pkg-config</code>的环境变量：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">open <span class="_">-e</span> .bash_profile</div></pre></td></tr></table></figure></p>
+<h4 id="2设置pkg-config"><a href="#2-设置pkg-config" class="headerlink" title="2.设置pkg-config"></a>2.设置pkg-config</h4><p>安装完成以后，在<code>/usr/local/Cellar</code>下就会出现一个新的文件夹<code>opencv</code>。接下来打开<code>.bash_profile</code>配置<code>pkg-config</code>的环境变量：<br><figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">open</span> -e .bash_profile</div></pre></td></tr></table></figure></p>
 <p>在打开的文档中加入：(具体路径要根据实际安装情况而定)<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">PKG_CONFIG_PATH=<span class="variable">$PKG_CONFIG_PATH</span><span class="symbol">:/usr/local/Cellar/opencv/</span><span class="number">2.4</span>.<span class="number">13.2</span>/lib/pkgconfig</div><div class="line">export PKG_CONFIG_PATH</div><div class="line"></div><div class="line">export LD_LIBRARY_PATH=<span class="regexp">/usr/local</span><span class="regexp">/Cellar/opencv</span><span class="regexp">/2.4.13.2/bin</span><span class="symbol">:SLD_LIBRARY_PATH</span></div><div class="line">export PATH=<span class="variable">$&#123;</span>PATH&#125;<span class="symbol">:/usr/local/Cellar/opencv/</span><span class="number">2.4</span>.<span class="number">13.2</span>/lib</div></pre></td></tr></table></figure></p>
 <p>保存，然后让环境变量生效：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">source</span> .bash_profile</div></pre></td></tr></table></figure></p>
 <p>然后输入以下命令：<br><figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">pkg-config <span class="comment">--libs opencv</span></div><div class="line">pkg-config <span class="comment">--cflags opencv</span></div></pre></td></tr></table></figure></p>
@@ -345,11 +345,11 @@
             </li>
             
             <li>
-                <a class="footer-post" href="/2018/03/03/wordpress学习/">wordpress学习</a>
+                <a class="footer-post" href="/2018/01/31/nettools源码解析/">nettools源码解析</a>
             </li>
             
             <li>
-                <a class="footer-post" href="/2018/01/31/nettools源码解析/">nettools源码解析</a>
+                <a class="footer-post" href="/2017/09/12/理解autoreleasepool工作原理/">理解autoreleasepool工作原理</a>
             </li>
             
         </ul>

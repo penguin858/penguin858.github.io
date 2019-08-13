@@ -168,6 +168,7 @@
 <li><a href="#3-the-basics">3. The Basics</a></li>
 <li><a href="#4-closures">4. Closures</a></li>
 <li><a href="#5-methods">5. Methods</a></li>
+<li><a href="#6-prototype">6. Prototype</a></li>
 </ul>
 </li>
 </ul>
@@ -265,6 +266,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">circleExpand</span>(<span class="params">scale</span>)</span>&#123;</div><div class="line">	<span class="keyword">this</span>.radius *= scale;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> circle = &#123;</div><div class="line">	<span class="attr">radius</span>: <span class="number">10</span>,</div><div class="line">	<span class="attr">area</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;<span class="keyword">return</span> <span class="built_in">Math</span>.PI * <span class="keyword">this</span>.radius * <span class="keyword">this</span>.radius&#125;,</div><div class="line">	circumference() &#123;<span class="keyword">return</span> <span class="number">2</span> * <span class="built_in">Math</span>.PI * <span class="keyword">this</span>.radius&#125;,</div><div class="line">	<span class="attr">expand</span>: circleExpand</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(circle.area());</div><div class="line"><span class="built_in">console</span>.log(circle.circumference());</div><div class="line">circle.expand(<span class="number">2</span>);</div><div class="line"><span class="built_in">console</span>.log(circle.area());</div></pre></td></tr></table></figure>
 <p>Output:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ node circle1.js </div><div class="line">314.1592653589793</div><div class="line">62.83185307179586</div><div class="line">1256.6370614359173</div></pre></td></tr></table></figure>
+<h3 id="6-prototype"><a href="#6-Prototype" class="headerlink" title="6. Prototype"></a>6. Prototype</h3><p><strong>Note</strong>: If we need to create a lot of similar object, we need to start from an initial object, which is called <em>Prototype</em> .</p>
 
     </div>
 

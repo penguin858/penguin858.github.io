@@ -43,6 +43,7 @@
 <li><a href="#3-the-basics">3. The Basics</a></li>
 <li><a href="#4-closures">4. Closures</a></li>
 <li><a href="#5-methods">5. Methods</a></li>
+<li><a href="#6-prototype">6. Prototype</a></li>
 </ul>
 </li>
 </ul>
@@ -140,6 +141,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">circleExpand</span>(<span class="params">scale</span>)</span>&#123;</div><div class="line">	<span class="keyword">this</span>.radius *= scale;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> circle = &#123;</div><div class="line">	<span class="attr">radius</span>: <span class="number">10</span>,</div><div class="line">	<span class="attr">area</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;<span class="keyword">return</span> <span class="built_in">Math</span>.PI * <span class="keyword">this</span>.radius * <span class="keyword">this</span>.radius&#125;,</div><div class="line">	circumference() &#123;<span class="keyword">return</span> <span class="number">2</span> * <span class="built_in">Math</span>.PI * <span class="keyword">this</span>.radius&#125;,</div><div class="line">	<span class="attr">expand</span>: circleExpand</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(circle.area());</div><div class="line"><span class="built_in">console</span>.log(circle.circumference());</div><div class="line">circle.expand(<span class="number">2</span>);</div><div class="line"><span class="built_in">console</span>.log(circle.area());</div></pre></td></tr></table></figure>
 <p>Output:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ node circle1.js </div><div class="line">314.1592653589793</div><div class="line">62.83185307179586</div><div class="line">1256.6370614359173</div></pre></td></tr></table></figure>
+<h3 id="6-prototype"><a href="#6-Prototype" class="headerlink" title="6. Prototype"></a>6. Prototype</h3><p><strong>Note</strong>: If we need to create a lot of similar object, we need to start from an initial object, which is called <em>Prototype</em> .</p>
 ]]></content>
       
         
@@ -1597,7 +1599,7 @@
 <p>这时可以通过输入以下命令解决：(为什么？)<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm <span class="keyword">install</span> hexo-deployer-git <span class="comment">--save</span></div></pre></td></tr></table></figure></p>
 <p>然后提交还是出错：<br><figure class="highlight basic"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">remote: Anonymous access to ***/***.github.io.git denied.</span></div></pre></td></tr></table></figure></p>
 <p>估计应该是ssh密钥没能匹配上，后来我重新设置了一下user.name和user.email就好了。</p>
-<h3 id="六-一些其他命令"><a href="#六、一些其他命令：" class="headerlink" title="六、一些其他命令："></a>六、一些其他命令：</h3><p>可以使用new创建新文章：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo <span class="keyword">new</span> <span class="string">"新文章的名字"</span></div></pre></td></tr></table></figure></p>
+<h3 id="六-一些其他命令"><a href="#六、一些其他命令：" class="headerlink" title="六、一些其他命令："></a>六、一些其他命令：</h3><p>可以使用new创建新文章：<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo <span class="keyword">new</span> <span class="string">"新文章的名字"</span></div></pre></td></tr></table></figure></p>
 ]]></content>
       
         <categories>
@@ -1645,6 +1647,33 @@
     </entry>
     
     <entry>
+      <title><![CDATA[linuxTCP/IP协议栈]]></title>
+      <url>http://penguin858.com/linuxTCP:IP%E5%8D%8F%E8%AE%AE%E6%A0%88.html</url>
+      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h1 id="linuxtcpip协议栈"><a href="#linuxTCP-IP协议栈" class="headerlink" title="linuxTCP/IP协议栈"></a>linuxTCP/IP协议栈</h1><h2 id="一-基本的linux数据结构和术语"><a href="#一、基本的linux数据结构和术语" class="headerlink" title="一、基本的linux数据结构和术语"></a>一、基本的linux数据结构和术语</h2><h3 id="一链表结构"><a href="#（一）链表结构" class="headerlink" title="（一）链表结构"></a>（一）链表结构</h3><p>linux中的链表结构定义在<code>include/linux/list.h</code>中：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">struct</span> list_head &#123;</div><div class="line">	<span class="keyword">struct</span> list_head *next, *prev;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>要注意的是，这个链表数据结构 <em>没有数据域</em> 。开发者在需要将某种数据结构组织成链表的时候就会包含一个<code>struct list_head</code>成员。</p>
+<p>有一系列的宏被设计用来访问这个链表，最常用的<code>list_entry</code>：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">define</span> list_entry(prt,type,member) container_of(ptr,type,member)</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> container_of(ptr,type,member) (&#123; \</span></div><div class="line">	const typeof( ((type *) 0) -&gt;member) *__mptr = (ptr); \</div><div class="line">	(type *) ((char *) __mptr - offsetof(type,member) );&#125;)</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> offsetof(TYPE,MENBER) ((size_t) &amp; ((TYPE *) 0) -&gt; MENBER)</span></div></pre></td></tr></table></figure>
+<p><code>typeof</code>是GCC支持的运算，作用是获取变量的类型。 </p>
+<p>而另一种数据结构<code>hlist</code>是 <em>hash list</em> 的简称：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">struct</span> hlist_head &#123;</div><div class="line">	<span class="keyword">struct</span> hlist_node *first;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">struct</span> hlist_node &#123;</div><div class="line">	<span class="keyword">struct</span> hlist_node *next, **pprev;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="二linux系统初始化"><a href="#（二）linux系统初始化" class="headerlink" title="（二）linux系统初始化"></a>（二）linux系统初始化</h3><p>linux系统初始化最重要的代码为以下部分：</p>
+<ul>
+<li>4个汇编程序：<code>bootsect.S</code> <code>setup.S</code> <code>head.S</code> <code>entry.S</code></li>
+<li><code>init</code>目录下的<code>main.c</code></li>
+</ul>
+<p><code>main.c</code>中最重要的函数应当是<code>start_kernel</code>和<code>rest_init</code>函数了，但是要在其中找出网络协议栈的初始化，需要先了解其他知识</p>
+<h3 id="三elf文件格式"><a href="#（三）ELF文件格式" class="headerlink" title="（三）ELF文件格式"></a>（三）ELF文件格式</h3><p>elf是*NIX系统上可执行文件的标准格式，有三种形式：</p>
+<ul>
+<li>Relocatable: 由编译器和汇编器生成，由linker处理</li>
+<li>Executable: 即可执行文件格式</li>
+<li>Shared Object: 包含了linker需要的符号信息和运行时刻所需的代码</li>
+</ul>
+<p>ELF文件有很多section，</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[《政府论》]]></title>
       <url>http://penguin858.com/%E3%80%8A%E6%94%BF%E5%BA%9C%E8%AE%BA%E3%80%8B.html</url>
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script>]]></content>
@@ -1682,43 +1711,8 @@
     </entry>
     
     <entry>
-      <title><![CDATA[linuxTCP/IP协议栈]]></title>
-      <url>http://penguin858.com/linuxTCP:IP%E5%8D%8F%E8%AE%AE%E6%A0%88.html</url>
-      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h1 id="linuxtcpip协议栈"><a href="#linuxTCP-IP协议栈" class="headerlink" title="linuxTCP/IP协议栈"></a>linuxTCP/IP协议栈</h1><h2 id="一-基本的linux数据结构和术语"><a href="#一、基本的linux数据结构和术语" class="headerlink" title="一、基本的linux数据结构和术语"></a>一、基本的linux数据结构和术语</h2><h3 id="一链表结构"><a href="#（一）链表结构" class="headerlink" title="（一）链表结构"></a>（一）链表结构</h3><p>linux中的链表结构定义在<code>include/linux/list.h</code>中：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">struct</span> list_head &#123;</div><div class="line">	<span class="keyword">struct</span> list_head *next, *prev;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p>要注意的是，这个链表数据结构 <em>没有数据域</em> 。开发者在需要将某种数据结构组织成链表的时候就会包含一个<code>struct list_head</code>成员。</p>
-<p>有一系列的宏被设计用来访问这个链表，最常用的<code>list_entry</code>：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">define</span> list_entry(prt,type,member) container_of(ptr,type,member)</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> container_of(ptr,type,member) (&#123; \</span></div><div class="line">	const typeof( ((type *) 0) -&gt;member) *__mptr = (ptr); \</div><div class="line">	(type *) ((char *) __mptr - offsetof(type,member) );&#125;)</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> offsetof(TYPE,MENBER) ((size_t) &amp; ((TYPE *) 0) -&gt; MENBER)</span></div></pre></td></tr></table></figure>
-<p><code>typeof</code>是GCC支持的运算，作用是获取变量的类型。 </p>
-<p>而另一种数据结构<code>hlist</code>是 <em>hash list</em> 的简称：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">struct</span> hlist_head &#123;</div><div class="line">	<span class="keyword">struct</span> hlist_node *first;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">struct</span> hlist_node &#123;</div><div class="line">	<span class="keyword">struct</span> hlist_node *next, **pprev;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<h3 id="二linux系统初始化"><a href="#（二）linux系统初始化" class="headerlink" title="（二）linux系统初始化"></a>（二）linux系统初始化</h3><p>linux系统初始化最重要的代码为以下部分：</p>
-<ul>
-<li>4个汇编程序：<code>bootsect.S</code> <code>setup.S</code> <code>head.S</code> <code>entry.S</code></li>
-<li><code>init</code>目录下的<code>main.c</code></li>
-</ul>
-<p><code>main.c</code>中最重要的函数应当是<code>start_kernel</code>和<code>rest_init</code>函数了，但是要在其中找出网络协议栈的初始化，需要先了解其他知识</p>
-<h3 id="三elf文件格式"><a href="#（三）ELF文件格式" class="headerlink" title="（三）ELF文件格式"></a>（三）ELF文件格式</h3><p>elf是*NIX系统上可执行文件的标准格式，有三种形式：</p>
-<ul>
-<li>Relocatable: 由编译器和汇编器生成，由linker处理</li>
-<li>Executable: 即可执行文件格式</li>
-<li>Shared Object: 包含了linker需要的符号信息和运行时刻所需的代码</li>
-</ul>
-<p>ELF文件有很多section，</p>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[contact]]></title>
-      <url>http://penguin858.com/contact/index.html</url>
-      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>Name: Xu Zeping<br><a href="https://github.com/penguin858">This is my github address</a></p>
-<p>Gmail: xuzeping858@gmail.com<br>QQ Email: 1363380773@qq.com</p>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[tags]]></title>
-      <url>http://penguin858.com/tags/index.html</url>
+      <title><![CDATA[categories]]></title>
+      <url>http://penguin858.com/categories/index.html</url>
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script>]]></content>
     </entry>
     
@@ -1732,9 +1726,17 @@
     </entry>
     
     <entry>
-      <title><![CDATA[categories]]></title>
-      <url>http://penguin858.com/categories/index.html</url>
+      <title><![CDATA[tags]]></title>
+      <url>http://penguin858.com/tags/index.html</url>
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script>]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[contact]]></title>
+      <url>http://penguin858.com/contact/index.html</url>
+      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>Name: Xu Zeping<br><a href="https://github.com/penguin858">This is my github address</a></p>
+<p>Gmail: xuzeping858@gmail.com<br>QQ Email: 1363380773@qq.com</p>
+]]></content>
     </entry>
     
   

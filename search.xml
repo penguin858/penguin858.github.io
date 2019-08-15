@@ -138,6 +138,8 @@
 <p><strong>Note</strong>: Closures can be used to make generators. If we use a global variable then returns its square would be insecure because other parts of the code could change the global variable.</p>
 <p>Example:</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> nextSquare = <span class="function">(<span class="params">(</span>) =&gt;</span> &#123;</div><div class="line">        <span class="keyword">let</span> previous = <span class="number">-1</span>;</div><div class="line">        <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">                previous++;</div><div class="line">                <span class="keyword">return</span> previous * previous;</div><div class="line">        &#125;</div><div class="line">&#125;)();</div><div class="line"></div><div class="line"><span class="keyword">const</span> assert = <span class="built_in">require</span>(<span class="string">'assert'</span>);</div><div class="line">assert(nextSquare() === <span class="number">0</span>);</div><div class="line">assert(nextSquare() === <span class="number">1</span>);</div><div class="line">assert(nextSquare() === <span class="number">4</span>);</div></pre></td></tr></table></figure>
+<p>It can be changed like this style:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> nextSquare = <span class="function">(<span class="params">(previous</span>) =&gt;</span> &#123;</div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">        previous++;</div><div class="line">        <span class="keyword">return</span> previous * previous;</div><div class="line">    &#125;</div><div class="line">&#125;)(<span class="number">-1</span>);</div><div class="line"></div><div class="line"><span class="keyword">const</span> assert = <span class="built_in">require</span>(<span class="string">'assert'</span>);</div><div class="line">assert(nextSquare() === <span class="number">0</span>);</div><div class="line">assert(nextSquare() === <span class="number">1</span>);</div><div class="line">assert(nextSquare() === <span class="number">4</span>);</div></pre></td></tr></table></figure>
 <h3 id="5-methods"><a href="#5-Methods" class="headerlink" title="5. Methods"></a>5. Methods</h3><p><strong>Note</strong>: When we call a function by property access notation, we sya the function is a <strong>method</strong> and the <strong>object</strong> is the receiver.</p>
 <p><strong>Note</strong>: In JavaScript, if we define the method value with the <code>function (params) {body}</code> syntax, the special expression <code>this</code> refers to the receiver. Function defined with <code>(param) =&gt; {body}</code> do not get a special <code>this</code>. There is a shorthand notation of the <code>function</code> syntax:<br>Besides, we should note that <code>this</code> takes in the value of the method’s receiver as <strong>determined at runtime</strong>. This <strong>late binding</strong> can be quite flexible.</p>
 <p>Example:</p>
@@ -172,6 +174,31 @@
 <p>Output:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ node promises.js </div><div class="line">Initializing the configuration data</div><div class="line">Processing the initialized data</div><div class="line">Reporting the processed data</div><div class="line">Success the reported data</div></pre></td></tr></table></figure>
 <h3 id="9-exercise"><a href="#9-Exercise" class="headerlink" title="9. Exercise"></a>9. Exercise</h3><p>1.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">$ node </div><div class="line">&gt; <span class="string">"16"</span> == <span class="number">16</span></div><div class="line"><span class="literal">true</span></div><div class="line">&gt; <span class="string">"16"</span> == <span class="number">17</span></div><div class="line"><span class="literal">false</span></div><div class="line">&gt; <span class="string">"16"</span> === <span class="number">16</span></div><div class="line"><span class="literal">false</span></div><div class="line">&gt; <span class="number">16</span> == <span class="string">"0x10"</span></div><div class="line"><span class="literal">true</span></div><div class="line">&gt; <span class="string">"0x10"</span> == <span class="string">"16"</span></div><div class="line"><span class="literal">false</span></div></pre></td></tr></table></figure></p>
+<p>Take care of the last example.</p>
+<ol>
+<li>Find out how to list all of the properties of the global object in your favorite JavaScript environment</li>
+</ol>
+<p>Answer: In chrome or some browsers, they provide the variable <code>window</code> to store all the information about the webpage. There are some ways to list the properties:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Object</span>.keys(<span class="built_in">window</span>) <span class="comment">// or</span></div><div class="line"><span class="built_in">Object</span>.getOwnPropertyNames(<span class="built_in">window</span>).concat(</div><div class="line">  <span class="built_in">Object</span>.getOwnPropertyNames(<span class="built_in">Object</span>.getPrototypeOf(<span class="built_in">window</span>))</div><div class="line">)</div></pre></td></tr></table></figure>
+<ol>
+<li>Explain the second argument of the array methods: every, some, filter and map.</li>
+</ol>
+<p>Answer: This argument is an object which the callback’s <code>this</code> refers to.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = [<span class="number">3</span>, <span class="number">9</span>, <span class="number">6</span>];</div><div class="line">num = &#123;<span class="attr">s</span> : <span class="number">3</span>&#125;;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">n</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> n % <span class="keyword">this</span>.s === <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(a.every(sum,num));</div></pre></td></tr></table></figure>
+<p>output:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ node arrayEvery.js </div><div class="line"><span class="literal">true</span></div></pre></td></tr></table></figure>
+<ol>
+<li>What will happen when Each button is pressed for the following script?<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Rookie mistake using var: alerts 10 for every button.</span></div><div class="line"><span class="keyword">for</span> ( <span class="keyword">var</span> i = <span class="number">0</span> ; i &lt; <span class="number">10</span>; i++)&#123;</div><div class="line">    <span class="keyword">const</span> button = <span class="built_in">document</span>.createElement(<span class="string">"button"</span>);</div><div class="line">    button.innerHTML = i;</div><div class="line">    button.addEventListener(<span class="string">'click'</span>, e =&gt; &#123;alert(i);&#125;);</div><div class="line">    <span class="built_in">document</span>.body.appendChild(button);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>Answer: All the alert will be 10. Because by using var, the binding will work in the whole process. So when the callback is executed, the i has already been 10.<br>Just use let to replace the var, then it will work.</p>
+<p>Next question is also an example:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> a = [], b = [];</div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> x <span class="keyword">of</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])&#123;</div><div class="line">    a[x] = <span class="function"><span class="params">()</span> =&gt;</span> x;</div><div class="line">&#125;</div><div class="line"><span class="keyword">for</span>(<span class="keyword">let</span> y <span class="keyword">of</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])&#123;</div><div class="line">    b[y] = <span class="function"><span class="params">()</span> =&gt;</span> y;</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(a[<span class="number">1</span>]());</div><div class="line"><span class="built_in">console</span>.log(b[<span class="number">2</span>]());</div></pre></td></tr></table></figure>
+<p>Output:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ node <span class="built_in">let</span>AndVarInFor.js </div><div class="line">3</div><div class="line">2</div></pre></td></tr></table></figure>
+<p>5.Use <code>function*</code> and <code>yield</code> to rewrite the nextSquare program.</p>
+<p>Answer:<br>In <code>Function*</code>, <code>yield</code> will return the value. It is another style to write a generator.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span>* <span class="title">nextS</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span> ; <span class="literal">true</span>; i++)&#123;</div><div class="line">        <span class="keyword">yield</span> i * i;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> nextSquare = nextS();</div><div class="line"></div><div class="line"><span class="keyword">const</span> assert = <span class="built_in">require</span>(<span class="string">'assert'</span>);</div><div class="line">assert(nextSquare.next().value === <span class="number">0</span>);</div><div class="line">assert(nextSquare.next().value === <span class="number">1</span>);</div><div class="line">assert(nextSquare.next().value === <span class="number">4</span>);</div></pre></td></tr></table></figure>
 ]]></content>
       
         
@@ -899,7 +926,7 @@
 <h4 id="1利用homebrew安装相关包"><a href="#1-利用homebrew安装相关包" class="headerlink" title="1.利用homebrew安装相关包"></a>1.利用homebrew安装相关包</h4><p>按照官网上的要求，我们需要安装<code>pkg-config</code>、<code>cmake</code>、<code>g++\gcc</code><br>在电脑上安装好<strong>homebrew</strong>的情况下，我们可以通过它来安装上述插件，比如要安装cmake时，只需要使用以下命令：<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">brew </span>search cmake</div></pre></td></tr></table></figure></p>
 <p>根据反馈来看看有没有这个包/名字有没有写错，没有的话则可使用以下命令安装：<br><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">brew </span><span class="keyword">install </span>cmake</div></pre></td></tr></table></figure></p>
 <p>在安装好上述插件以后，就可以安装opencv了（直接使用homebrew安装比到官网上下载编译要容易）：<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">brew </span>tap homebrew/science</div><div class="line"><span class="keyword">brew </span>install opencv</div></pre></td></tr></table></figure></p>
-<h4 id="2设置pkg-config"><a href="#2-设置pkg-config" class="headerlink" title="2.设置pkg-config"></a>2.设置pkg-config</h4><p>安装完成以后，在<code>/usr/local/Cellar</code>下就会出现一个新的文件夹<code>opencv</code>。接下来打开<code>.bash_profile</code>配置<code>pkg-config</code>的环境变量：<br><figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">open</span> -e .bash_profile</div></pre></td></tr></table></figure></p>
+<h4 id="2设置pkg-config"><a href="#2-设置pkg-config" class="headerlink" title="2.设置pkg-config"></a>2.设置pkg-config</h4><p>安装完成以后，在<code>/usr/local/Cellar</code>下就会出现一个新的文件夹<code>opencv</code>。接下来打开<code>.bash_profile</code>配置<code>pkg-config</code>的环境变量：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">open <span class="_">-e</span> .bash_profile</div></pre></td></tr></table></figure></p>
 <p>在打开的文档中加入：(具体路径要根据实际安装情况而定)<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">PKG_CONFIG_PATH=<span class="variable">$PKG_CONFIG_PATH</span><span class="symbol">:/usr/local/Cellar/opencv/</span><span class="number">2.4</span>.<span class="number">13.2</span>/lib/pkgconfig</div><div class="line">export PKG_CONFIG_PATH</div><div class="line"></div><div class="line">export LD_LIBRARY_PATH=<span class="regexp">/usr/local</span><span class="regexp">/Cellar/opencv</span><span class="regexp">/2.4.13.2/bin</span><span class="symbol">:SLD_LIBRARY_PATH</span></div><div class="line">export PATH=<span class="variable">$&#123;</span>PATH&#125;<span class="symbol">:/usr/local/Cellar/opencv/</span><span class="number">2.4</span>.<span class="number">13.2</span>/lib</div></pre></td></tr></table></figure></p>
 <p>保存，然后让环境变量生效：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">source</span> .bash_profile</div></pre></td></tr></table></figure></p>
 <p>然后输入以下命令：<br><figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">pkg-config <span class="comment">--libs opencv</span></div><div class="line">pkg-config <span class="comment">--cflags opencv</span></div></pre></td></tr></table></figure></p>
@@ -1629,7 +1656,7 @@
 <p>这时可以通过输入以下命令解决：(为什么？)<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm <span class="keyword">install</span> hexo-deployer-git <span class="comment">--save</span></div></pre></td></tr></table></figure></p>
 <p>然后提交还是出错：<br><figure class="highlight basic"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">remote: Anonymous access to ***/***.github.io.git denied.</span></div></pre></td></tr></table></figure></p>
 <p>估计应该是ssh密钥没能匹配上，后来我重新设置了一下user.name和user.email就好了。</p>
-<h3 id="六-一些其他命令"><a href="#六、一些其他命令：" class="headerlink" title="六、一些其他命令："></a>六、一些其他命令：</h3><p>可以使用new创建新文章：<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo <span class="keyword">new</span> <span class="string">"新文章的名字"</span></div></pre></td></tr></table></figure></p>
+<h3 id="六-一些其他命令"><a href="#六、一些其他命令：" class="headerlink" title="六、一些其他命令："></a>六、一些其他命令：</h3><p>可以使用new创建新文章：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo <span class="keyword">new</span> <span class="string">"新文章的名字"</span></div></pre></td></tr></table></figure></p>
 ]]></content>
       
         <categories>
@@ -1660,19 +1687,29 @@
   
     
     <entry>
-      <title><![CDATA[Hello!]]></title>
-      <url>http://penguin858.com/Hello!%20copy.html</url>
-      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><html>
-<body>
-
-<h1 id="my-first-heading">My First Heading</h1>
-
-<p>My first paragraph.</p>
-
-</body>
-</html>
-
-
+      <title><![CDATA[linuxTCP/IP协议栈]]></title>
+      <url>http://penguin858.com/linuxTCP:IP%E5%8D%8F%E8%AE%AE%E6%A0%88.html</url>
+      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h1 id="linuxtcpip协议栈"><a href="#linuxTCP-IP协议栈" class="headerlink" title="linuxTCP/IP协议栈"></a>linuxTCP/IP协议栈</h1><h2 id="一-基本的linux数据结构和术语"><a href="#一、基本的linux数据结构和术语" class="headerlink" title="一、基本的linux数据结构和术语"></a>一、基本的linux数据结构和术语</h2><h3 id="一链表结构"><a href="#（一）链表结构" class="headerlink" title="（一）链表结构"></a>（一）链表结构</h3><p>linux中的链表结构定义在<code>include/linux/list.h</code>中：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">struct</span> list_head &#123;</div><div class="line">	<span class="keyword">struct</span> list_head *next, *prev;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>要注意的是，这个链表数据结构 <em>没有数据域</em> 。开发者在需要将某种数据结构组织成链表的时候就会包含一个<code>struct list_head</code>成员。</p>
+<p>有一系列的宏被设计用来访问这个链表，最常用的<code>list_entry</code>：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">define</span> list_entry(prt,type,member) container_of(ptr,type,member)</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> container_of(ptr,type,member) (&#123; \</span></div><div class="line">	const typeof( ((type *) 0) -&gt;member) *__mptr = (ptr); \</div><div class="line">	(type *) ((char *) __mptr - offsetof(type,member) );&#125;)</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> offsetof(TYPE,MENBER) ((size_t) &amp; ((TYPE *) 0) -&gt; MENBER)</span></div></pre></td></tr></table></figure>
+<p><code>typeof</code>是GCC支持的运算，作用是获取变量的类型。 </p>
+<p>而另一种数据结构<code>hlist</code>是 <em>hash list</em> 的简称：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">struct</span> hlist_head &#123;</div><div class="line">	<span class="keyword">struct</span> hlist_node *first;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">struct</span> hlist_node &#123;</div><div class="line">	<span class="keyword">struct</span> hlist_node *next, **pprev;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="二linux系统初始化"><a href="#（二）linux系统初始化" class="headerlink" title="（二）linux系统初始化"></a>（二）linux系统初始化</h3><p>linux系统初始化最重要的代码为以下部分：</p>
+<ul>
+<li>4个汇编程序：<code>bootsect.S</code> <code>setup.S</code> <code>head.S</code> <code>entry.S</code></li>
+<li><code>init</code>目录下的<code>main.c</code></li>
+</ul>
+<p><code>main.c</code>中最重要的函数应当是<code>start_kernel</code>和<code>rest_init</code>函数了，但是要在其中找出网络协议栈的初始化，需要先了解其他知识</p>
+<h3 id="三elf文件格式"><a href="#（三）ELF文件格式" class="headerlink" title="（三）ELF文件格式"></a>（三）ELF文件格式</h3><p>elf是*NIX系统上可执行文件的标准格式，有三种形式：</p>
+<ul>
+<li>Relocatable: 由编译器和汇编器生成，由linker处理</li>
+<li>Executable: 即可执行文件格式</li>
+<li>Shared Object: 包含了linker需要的符号信息和运行时刻所需的代码</li>
+</ul>
+<p>ELF文件有很多section，</p>
 ]]></content>
     </entry>
     
@@ -1714,43 +1751,18 @@
     </entry>
     
     <entry>
-      <title><![CDATA[linuxTCP/IP协议栈]]></title>
-      <url>http://penguin858.com/linuxTCP:IP%E5%8D%8F%E8%AE%AE%E6%A0%88.html</url>
-      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h1 id="linuxtcpip协议栈"><a href="#linuxTCP-IP协议栈" class="headerlink" title="linuxTCP/IP协议栈"></a>linuxTCP/IP协议栈</h1><h2 id="一-基本的linux数据结构和术语"><a href="#一、基本的linux数据结构和术语" class="headerlink" title="一、基本的linux数据结构和术语"></a>一、基本的linux数据结构和术语</h2><h3 id="一链表结构"><a href="#（一）链表结构" class="headerlink" title="（一）链表结构"></a>（一）链表结构</h3><p>linux中的链表结构定义在<code>include/linux/list.h</code>中：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">struct</span> list_head &#123;</div><div class="line">	<span class="keyword">struct</span> list_head *next, *prev;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p>要注意的是，这个链表数据结构 <em>没有数据域</em> 。开发者在需要将某种数据结构组织成链表的时候就会包含一个<code>struct list_head</code>成员。</p>
-<p>有一系列的宏被设计用来访问这个链表，最常用的<code>list_entry</code>：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">define</span> list_entry(prt,type,member) container_of(ptr,type,member)</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> container_of(ptr,type,member) (&#123; \</span></div><div class="line">	const typeof( ((type *) 0) -&gt;member) *__mptr = (ptr); \</div><div class="line">	(type *) ((char *) __mptr - offsetof(type,member) );&#125;)</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> offsetof(TYPE,MENBER) ((size_t) &amp; ((TYPE *) 0) -&gt; MENBER)</span></div></pre></td></tr></table></figure>
-<p><code>typeof</code>是GCC支持的运算，作用是获取变量的类型。 </p>
-<p>而另一种数据结构<code>hlist</code>是 <em>hash list</em> 的简称：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">struct</span> hlist_head &#123;</div><div class="line">	<span class="keyword">struct</span> hlist_node *first;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">struct</span> hlist_node &#123;</div><div class="line">	<span class="keyword">struct</span> hlist_node *next, **pprev;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<h3 id="二linux系统初始化"><a href="#（二）linux系统初始化" class="headerlink" title="（二）linux系统初始化"></a>（二）linux系统初始化</h3><p>linux系统初始化最重要的代码为以下部分：</p>
-<ul>
-<li>4个汇编程序：<code>bootsect.S</code> <code>setup.S</code> <code>head.S</code> <code>entry.S</code></li>
-<li><code>init</code>目录下的<code>main.c</code></li>
-</ul>
-<p><code>main.c</code>中最重要的函数应当是<code>start_kernel</code>和<code>rest_init</code>函数了，但是要在其中找出网络协议栈的初始化，需要先了解其他知识</p>
-<h3 id="三elf文件格式"><a href="#（三）ELF文件格式" class="headerlink" title="（三）ELF文件格式"></a>（三）ELF文件格式</h3><p>elf是*NIX系统上可执行文件的标准格式，有三种形式：</p>
-<ul>
-<li>Relocatable: 由编译器和汇编器生成，由linker处理</li>
-<li>Executable: 即可执行文件格式</li>
-<li>Shared Object: 包含了linker需要的符号信息和运行时刻所需的代码</li>
-</ul>
-<p>ELF文件有很多section，</p>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[tags]]></title>
-      <url>http://penguin858.com/tags/index.html</url>
-      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script>]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[about]]></title>
-      <url>http://penguin858.com/about/index.html</url>
-      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>北京某野鸡大学计算机专业大二学生，目前致力于数据库方面研究。</p>
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=836330&auto=1&height=66"></iframe>
+      <title><![CDATA[Hello!]]></title>
+      <url>http://penguin858.com/Hello!%20copy.html</url>
+      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><html>
+<body>
+
+<h1 id="my-first-heading">My First Heading</h1>
+
+<p>My first paragraph.</p>
+
+</body>
+</html>
+
 
 ]]></content>
     </entry>
@@ -1764,8 +1776,23 @@
     </entry>
     
     <entry>
+      <title><![CDATA[about]]></title>
+      <url>http://penguin858.com/about/index.html</url>
+      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>北京某野鸡大学计算机专业大二学生，目前致力于数据库方面研究。</p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=836330&auto=1&height=66"></iframe>
+
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[categories]]></title>
       <url>http://penguin858.com/categories/index.html</url>
+      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script>]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[tags]]></title>
+      <url>http://penguin858.com/tags/index.html</url>
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script>]]></content>
     </entry>
     

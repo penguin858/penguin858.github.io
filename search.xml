@@ -49,6 +49,11 @@
 <li><a href="#9-exercise">9. Exercise</a></li>
 </ul>
 </li>
+<li><a href="#chapter-2-coffeescript">Chapter 2 CoffeeScript</a><ul>
+<li><a href="#1-background">1. Background</a></li>
+<li><a href="#2-hello-coffeescript">2. Hello, CoffeeScript</a></li>
+</ul>
+</li>
 </ul>
 <!-- tocstop -->
 <a id="more"></a>
@@ -199,6 +204,10 @@
 <p>5.Use <code>function*</code> and <code>yield</code> to rewrite the nextSquare program.</p>
 <p>Answer:<br>In <code>Function*</code>, <code>yield</code> will return the value. It is another style to write a generator.</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span>* <span class="title">nextS</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span> ; <span class="literal">true</span>; i++)&#123;</div><div class="line">        <span class="keyword">yield</span> i * i;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> nextSquare = nextS();</div><div class="line"></div><div class="line"><span class="keyword">const</span> assert = <span class="built_in">require</span>(<span class="string">'assert'</span>);</div><div class="line">assert(nextSquare.next().value === <span class="number">0</span>);</div><div class="line">assert(nextSquare.next().value === <span class="number">1</span>);</div><div class="line">assert(nextSquare.next().value === <span class="number">4</span>);</div></pre></td></tr></table></figure>
+<h2 id="chapter-2-coffeescript"><a href="#Chapter-2-CoffeeScript" class="headerlink" title="Chapter 2 CoffeeScript"></a>Chapter 2 CoffeeScript</h2><h3 id="1-background"><a href="#1-Background-1" class="headerlink" title="1. Background"></a>1. Background</h3><p>“Expose the good parts of JavaScript in a simple way.”</p>
+<p>The golden rule of CoffeeScript: “It’s just JavaScript”.</p>
+<p>It’s an <strong>Expression-oriented Language</strong>.</p>
+<h3 id="2-hello-coffeescript"><a href="#2-Hello-CoffeeScript" class="headerlink" title="2. Hello, CoffeeScript"></a>2. Hello, CoffeeScript</h3><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> c <span class="keyword">in</span> [<span class="number">1.</span><span class="number">.40</span>]</div><div class="line">    <span class="keyword">for</span> b <span class="keyword">in</span> [<span class="number">1.</span>..c]</div><div class="line">        <span class="keyword">for</span> a <span class="keyword">in</span> [<span class="number">1.</span>..b]</div><div class="line">            <span class="built_in">console</span>.log <span class="string">"<span class="subst">#&#123;a&#125;</span>, <span class="subst">#&#123;b&#125;</span>, <span class="subst">#&#123;c&#125;</span>"</span> <span class="keyword">if</span> a * a + b * b <span class="keyword">is</span> c * c</div></pre></td></tr></table></figure>
 ]]></content>
       
         
@@ -1637,7 +1646,7 @@
 <a id="more"></a>
 <h3 id="一-注册github"><a href="#一、注册github" class="headerlink" title="一、注册github"></a>一、注册github</h3><p><a href="https://github.com">这里</a>是github的官网，注册。<br>然后再个人页面创建一个新的repository，名字命名为<code>yourname.github.io</code>，yourname是自己的用户名。<br><img src="http://upload-images.jianshu.io/upload_images/291600-7cec7b9f28359ea5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="创建"><br>这里创不创建README没有什么影响。</p>
 <h3 id="二-环境配置"><a href="#二、环境配置" class="headerlink" title="二、环境配置"></a>二、环境配置</h3><p>要使用Hexo需要先安装好<br><a href="https://nodejs.org/en/">Node.js</a><br><a href="https://github.com/waylau/git-for-win">Git(这里是一个国外的镜像，方便下载)</a><br>由于我个人在创建之前已经安装好了git，所以跳过初始配置部分，第一次使用的可以参看<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/">廖雪峰的教程</a></p>
-<p>然后就可以输入命令安装Hexo了<br><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g hexo-<span class="keyword">cli</span></div></pre></td></tr></table></figure></p>
+<p>然后就可以输入命令安装Hexo了<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">npm</span> install -g hexo-cli</div></pre></td></tr></table></figure></p>
 <p>输入命令后会产生如下信息，可能需要等待一会</p>
 <p><img src="https://raw.githubusercontent.com/penguin858/temp_picture/master/Screen%20Shot%202017-03-01%20at%2010.32.44%20AM.png" style="zoom:40%"></p>
 <p>到这里我们的环境就已经安装完毕了。</p>
@@ -1656,7 +1665,7 @@
 <p>这时可以通过输入以下命令解决：(为什么？)<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm <span class="keyword">install</span> hexo-deployer-git <span class="comment">--save</span></div></pre></td></tr></table></figure></p>
 <p>然后提交还是出错：<br><figure class="highlight basic"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">remote: Anonymous access to ***/***.github.io.git denied.</span></div></pre></td></tr></table></figure></p>
 <p>估计应该是ssh密钥没能匹配上，后来我重新设置了一下user.name和user.email就好了。</p>
-<h3 id="六-一些其他命令"><a href="#六、一些其他命令：" class="headerlink" title="六、一些其他命令："></a>六、一些其他命令：</h3><p>可以使用new创建新文章：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo <span class="keyword">new</span> <span class="string">"新文章的名字"</span></div></pre></td></tr></table></figure></p>
+<h3 id="六-一些其他命令"><a href="#六、一些其他命令：" class="headerlink" title="六、一些其他命令："></a>六、一些其他命令：</h3><p>可以使用new创建新文章：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo <span class="keyword">new</span> <span class="string">"新文章的名字"</span></div></pre></td></tr></table></figure></p>
 ]]></content>
       
         <categories>
@@ -1687,29 +1696,19 @@
   
     
     <entry>
-      <title><![CDATA[linuxTCP/IP协议栈]]></title>
-      <url>http://penguin858.com/linuxTCP:IP%E5%8D%8F%E8%AE%AE%E6%A0%88.html</url>
-      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h1 id="linuxtcpip协议栈"><a href="#linuxTCP-IP协议栈" class="headerlink" title="linuxTCP/IP协议栈"></a>linuxTCP/IP协议栈</h1><h2 id="一-基本的linux数据结构和术语"><a href="#一、基本的linux数据结构和术语" class="headerlink" title="一、基本的linux数据结构和术语"></a>一、基本的linux数据结构和术语</h2><h3 id="一链表结构"><a href="#（一）链表结构" class="headerlink" title="（一）链表结构"></a>（一）链表结构</h3><p>linux中的链表结构定义在<code>include/linux/list.h</code>中：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">struct</span> list_head &#123;</div><div class="line">	<span class="keyword">struct</span> list_head *next, *prev;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p>要注意的是，这个链表数据结构 <em>没有数据域</em> 。开发者在需要将某种数据结构组织成链表的时候就会包含一个<code>struct list_head</code>成员。</p>
-<p>有一系列的宏被设计用来访问这个链表，最常用的<code>list_entry</code>：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">define</span> list_entry(prt,type,member) container_of(ptr,type,member)</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> container_of(ptr,type,member) (&#123; \</span></div><div class="line">	const typeof( ((type *) 0) -&gt;member) *__mptr = (ptr); \</div><div class="line">	(type *) ((char *) __mptr - offsetof(type,member) );&#125;)</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> offsetof(TYPE,MENBER) ((size_t) &amp; ((TYPE *) 0) -&gt; MENBER)</span></div></pre></td></tr></table></figure>
-<p><code>typeof</code>是GCC支持的运算，作用是获取变量的类型。 </p>
-<p>而另一种数据结构<code>hlist</code>是 <em>hash list</em> 的简称：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">struct</span> hlist_head &#123;</div><div class="line">	<span class="keyword">struct</span> hlist_node *first;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">struct</span> hlist_node &#123;</div><div class="line">	<span class="keyword">struct</span> hlist_node *next, **pprev;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<h3 id="二linux系统初始化"><a href="#（二）linux系统初始化" class="headerlink" title="（二）linux系统初始化"></a>（二）linux系统初始化</h3><p>linux系统初始化最重要的代码为以下部分：</p>
-<ul>
-<li>4个汇编程序：<code>bootsect.S</code> <code>setup.S</code> <code>head.S</code> <code>entry.S</code></li>
-<li><code>init</code>目录下的<code>main.c</code></li>
-</ul>
-<p><code>main.c</code>中最重要的函数应当是<code>start_kernel</code>和<code>rest_init</code>函数了，但是要在其中找出网络协议栈的初始化，需要先了解其他知识</p>
-<h3 id="三elf文件格式"><a href="#（三）ELF文件格式" class="headerlink" title="（三）ELF文件格式"></a>（三）ELF文件格式</h3><p>elf是*NIX系统上可执行文件的标准格式，有三种形式：</p>
-<ul>
-<li>Relocatable: 由编译器和汇编器生成，由linker处理</li>
-<li>Executable: 即可执行文件格式</li>
-<li>Shared Object: 包含了linker需要的符号信息和运行时刻所需的代码</li>
-</ul>
-<p>ELF文件有很多section，</p>
+      <title><![CDATA[Hello!]]></title>
+      <url>http://penguin858.com/Hello!%20copy.html</url>
+      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><html>
+<body>
+
+<h1 id="my-first-heading">My First Heading</h1>
+
+<p>My first paragraph.</p>
+
+</body>
+</html>
+
+
 ]]></content>
     </entry>
     
@@ -1745,34 +1744,42 @@
     </entry>
     
     <entry>
+      <title><![CDATA[linuxTCP/IP协议栈]]></title>
+      <url>http://penguin858.com/linuxTCP:IP%E5%8D%8F%E8%AE%AE%E6%A0%88.html</url>
+      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h1 id="linuxtcpip协议栈"><a href="#linuxTCP-IP协议栈" class="headerlink" title="linuxTCP/IP协议栈"></a>linuxTCP/IP协议栈</h1><h2 id="一-基本的linux数据结构和术语"><a href="#一、基本的linux数据结构和术语" class="headerlink" title="一、基本的linux数据结构和术语"></a>一、基本的linux数据结构和术语</h2><h3 id="一链表结构"><a href="#（一）链表结构" class="headerlink" title="（一）链表结构"></a>（一）链表结构</h3><p>linux中的链表结构定义在<code>include/linux/list.h</code>中：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">struct</span> list_head &#123;</div><div class="line">	<span class="keyword">struct</span> list_head *next, *prev;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>要注意的是，这个链表数据结构 <em>没有数据域</em> 。开发者在需要将某种数据结构组织成链表的时候就会包含一个<code>struct list_head</code>成员。</p>
+<p>有一系列的宏被设计用来访问这个链表，最常用的<code>list_entry</code>：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">define</span> list_entry(prt,type,member) container_of(ptr,type,member)</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> container_of(ptr,type,member) (&#123; \</span></div><div class="line">	const typeof( ((type *) 0) -&gt;member) *__mptr = (ptr); \</div><div class="line">	(type *) ((char *) __mptr - offsetof(type,member) );&#125;)</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> offsetof(TYPE,MENBER) ((size_t) &amp; ((TYPE *) 0) -&gt; MENBER)</span></div></pre></td></tr></table></figure>
+<p><code>typeof</code>是GCC支持的运算，作用是获取变量的类型。 </p>
+<p>而另一种数据结构<code>hlist</code>是 <em>hash list</em> 的简称：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">struct</span> hlist_head &#123;</div><div class="line">	<span class="keyword">struct</span> hlist_node *first;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">struct</span> hlist_node &#123;</div><div class="line">	<span class="keyword">struct</span> hlist_node *next, **pprev;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="二linux系统初始化"><a href="#（二）linux系统初始化" class="headerlink" title="（二）linux系统初始化"></a>（二）linux系统初始化</h3><p>linux系统初始化最重要的代码为以下部分：</p>
+<ul>
+<li>4个汇编程序：<code>bootsect.S</code> <code>setup.S</code> <code>head.S</code> <code>entry.S</code></li>
+<li><code>init</code>目录下的<code>main.c</code></li>
+</ul>
+<p><code>main.c</code>中最重要的函数应当是<code>start_kernel</code>和<code>rest_init</code>函数了，但是要在其中找出网络协议栈的初始化，需要先了解其他知识</p>
+<h3 id="三elf文件格式"><a href="#（三）ELF文件格式" class="headerlink" title="（三）ELF文件格式"></a>（三）ELF文件格式</h3><p>elf是*NIX系统上可执行文件的标准格式，有三种形式：</p>
+<ul>
+<li>Relocatable: 由编译器和汇编器生成，由linker处理</li>
+<li>Executable: 即可执行文件格式</li>
+<li>Shared Object: 包含了linker需要的符号信息和运行时刻所需的代码</li>
+</ul>
+<p>ELF文件有很多section，</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[《政府论》]]></title>
       <url>http://penguin858.com/%E3%80%8A%E6%94%BF%E5%BA%9C%E8%AE%BA%E3%80%8B.html</url>
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script>]]></content>
     </entry>
     
     <entry>
-      <title><![CDATA[Hello!]]></title>
-      <url>http://penguin858.com/Hello!%20copy.html</url>
-      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><html>
-<body>
-
-<h1 id="my-first-heading">My First Heading</h1>
-
-<p>My first paragraph.</p>
-
-</body>
-</html>
-
-
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[contact]]></title>
-      <url>http://penguin858.com/contact/index.html</url>
-      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>Name: Xu Zeping<br><a href="https://github.com/penguin858">This is my github address</a></p>
-<p>Gmail: xuzeping858@gmail.com<br>QQ Email: 1363380773@qq.com</p>
-]]></content>
+      <title><![CDATA[categories]]></title>
+      <url>http://penguin858.com/categories/index.html</url>
+      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script>]]></content>
     </entry>
     
     <entry>
@@ -1785,9 +1792,11 @@
     </entry>
     
     <entry>
-      <title><![CDATA[categories]]></title>
-      <url>http://penguin858.com/categories/index.html</url>
-      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script>]]></content>
+      <title><![CDATA[contact]]></title>
+      <url>http://penguin858.com/contact/index.html</url>
+      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>Name: Xu Zeping<br><a href="https://github.com/penguin858">This is my github address</a></p>
+<p>Gmail: xuzeping858@gmail.com<br>QQ Email: 1363380773@qq.com</p>
+]]></content>
     </entry>
     
     <entry>

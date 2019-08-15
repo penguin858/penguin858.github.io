@@ -174,6 +174,11 @@
 <li><a href="#9-exercise">9. Exercise</a></li>
 </ul>
 </li>
+<li><a href="#chapter-2-coffeescript">Chapter 2 CoffeeScript</a><ul>
+<li><a href="#1-background">1. Background</a></li>
+<li><a href="#2-hello-coffeescript">2. Hello, CoffeeScript</a></li>
+</ul>
+</li>
 </ul>
 <!-- tocstop -->
 <a id="more"></a>
@@ -324,6 +329,10 @@
 <p>5.Use <code>function*</code> and <code>yield</code> to rewrite the nextSquare program.</p>
 <p>Answer:<br>In <code>Function*</code>, <code>yield</code> will return the value. It is another style to write a generator.</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span>* <span class="title">nextS</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span> ; <span class="literal">true</span>; i++)&#123;</div><div class="line">        <span class="keyword">yield</span> i * i;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> nextSquare = nextS();</div><div class="line"></div><div class="line"><span class="keyword">const</span> assert = <span class="built_in">require</span>(<span class="string">'assert'</span>);</div><div class="line">assert(nextSquare.next().value === <span class="number">0</span>);</div><div class="line">assert(nextSquare.next().value === <span class="number">1</span>);</div><div class="line">assert(nextSquare.next().value === <span class="number">4</span>);</div></pre></td></tr></table></figure>
+<h2 id="chapter-2-coffeescript"><a href="#Chapter-2-CoffeeScript" class="headerlink" title="Chapter 2 CoffeeScript"></a>Chapter 2 CoffeeScript</h2><h3 id="1-background"><a href="#1-Background-1" class="headerlink" title="1. Background"></a>1. Background</h3><p>“Expose the good parts of JavaScript in a simple way.”</p>
+<p>The golden rule of CoffeeScript: “It’s just JavaScript”.</p>
+<p>It’s an <strong>Expression-oriented Language</strong>.</p>
+<h3 id="2-hello-coffeescript"><a href="#2-Hello-CoffeeScript" class="headerlink" title="2. Hello, CoffeeScript"></a>2. Hello, CoffeeScript</h3><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> c <span class="keyword">in</span> [<span class="number">1.</span><span class="number">.40</span>]</div><div class="line">    <span class="keyword">for</span> b <span class="keyword">in</span> [<span class="number">1.</span>..c]</div><div class="line">        <span class="keyword">for</span> a <span class="keyword">in</span> [<span class="number">1.</span>..b]</div><div class="line">            <span class="built_in">console</span>.log <span class="string">"<span class="subst">#&#123;a&#125;</span>, <span class="subst">#&#123;b&#125;</span>, <span class="subst">#&#123;c&#125;</span>"</span> <span class="keyword">if</span> a * a + b * b <span class="keyword">is</span> c * c</div></pre></td></tr></table></figure>
 
     </div>
 

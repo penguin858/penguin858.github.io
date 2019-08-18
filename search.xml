@@ -52,6 +52,7 @@
 <li><a href="#chapter-2-coffeescript">Chapter 2 CoffeeScript</a><ul>
 <li><a href="#1-background">1. Background</a></li>
 <li><a href="#2-hello-coffeescript">2. Hello, CoffeeScript</a></li>
+<li><a href="#3-the-basics">3. The basics</a></li>
 </ul>
 </li>
 </ul>
@@ -208,6 +209,43 @@
 <p>The golden rule of CoffeeScript: “It’s just JavaScript”.</p>
 <p>It’s an <strong>Expression-oriented Language</strong>.</p>
 <h3 id="2-hello-coffeescript"><a href="#2-Hello-CoffeeScript" class="headerlink" title="2. Hello, CoffeeScript"></a>2. Hello, CoffeeScript</h3><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> c <span class="keyword">in</span> [<span class="number">1.</span><span class="number">.40</span>]</div><div class="line">    <span class="keyword">for</span> b <span class="keyword">in</span> [<span class="number">1.</span>..c]</div><div class="line">        <span class="keyword">for</span> a <span class="keyword">in</span> [<span class="number">1.</span>..b]</div><div class="line">            <span class="built_in">console</span>.log <span class="string">"<span class="subst">#&#123;a&#125;</span>, <span class="subst">#&#123;b&#125;</span>, <span class="subst">#&#123;c&#125;</span>"</span> <span class="keyword">if</span> a * a + b * b <span class="keyword">is</span> c * c</div></pre></td></tr></table></figure>
+<p>Output: </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ coffee Hello.coffee </div><div class="line">3, 4, 5</div><div class="line">6, 8, 10</div><div class="line">5, 12, 13</div><div class="line">...</div><div class="line">24, 32, 40</div></pre></td></tr></table></figure>
+<p><strong>Note</strong>: </p>
+<ul>
+<li>CoffeeScript expresses program structure by indentation rather than braces.</li>
+<li><code>for-in</code> loop iterates through the values of an array, which is the same as JavaScript’s <code>for-let-of</code>.</li>
+<li>{..}, two dots give a range an <em>inclusive</em> upper bound; {…}, three dots give an <em>exclusive</em> range.</li>
+<li>String interpolation <code>#{.}</code> works only inside strings delimited with double quotes “”, not single quotes.</li>
+<li>The <code>if</code>-clause may follow an expression to be conditionally executed, useful when you wish to emphasize the action being taken rather than the condition.</li>
+</ul>
+<p>The same permutations generators as JavaScript:</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="title">generatePermulations</span> = <span class="params">(a,n)</span> -&gt;</span></div><div class="line">    <span class="keyword">if</span> n <span class="keyword">is</span> <span class="number">0</span></div><div class="line">        <span class="built_in">console</span>.log a.join <span class="string">''</span></div><div class="line">    <span class="keyword">else</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> [<span class="number">0.</span>..n]</div><div class="line">            generatePermulations a, n<span class="number">-1</span></div><div class="line">            j = <span class="keyword">if</span> n % <span class="number">2</span> <span class="keyword">is</span> <span class="number">0</span> <span class="keyword">then</span> <span class="number">0</span> <span class="keyword">else</span> i</div><div class="line">            [a[j], a[n]] = [a[n], a[j]]</div><div class="line">        generatePermulations a, n<span class="number">-1</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> process.argv.length <span class="keyword">isnt</span> <span class="number">3</span></div><div class="line">    <span class="built_in">console</span>.error <span class="string">'Exactly one argument is required'</span></div><div class="line">    process.exit <span class="number">1</span></div><div class="line">word = process.argv[<span class="number">2</span>]</div><div class="line">generatePermulations word.split(<span class="string">''</span>), word.length - <span class="number">1</span></div></pre></td></tr></table></figure>
+<p>Output:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$ coffee CommandLine.coffee asb</div><div class="line">asb</div><div class="line">sab</div><div class="line">bas</div><div class="line">abs</div><div class="line">sba</div><div class="line">bsa</div></pre></td></tr></table></figure>
+<p><strong>Note</strong>:</p>
+<ul>
+<li>CoffeeScript can use <code>-&gt;</code> to write function. The difference between <code>-&gt;</code> and <code>=&gt;</code> is that when the function has zero parameters, <code>-&gt;{...}</code> is allowed, but <code>()</code> is necessary for <code>=&gt;</code>. However, the thin arrow will hijacks the value of <code>this</code>:</li>
+</ul>
+<p>Example:<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">person =</div><div class="line">    name: <span class="string">'Alice'</span></div><div class="line">    tryToSayHelloButFail: <span class="function"><span class="params">(delay)</span> -&gt;</span></div><div class="line">        setTimeout (<span class="function">-&gt;</span> <span class="built_in">console</span>.log <span class="string">"Hi from <span class="subst">#&#123;@name&#125;</span> :("</span>), delay</div><div class="line">    sayHello: <span class="function"><span class="params">(delay)</span> -&gt;</span></div><div class="line">        setTimeout (<span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">console</span>.log <span class="string">"Hi from <span class="subst">#&#123;@name&#125;</span> :)"</span>), delay</div><div class="line">    </div><div class="line">person.tryToSayHelloButFail <span class="number">1000</span></div><div class="line">person.sayHello <span class="number">1000</span></div></pre></td></tr></table></figure></p>
+<p>Output:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ coffee ArrowDifference.coffee </div><div class="line">Hi from undefined :(</div><div class="line">Hi from Alice :)</div></pre></td></tr></table></figure></p>
+<h3 id="3-the-basics"><a href="#3-The-basics" class="headerlink" title="3. The basics"></a>3. The basics</h3><p>Although CoffeeScript can be considered a dialect of JavaScript, the two languages ‘look’ rather different. JavaScript is a <code>curly-brace language</code>, but CoffeeScript uses indentation.<br>For Object:</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">circle = </div><div class="line">	radius: <span class="number">3</span></div><div class="line">	center:</div><div class="line">		x: <span class="number">5</span></div><div class="line">		y: <span class="number">4</span></div><div class="line">	color: <span class="string">'green'</span></div><div class="line">	fillColor: <span class="string">'pink'</span></div><div class="line">	thickness: <span class="number">2</span></div><div class="line">	lineStyle: <span class="string">'dashed'</span></div></pre></td></tr></table></figure>
+<p><strong>Note</strong>: Since the line breaks and the number of spaces matter in determining the structure of a script, we say CoffeeScript has a <em>significant whitespace</em> syntax, as opposed to a <em>free-form</em> syntax.</p>
+<p><strong>Note</strong>: If you need to write a long string, <code>&quot;</code> or <code>&#39;</code> strings are allowed to span multiple lines; each line will be joined by a <code>single space</code>. For <code>&#39;&#39;&#39;</code> or <code>&quot;&quot;&quot;</code>, the line breaks will be kept.</p>
+<p>Example:<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">example = </div><div class="line">    multi: <span class="string">"This is</span></div><div class="line">        really a one line</div><div class="line">        string"</div><div class="line">    block: <span class="string">"""</span></div><div class="line">        One</div><div class="line">        Two</div><div class="line">            TwoPointFive</div><div class="line">        Three</div><div class="line">        """</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log example.multi</div><div class="line"><span class="built_in">console</span>.log example.block</div></pre></td></tr></table></figure></p>
+<p>Output:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ coffee LongString.coffee </div><div class="line">This is really a one line string</div><div class="line">One</div><div class="line">Two</div><div class="line">    TwoPointFive</div><div class="line">Three</div></pre></td></tr></table></figure>
+<p><strong>Note</strong>: CoffeeScript’s function can also be assigned to variables. Its array also has method <code>map</code>, <code>reduce</code>, <code>filter</code>:</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="title">square</span> = <span class="params">(x)</span> -&gt;</span> x ** <span class="number">2</span></div><div class="line">squares = [<span class="number">1.</span><span class="number">.5</span>].map(square)</div><div class="line"><span class="function"><span class="title">result</span> = (<span class="params">(x)</span> -&gt;</span> x * <span class="number">5</span>) <span class="number">16</span></div><div class="line"></div><div class="line">assert = <span class="built_in">require</span> <span class="string">'assert'</span></div><div class="line">assert.deepStrictEqual(squares, [<span class="number">1</span>,<span class="number">4</span>,<span class="number">9</span>,<span class="number">16</span>,<span class="number">25</span>])</div><div class="line">assert result <span class="keyword">is</span> <span class="number">80</span></div></pre></td></tr></table></figure>
+<p><strong>Note</strong>: CoffeeScript also has <code>this</code>. It has two shorthands in CoffeeScript: <code>@</code> for <code>this</code> and <code>@property</code> for <code>this.property</code></p>
+<p>Example:<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">circle = </div><div class="line">    radius: <span class="number">10</span></div><div class="line">    area: <span class="function">-&gt;</span> Math.PI * @radius * @radius</div><div class="line">    circumference: <span class="function">-&gt;</span> <span class="number">2</span> * Math.PI * @radius</div><div class="line"></div><div class="line">assert = <span class="built_in">require</span> <span class="string">'assert'</span></div><div class="line">assert circle.area() <span class="keyword">is</span> <span class="number">100</span> * Math.PI</div><div class="line">assert circle.circumference() <span class="keyword">is</span> <span class="number">20</span> * Math.PI</div></pre></td></tr></table></figure></p>
+<p><strong>Note</strong>: CoffeeScript also has object, class, prototype and constructor. In addition, it provides a slick way for initialization.</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Circle</span></span></div><div class="line">    constructor: <span class="function"><span class="params">(@x=<span class="number">0</span>, @y=<span class="number">0</span>, @radius=<span class="number">1</span>, @color=<span class="string">'black'</span>)</span> -&gt;</span> </div><div class="line">    area: <span class="function">-&gt;</span> (@radius ** <span class="number">2</span>) * Math.PI</div><div class="line">    circumference: <span class="function">-&gt;</span> <span class="number">2</span> * Math.PI * @radius</div><div class="line">    expand: <span class="function"><span class="params">(scale)</span> -&gt;</span> @radius += scale</div><div class="line"></div><div class="line">circles = [(<span class="keyword">new</span> Circle <span class="number">3</span>,<span class="number">5</span>,<span class="number">10</span>, <span class="string">'blue'</span>), (<span class="keyword">new</span> Circle)]</div><div class="line"></div><div class="line">assert = <span class="built_in">require</span> <span class="string">'assert'</span></div><div class="line">assert circles[<span class="number">0</span>].color <span class="keyword">is</span> <span class="string">'black'</span></div><div class="line">assert circles[<span class="number">1</span>].circumference() <span class="keyword">is</span> <span class="number">2</span> * Math.PI</div></pre></td></tr></table></figure>
+<p><strong>Note</strong>: The class syntax makes it convenient to express <code>IS-A</code> relationships. This works because the class extension mechanism makes <code>Animal.prototype</code> the prototype of <code>Horse.prototype</code>.</p>
+<p>Example:</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span></span></div><div class="line">    constructor: <span class="function"><span class="params">(@name)</span> -&gt;</span></div><div class="line">    speak: <span class="function">-&gt;</span> <span class="string">"<span class="subst">#&#123;@name&#125;</span> says <span class="subst">#&#123;@sound()&#125;</span>"</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cow</span> <span class="keyword">extends</span> <span class="title">Animal</span></span></div><div class="line">    sound: <span class="function">-&gt;</span> <span class="string">'moooo'</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Horse</span> <span class="keyword">extends</span> <span class="title">Animal</span></span></div><div class="line">    sound: <span class="function">-&gt;</span> <span class="string">'neigh'</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Zebra</span> <span class="keyword">extends</span> <span class="title">Horse</span></span></div><div class="line">    sound: <span class="function">-&gt;</span> <span class="string">'neighneigh'</span></div><div class="line"></div><div class="line">h = <span class="keyword">new</span> Horse <span class="string">'CJ'</span></div><div class="line">z = <span class="keyword">new</span> Zebra <span class="string">'JC'</span></div><div class="line"></div><div class="line"><span class="built_in">console</span>.log h.speak()</div><div class="line"><span class="built_in">console</span>.log z.speak()</div></pre></td></tr></table></figure>
+<p>Output:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ coffee Animals.coffee </div><div class="line">CJ says neigh</div><div class="line">JC says neighneigh</div></pre></td></tr></table></figure></p>
 ]]></content>
       
         
@@ -1713,6 +1751,33 @@
     </entry>
     
     <entry>
+      <title><![CDATA[linuxTCP/IP协议栈]]></title>
+      <url>http://penguin858.com/linuxTCP:IP%E5%8D%8F%E8%AE%AE%E6%A0%88.html</url>
+      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h1 id="linuxtcpip协议栈"><a href="#linuxTCP-IP协议栈" class="headerlink" title="linuxTCP/IP协议栈"></a>linuxTCP/IP协议栈</h1><h2 id="一-基本的linux数据结构和术语"><a href="#一、基本的linux数据结构和术语" class="headerlink" title="一、基本的linux数据结构和术语"></a>一、基本的linux数据结构和术语</h2><h3 id="一链表结构"><a href="#（一）链表结构" class="headerlink" title="（一）链表结构"></a>（一）链表结构</h3><p>linux中的链表结构定义在<code>include/linux/list.h</code>中：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">struct</span> list_head &#123;</div><div class="line">	<span class="keyword">struct</span> list_head *next, *prev;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>要注意的是，这个链表数据结构 <em>没有数据域</em> 。开发者在需要将某种数据结构组织成链表的时候就会包含一个<code>struct list_head</code>成员。</p>
+<p>有一系列的宏被设计用来访问这个链表，最常用的<code>list_entry</code>：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">define</span> list_entry(prt,type,member) container_of(ptr,type,member)</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> container_of(ptr,type,member) (&#123; \</span></div><div class="line">	const typeof( ((type *) 0) -&gt;member) *__mptr = (ptr); \</div><div class="line">	(type *) ((char *) __mptr - offsetof(type,member) );&#125;)</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> offsetof(TYPE,MENBER) ((size_t) &amp; ((TYPE *) 0) -&gt; MENBER)</span></div></pre></td></tr></table></figure>
+<p><code>typeof</code>是GCC支持的运算，作用是获取变量的类型。 </p>
+<p>而另一种数据结构<code>hlist</code>是 <em>hash list</em> 的简称：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">struct</span> hlist_head &#123;</div><div class="line">	<span class="keyword">struct</span> hlist_node *first;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">struct</span> hlist_node &#123;</div><div class="line">	<span class="keyword">struct</span> hlist_node *next, **pprev;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="二linux系统初始化"><a href="#（二）linux系统初始化" class="headerlink" title="（二）linux系统初始化"></a>（二）linux系统初始化</h3><p>linux系统初始化最重要的代码为以下部分：</p>
+<ul>
+<li>4个汇编程序：<code>bootsect.S</code> <code>setup.S</code> <code>head.S</code> <code>entry.S</code></li>
+<li><code>init</code>目录下的<code>main.c</code></li>
+</ul>
+<p><code>main.c</code>中最重要的函数应当是<code>start_kernel</code>和<code>rest_init</code>函数了，但是要在其中找出网络协议栈的初始化，需要先了解其他知识</p>
+<h3 id="三elf文件格式"><a href="#（三）ELF文件格式" class="headerlink" title="（三）ELF文件格式"></a>（三）ELF文件格式</h3><p>elf是*NIX系统上可执行文件的标准格式，有三种形式：</p>
+<ul>
+<li>Relocatable: 由编译器和汇编器生成，由linker处理</li>
+<li>Executable: 即可执行文件格式</li>
+<li>Shared Object: 包含了linker需要的符号信息和运行时刻所需的代码</li>
+</ul>
+<p>ELF文件有很多section，</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[web安全]]></title>
       <url>http://penguin858.com/web%E5%AE%89%E5%85%A8.html</url>
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><!-- toc -->
@@ -1744,41 +1809,8 @@
     </entry>
     
     <entry>
-      <title><![CDATA[linuxTCP/IP协议栈]]></title>
-      <url>http://penguin858.com/linuxTCP:IP%E5%8D%8F%E8%AE%AE%E6%A0%88.html</url>
-      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h1 id="linuxtcpip协议栈"><a href="#linuxTCP-IP协议栈" class="headerlink" title="linuxTCP/IP协议栈"></a>linuxTCP/IP协议栈</h1><h2 id="一-基本的linux数据结构和术语"><a href="#一、基本的linux数据结构和术语" class="headerlink" title="一、基本的linux数据结构和术语"></a>一、基本的linux数据结构和术语</h2><h3 id="一链表结构"><a href="#（一）链表结构" class="headerlink" title="（一）链表结构"></a>（一）链表结构</h3><p>linux中的链表结构定义在<code>include/linux/list.h</code>中：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">struct</span> list_head &#123;</div><div class="line">	<span class="keyword">struct</span> list_head *next, *prev;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p>要注意的是，这个链表数据结构 <em>没有数据域</em> 。开发者在需要将某种数据结构组织成链表的时候就会包含一个<code>struct list_head</code>成员。</p>
-<p>有一系列的宏被设计用来访问这个链表，最常用的<code>list_entry</code>：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">define</span> list_entry(prt,type,member) container_of(ptr,type,member)</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> container_of(ptr,type,member) (&#123; \</span></div><div class="line">	const typeof( ((type *) 0) -&gt;member) *__mptr = (ptr); \</div><div class="line">	(type *) ((char *) __mptr - offsetof(type,member) );&#125;)</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> offsetof(TYPE,MENBER) ((size_t) &amp; ((TYPE *) 0) -&gt; MENBER)</span></div></pre></td></tr></table></figure>
-<p><code>typeof</code>是GCC支持的运算，作用是获取变量的类型。 </p>
-<p>而另一种数据结构<code>hlist</code>是 <em>hash list</em> 的简称：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">struct</span> hlist_head &#123;</div><div class="line">	<span class="keyword">struct</span> hlist_node *first;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">struct</span> hlist_node &#123;</div><div class="line">	<span class="keyword">struct</span> hlist_node *next, **pprev;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<h3 id="二linux系统初始化"><a href="#（二）linux系统初始化" class="headerlink" title="（二）linux系统初始化"></a>（二）linux系统初始化</h3><p>linux系统初始化最重要的代码为以下部分：</p>
-<ul>
-<li>4个汇编程序：<code>bootsect.S</code> <code>setup.S</code> <code>head.S</code> <code>entry.S</code></li>
-<li><code>init</code>目录下的<code>main.c</code></li>
-</ul>
-<p><code>main.c</code>中最重要的函数应当是<code>start_kernel</code>和<code>rest_init</code>函数了，但是要在其中找出网络协议栈的初始化，需要先了解其他知识</p>
-<h3 id="三elf文件格式"><a href="#（三）ELF文件格式" class="headerlink" title="（三）ELF文件格式"></a>（三）ELF文件格式</h3><p>elf是*NIX系统上可执行文件的标准格式，有三种形式：</p>
-<ul>
-<li>Relocatable: 由编译器和汇编器生成，由linker处理</li>
-<li>Executable: 即可执行文件格式</li>
-<li>Shared Object: 包含了linker需要的符号信息和运行时刻所需的代码</li>
-</ul>
-<p>ELF文件有很多section，</p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[《政府论》]]></title>
       <url>http://penguin858.com/%E3%80%8A%E6%94%BF%E5%BA%9C%E8%AE%BA%E3%80%8B.html</url>
-      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script>]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[categories]]></title>
-      <url>http://penguin858.com/categories/index.html</url>
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script>]]></content>
     </entry>
     
@@ -1797,6 +1829,12 @@
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>Name: Xu Zeping<br><a href="https://github.com/penguin858">This is my github address</a></p>
 <p>Gmail: xuzeping858@gmail.com<br>QQ Email: 1363380773@qq.com</p>
 ]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[categories]]></title>
+      <url>http://penguin858.com/categories/index.html</url>
+      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script>]]></content>
     </entry>
     
     <entry>

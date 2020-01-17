@@ -16,14 +16,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[leetcode-sliding window]]></title>
-      <url>http://penguin858.com/2020/01/07/leetcode-sliding-window/</url>
-      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script>]]></content>
-      
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[Divide and Conquer]]></title>
       <url>http://penguin858.com/2020/01/02/Divide-and-Conquer/</url>
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><!-- toc -->
@@ -1746,7 +1738,7 @@
 <p>这时可以通过输入以下命令解决：(为什么？)<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm <span class="keyword">install</span> hexo-deployer-git <span class="comment">--save</span></div></pre></td></tr></table></figure></p>
 <p>然后提交还是出错：<br><figure class="highlight basic"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">remote: Anonymous access to ***/***.github.io.git denied.</span></div></pre></td></tr></table></figure></p>
 <p>估计应该是ssh密钥没能匹配上，后来我重新设置了一下user.name和user.email就好了。</p>
-<h3 id="六-一些其他命令"><a href="#六、一些其他命令：" class="headerlink" title="六、一些其他命令："></a>六、一些其他命令：</h3><p>可以使用new创建新文章：<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo <span class="keyword">new</span> <span class="string">"新文章的名字"</span></div></pre></td></tr></table></figure></p>
+<h3 id="六-一些其他命令"><a href="#六、一些其他命令：" class="headerlink" title="六、一些其他命令："></a>六、一些其他命令：</h3><p>可以使用new创建新文章：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo <span class="keyword">new</span> <span class="string">"新文章的名字"</span></div></pre></td></tr></table></figure></p>
 ]]></content>
       
         <categories>
@@ -1804,23 +1796,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[Hello!]]></title>
-      <url>http://penguin858.com/Hello!%20copy.html</url>
-      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><html>
-<body>
-
-<h1 id="my-first-heading">My First Heading</h1>
-
-<p>My first paragraph.</p>
-
-</body>
-</html>
-
-
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[web安全]]></title>
       <url>http://penguin858.com/web%E5%AE%89%E5%85%A8.html</url>
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><!-- toc -->
@@ -1858,6 +1833,23 @@
     </entry>
     
     <entry>
+      <title><![CDATA[Hello!]]></title>
+      <url>http://penguin858.com/Hello!%20copy.html</url>
+      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><html>
+<body>
+
+<h1 id="my-first-heading">My First Heading</h1>
+
+<p>My first paragraph.</p>
+
+</body>
+</html>
+
+
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[about]]></title>
       <url>http://penguin858.com/about/index.html</url>
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>北京某野鸡大学计算机专业大二学生，目前致力于数据库方面研究。</p>
@@ -1873,17 +1865,17 @@
     </entry>
     
     <entry>
-      <title><![CDATA[tags]]></title>
-      <url>http://penguin858.com/tags/index.html</url>
-      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script>]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[contact]]></title>
       <url>http://penguin858.com/contact/index.html</url>
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>Name: Xu Zeping<br><a href="https://github.com/penguin858">This is my github address</a></p>
 <p>Gmail: xuzeping858@gmail.com<br>QQ Email: 1363380773@qq.com</p>
 ]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[tags]]></title>
+      <url>http://penguin858.com/tags/index.html</url>
+      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script>]]></content>
     </entry>
     
   

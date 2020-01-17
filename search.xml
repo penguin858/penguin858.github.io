@@ -39,30 +39,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[Deep Learning--MIT PRESS]]></title>
-      <url>http://penguin858.com/2019/08/07/Deep-Learning-MIT-PRESS/</url>
-      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><!-- toc -->
-<ul>
-<li><a href="#chapter-0-introduction">Chapter 0: Introduction</a><ul>
-<li><a href="#1-definition">1. Definition</a></li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
-<a id="more"></a>
-<h2 id="chapter-0-introduction"><a href="#Chapter-0-Introduction" class="headerlink" title="Chapter 0: Introduction"></a>Chapter 0: Introduction</h2><h3 id="1-definition"><a href="#1-Definition" class="headerlink" title="1. Definition"></a>1. Definition</h3><ol>
-<li>Challenge: To solve the tasks that are easy for people to perform but hard to describe. <br><strong>AI deep learning</strong>—— the solution for these more intuitive problems: allow computer to learn from experience and understand the world in terms of a hierarchy of concepts, with each concept defined through its relation to simpler concepts. </li>
-<li><strong>Knowledge base approach</strong>: hard-code knowledge about the world in formal language.—— None of these led to a major success.</li>
-<li><strong>Machine Learning</strong>: Give AI systems the ability to acquire their own knowledge by extracting patterns from raw data.<br>Example:<strong>Logistic Regression</strong>,<strong>Naive Bayes</strong>.</li>
-<li><strong>Representation Learning</strong>: Use machine learning to discover not only the mapping from representation to output but also the representation itself.<br>Example: <strong>Autoencoder</strong></li>
-<li><strong>Deep Learning</strong>: It can be very difficult to extract such high-level, abstract features from raw data. Deep Learning solves this central problem in representation learning by introducing representations that are expressed in terms of other, simpler concepts.<br>Example: <strong>Multilayer perceptron(MLP)</strong></li>
-</ol>
-]]></content>
-      
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[Programming Language Exploration]]></title>
       <url>http://penguin858.com/2019/08/06/Programming-Language-Exploration/</url>
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><!-- toc -->
@@ -1827,12 +1803,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[《政府论》]]></title>
-      <url>http://penguin858.com/%E3%80%8A%E6%94%BF%E5%BA%9C%E8%AE%BA%E3%80%8B.html</url>
-      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script>]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[Hello!]]></title>
       <url>http://penguin858.com/Hello!%20copy.html</url>
       <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><html>
@@ -1847,6 +1817,12 @@
 
 
 ]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[《政府论》]]></title>
+      <url>http://penguin858.com/%E3%80%8A%E6%94%BF%E5%BA%9C%E8%AE%BA%E3%80%8B.html</url>
+      <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script>]]></content>
     </entry>
     
     <entry>

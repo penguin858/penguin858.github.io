@@ -179,7 +179,7 @@
 <a id="more"></a>
 <h3 id="一-注册github"><a href="#一、注册github" class="headerlink" title="一、注册github"></a>一、注册github</h3><p><a href="https://github.com">这里</a>是github的官网，注册。<br>然后再个人页面创建一个新的repository，名字命名为<code>yourname.github.io</code>，yourname是自己的用户名。<br><img src="http://upload-images.jianshu.io/upload_images/291600-7cec7b9f28359ea5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="创建"><br>这里创不创建README没有什么影响。</p>
 <h3 id="二-环境配置"><a href="#二、环境配置" class="headerlink" title="二、环境配置"></a>二、环境配置</h3><p>要使用Hexo需要先安装好<br><a href="https://nodejs.org/en/">Node.js</a><br><a href="https://github.com/waylau/git-for-win">Git(这里是一个国外的镜像，方便下载)</a><br>由于我个人在创建之前已经安装好了git，所以跳过初始配置部分，第一次使用的可以参看<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/">廖雪峰的教程</a></p>
-<p>然后就可以输入命令安装Hexo了<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">npm</span> install -g hexo-cli</div></pre></td></tr></table></figure></p>
+<p>然后就可以输入命令安装Hexo了<br><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g hexo-<span class="keyword">cli</span></div></pre></td></tr></table></figure></p>
 <p>输入命令后会产生如下信息，可能需要等待一会</p>
 <p><img src="https://raw.githubusercontent.com/penguin858/temp_picture/master/Screen%20Shot%202017-03-01%20at%2010.32.44%20AM.png" style="zoom:40%"></p>
 <p>到这里我们的环境就已经安装完毕了。</p>
@@ -198,7 +198,7 @@
 <p>这时可以通过输入以下命令解决：(为什么？)<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm <span class="keyword">install</span> hexo-deployer-git <span class="comment">--save</span></div></pre></td></tr></table></figure></p>
 <p>然后提交还是出错：<br><figure class="highlight basic"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">remote: Anonymous access to ***/***.github.io.git denied.</span></div></pre></td></tr></table></figure></p>
 <p>估计应该是ssh密钥没能匹配上，后来我重新设置了一下user.name和user.email就好了。</p>
-<h3 id="六-一些其他命令"><a href="#六、一些其他命令：" class="headerlink" title="六、一些其他命令："></a>六、一些其他命令：</h3><p>可以使用new创建新文章：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo <span class="keyword">new</span> <span class="string">"新文章的名字"</span></div></pre></td></tr></table></figure></p>
+<h3 id="六-一些其他命令"><a href="#六、一些其他命令：" class="headerlink" title="六、一些其他命令："></a>六、一些其他命令：</h3><p>可以使用new创建新文章：<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo <span class="keyword">new</span> <span class="string">"新文章的名字"</span></div></pre></td></tr></table></figure></p>
 
     </div>
 
@@ -246,19 +246,19 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2020/01/17/Django-Tips/">Django Tips</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2020/01/07/leetcode-sliding-window/">leetcode-sliding window</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2020/01/02/Divide-and-Conquer/">Divide and Conquer</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2019/08/07/Deep-Learning-MIT-PRESS/">Deep Learning--MIT PRESS</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2019/08/06/Programming-Language-Exploration/">Programming Language Expl</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2018/11/21/bgp概述/">bgp概述</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2018/01/31/nettools源码解析/">nettools源码解析</a>
             </li>
             
         </ul>
@@ -280,11 +280,11 @@
         </li>
         
         <li>
-            <a class="footer-post" href="/categories/Blog/">Blog</a>
+            <a class="footer-post" href="/categories/计算机视觉/">计算机视觉</a>
         </li>
         
         <li>
-            <a class="footer-post" href="/categories/计算机视觉/">计算机视觉</a>
+            <a class="footer-post" href="/categories/Blog/">Blog</a>
         </li>
         
     </ul>
